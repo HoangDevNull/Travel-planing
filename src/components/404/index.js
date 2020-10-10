@@ -100,7 +100,7 @@ const PageNotFound = ({ classes }) => {
         const speedY = window.innerHeight - e.clientY * speed;
 
         image.style.transform = `translateX(${speedX / 2000}px) translateY(${
-          speedY / 100
+          speedY / 250
         }px)`;
       }
     });
@@ -121,7 +121,7 @@ const PageNotFound = ({ classes }) => {
           <img
             className={classes.img}
             ref={(ref) => imgRef.current.push(ref)}
-            data-speed="2"
+            data-speed="1"
             src={Parallax0}
             alt=""
           />
