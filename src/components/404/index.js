@@ -7,6 +7,9 @@ import {
   Container,
   Grid
 } from '@material-ui/core';
+
+import { useTranslation } from 'react-i18next';
+
 import clsx from 'clsx';
 import Parallax0 from 'assets/images/404/parallax0.png';
 import Parallax1 from 'assets/images/404/parallax1.png';
@@ -86,17 +89,20 @@ const styles = (theme) => ({
 
 const PageNotFound = ({ classes }) => {
   const imgRef = useRef([]);
+  const { t } = useTranslation('404');
 
   const handleMouseMove = (e) => {
     // Apply styles for each image
     imgRef.current.forEach((image) => {
-      const speed = image.getAttribute('data-speed');
-      const speedX = window.innerWidth - e.clientX * speed;
-      const speedY = window.innerHeight - e.clientY * speed;
+      if (image) {
+        const speed = image.getAttribute('data-speed');
+        const speedX = window.innerWidth - e.clientX * speed;
+        const speedY = window.innerHeight - e.clientY * speed;
 
-      image.style.transform = `translateX(${speedX / 2000}px) translateY(${
-        speedY / 100
-      }px)`;
+        image.style.transform = `translateX(${speedX / 2000}px) translateY(${
+          speedY / 100
+        }px)`;
+      }
     });
   };
   return (
@@ -108,42 +114,42 @@ const PageNotFound = ({ classes }) => {
         >
           <div className={classes._404_wrapper}>
             <div className={clsx([classes.center, classes._error_text])}>
-              Error
+              {t('error')}
             </div>
             <div className={clsx([classes.center, classes._404_text])}>404</div>
           </div>
           <img
             className={classes.img}
             ref={(ref) => imgRef.current.push(ref)}
-            data-speed="10"
+            data-speed="2"
             src={Parallax0}
             alt=""
           />
           <img
             className={classes.img}
             ref={(ref) => imgRef.current.push(ref)}
-            data-speed="12"
+            data-speed="5"
             src={Parallax1}
             alt=""
           />
           <img
             className={classes.img}
             ref={(ref) => imgRef.current.push(ref)}
-            data-speed="13"
+            data-speed="8"
             src={Parallax3}
             alt=""
           />
           <img
             className={classes.img}
             ref={(ref) => imgRef.current.push(ref)}
-            data-speed="14"
+            data-speed="12"
             src={Parallax4}
             alt=""
           />
           <img
             className={classes.img}
             ref={(ref) => imgRef.current.push(ref)}
-            data-speed="6"
+            data-speed="18"
             src={Parallax5}
             alt=""
           />
@@ -158,8 +164,7 @@ const PageNotFound = ({ classes }) => {
               paragraph
               className={clsx([classes.center, classes.fontType])}
             >
-              It seem the page you've looking for got lost in the Wyoming
-              wilderness
+              {t('404_content')}
             </Typography>
 
             <Button
@@ -171,7 +176,7 @@ const PageNotFound = ({ classes }) => {
                 classes.fontType
               ])}
             >
-              Go back
+              {t('back')}
             </Button>
           </div>
         </div>
@@ -200,15 +205,14 @@ const PageNotFound = ({ classes }) => {
                   gutterBottom
                   className={classes.fontType}
                 >
-                  It seem the page you've looking for got lost in the Wyoming
-                  wilderness
+                  {t('404_content')}
                 </Typography>
                 <Button
                   variant="contained"
                   startIcon={<ArrowBackIcon />}
                   className={clsx([classes.btn_goBack, classes.fontType])}
                 >
-                  Go back
+                  {t('back')}
                 </Button>
               </Grid>
             </Grid>
