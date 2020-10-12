@@ -1,27 +1,19 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import * as serviceWorker from "./serviceWorker";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { ThemeProvider } from "@material-ui/core/styles";
-import theme from "./theme";
-
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 // Redux setup
-import { Provider } from "react-redux";
-import configureStore from "./redux/configureStore";
+import { Provider } from 'react-redux';
+import configureStore from './redux/configureStore';
 
-import "./i18n";
+import './i18n';
 const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-      <CssBaseline />
-      <App />
-    </ThemeProvider>
+    <App />
   </Provider>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
