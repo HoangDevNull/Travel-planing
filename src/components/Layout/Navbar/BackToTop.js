@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zoom, Fab, makeStyles, useScrollTrigger } from '@material-ui/core';
+import { Slide, Fab, makeStyles } from '@material-ui/core';
 
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
@@ -14,13 +14,8 @@ const useStyles = makeStyles((theme) => {
 });
 
 function ScrollTop(props) {
-  const { children } = props;
+  const { children, trigger } = props;
   const classes = useStyles();
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 100
-  });
-
   const handleClick = (event) => {
     const anchor = (event.target.ownerDocument || document).querySelector(
       '#back-to-top-anchor'
@@ -32,22 +27,22 @@ function ScrollTop(props) {
   };
 
   return (
-    <Zoom in={trigger}>
+    <Slide appear={false} direction="up" in={trigger}>
       <div onClick={handleClick} role="presentation" className={classes.root}>
         {children}
       </div>
-    </Zoom>
+    </Slide>
   );
 }
 
-const BackToTop = () => {
+const BackToTop = (props) => {
   return (
-    <ScrollTop>
-      <Fab color="secondary" size="small" aria-label="scroll back to top">
+    <ScrollTop {...props}>
+      <Fab color="primary" size="small" aria-label="scroll back to top">
         <KeyboardArrowUpIcon />
       </Fab>
     </ScrollTop>
   );
 };
 
-export default BackToTop;
+export default React.memo(BackToTop);

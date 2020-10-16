@@ -183,7 +183,7 @@ const PageNotFound = ({ classes }) => {
       </Hidden>
 
       {/* -------------------------- Mobile ------------------------------------ */}
-      <Hidden smUp>
+      <Hidden mdUp>
         <Container maxWidth="xl" disableGutters>
           <div className={clsx(classes.root, classes.fontType)}>
             <img src={Mobile404} className={classes.img} alt="" />
