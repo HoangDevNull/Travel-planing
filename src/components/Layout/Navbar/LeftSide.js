@@ -1,6 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Hidden, IconButton } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import { sidebarAction } from 'redux/sidebar';
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -9,7 +11,7 @@ const useStyles = makeStyles((theme) => {
     },
     logo: {
       color: theme.palette.primary.main,
-      fontFamily: `'Orbitron', sans-serif`,
+      fontFamily: `'Aclonica', sans-serif`,
       textTransform: 'upperCase',
       letterSpacing: 5,
       fontWeight: 'bold'
@@ -20,34 +22,38 @@ const useStyles = makeStyles((theme) => {
     line_color: {
       backgroundColor: theme.palette.type.includes('dark') ? '#FFF' : '#4D4F5C',
       '&::before,&::after ': {
-        backgroundColor: theme.palette.type.includes('dark') ? '#FFF' : '#4D4F5C'
+        backgroundColor: theme.palette.type.includes('dark')
+          ? '#FFF'
+          : '#4D4F5C'
       }
     }
   };
 });
 
 const LeftSide = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const isOpen = useSelector((state) => state.sidebar.isOpen);
+  const dispatch = useDispatch();
   const btnMenuRef = useRef(null);
   const classes = useStyles();
 
   const handleOpenDrawer = () => {
-    if (btnMenuRef) {
-      console.log('click', { isOpen, btnMenuRef });
-      if (isOpen) {
-        btnMenuRef.current.classList.remove('open');
-      } else {
-        btnMenuRef.current.classList.add('open');
-      }
-      setIsOpen(!isOpen);
-    }
+    // if (btnMenuRef) {
+    //   console.log('click', { isOpen, btnMenuRef });
+    //   if (isOpen) {
+    //     btnMenuRef.current.classList.remove('open');
+    //   } else {
+    //     btnMenuRef.current.classList.add('open');
+    //   }
+    // }
+
+    dispatch(sidebarAction.loadSideBar(!isOpen));
   };
 
   return (
     <div className={classes.root}>
       <Hidden smDown>
         <Typography className={classes.logo} variant="h6">
-          Travel
+          Dolphjn
         </Typography>
       </Hidden>
       <Hidden mdUp>

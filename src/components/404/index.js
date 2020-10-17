@@ -9,6 +9,7 @@ import {
 } from '@material-ui/core';
 
 import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
 
 import clsx from 'clsx';
 import Parallax0 from 'assets/images/404/parallax0.png';
@@ -90,6 +91,7 @@ const styles = (theme) => ({
 const PageNotFound = ({ classes }) => {
   const imgRef = useRef([]);
   const { t } = useTranslation('404');
+  const history = useHistory();
 
   const handleMouseMove = (e) => {
     // Apply styles for each image
@@ -105,6 +107,11 @@ const PageNotFound = ({ classes }) => {
       }
     });
   };
+
+  const handleGoBack = () => {
+    history.goBack();
+  };
+
   return (
     <>
       <Hidden smDown>
@@ -175,6 +182,7 @@ const PageNotFound = ({ classes }) => {
                 classes.btn_goBack,
                 classes.fontType
               ])}
+              onClick={handleGoBack}
             >
               {t('back')}
             </Button>
@@ -210,6 +218,7 @@ const PageNotFound = ({ classes }) => {
                 <Button
                   variant="contained"
                   startIcon={<ArrowBackIcon />}
+                  onClick={handleGoBack}
                   className={clsx([classes.btn_goBack, classes.fontType])}
                 >
                   {t('back')}

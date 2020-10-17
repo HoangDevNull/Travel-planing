@@ -6,8 +6,8 @@ const useStyles = makeStyles((theme) => {
   return {
     root: {
       position: 'absolute',
-      top: 15,
-      right: 15,
+      top: 17,
+      right: 0,
       [theme.breakpoints.down('sm')]: {
         position: 'static',
         display: 'flex',
@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => {
       }
     },
     select: {
-      fontSize: 13,
-      color: theme.palette.primary.main,
+      fontSize: 14,
+      color: theme.palette.primary.textColor,
       '&:focus,&:active,&:hover': {
         boxShadow: 'none',
         border: 'none',
@@ -24,8 +24,8 @@ const useStyles = makeStyles((theme) => {
       }
     },
     submenu: {
-      color: theme.palette.primary.main,
-      fontSize: 13
+      color: theme.palette.primary.textColor,
+      fontSize: 14
     }
   };
 });

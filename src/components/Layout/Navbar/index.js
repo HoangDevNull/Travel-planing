@@ -8,10 +8,12 @@ import {
   makeStyles,
   Hidden
 } from '@material-ui/core';
-import RightSide from './components/RightSide';
-import LeftSide from './components/LeftSide';
+import RightSide from './RightSide';
+import LeftSide from './LeftSide';
 import BackToTop from './components/BackToTop';
 import LanguageSelect from './components/LanguageSelect';
+import ThemeSelect from './components/ThemeSelect';
+import SideBar from './Sidebar';
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -40,7 +42,7 @@ const Navbar = () => {
   const classes = useStyles();
   const trigger = useScrollTrigger({
     disableHysteresis: true,
-    threshold: 0
+    threshold: 500
   });
   return (
     <React.Fragment>
@@ -58,11 +60,14 @@ const Navbar = () => {
             <RightSide />
             <Hidden mdUp>
               <LanguageSelect />
+              <SideBar />
+              {/* <ThemeSelect /> */}
             </Hidden>
           </Toolbar>
         </Container>
         <Hidden smDown>
           <LanguageSelect />
+          <ThemeSelect />
         </Hidden>
       </AppBar>
       <Toolbar />

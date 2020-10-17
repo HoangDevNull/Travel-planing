@@ -1,22 +1,15 @@
 import React from 'react';
-import { Switch, Box, Container } from '@material-ui/core';
-import { theme } from 'redux/theme/actions';
-import { useSelector, useDispatch } from 'react-redux';
+import { Box, Container, Typography } from '@material-ui/core';
 
 import Layout from 'components/Layout';
 
 const Home = () => {
-  const dispatch = useDispatch();
-  const isDark = useSelector((state) => state.theme.isDark);
-  const toggleTheme = (e) => {
-    dispatch(theme.loadTheme(e.target.checked));
-  };
   return (
     <Layout>
       <div style={{ minHeight: '100vh' }}>
         <div className="head">
           <img
-            src="https://images.pexels.com/photos/323645/pexels-photo-323645.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+            src="https://images.pexels.com/photos/670061/pexels-photo-670061.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1920&w=1080"
             alt="dev"
             style={{
               position: 'absolute',
@@ -31,17 +24,19 @@ const Home = () => {
             }}
           />
         </div>
-        <Switch checked={isDark} onChange={toggleTheme} />
+        <div className="fake" style={{ minHeight: '100vh' }}></div>
         <Container>
           <Box my={2}>
-            {[...new Array(100)]
-              .map(
-                () => `Cras mattis consectetur purus sit amet fermentum.
-Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
-              )
-              .join('\n')}
+            {[...new Array(10)].map((_, index) => {
+              return (
+                <Typography variant="subtitle1" key={index}>
+                  `Cras mattis consectetur purus sit amet fermentum. Cras justo
+                  odio, dapibus ac facilisis in, egestas eget quam. Morbi leo
+                  risus, porta ac consectetur ac, vestibulum at eros. Praesent
+                  commodo cursus magna, vel scelerisque nisl consectetur et.`
+                </Typography>
+              );
+            })}
           </Box>
         </Container>
       </div>
