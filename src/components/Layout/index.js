@@ -1,7 +1,14 @@
 import React from 'react';
 
+import Navbar from './Navbar';
+
 function index({ children }) {
-  return <div></div>;
+  return (
+    <>
+      <Navbar />
+      {children}
+    </>
+  );
 }
 
 export default index;
