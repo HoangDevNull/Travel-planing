@@ -18,9 +18,9 @@ const useStyles = makeStyles((theme) => {
       marginLeft: -12
     },
     line_color: {
-      backgroundColor: theme.palette.type.includes('dark') ? '#FFF' : '#333',
+      backgroundColor: theme.palette.type.includes('dark') ? '#FFF' : '#4D4F5C',
       '&::before,&::after ': {
-        backgroundColor: theme.palette.type.includes('dark') ? '#FFF' : '#333'
+        backgroundColor: theme.palette.type.includes('dark') ? '#FFF' : '#4D4F5C'
       }
     }
   };

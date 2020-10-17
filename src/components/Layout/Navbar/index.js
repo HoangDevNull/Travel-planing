@@ -5,11 +5,13 @@ import {
   useScrollTrigger,
   CssBaseline,
   Container,
-  makeStyles
+  makeStyles,
+  Hidden
 } from '@material-ui/core';
-import RightSide from './RightSide';
-import LeftSide from './LeftSide';
-import BackToTop from './BackToTop';
+import RightSide from './components/RightSide';
+import LeftSide from './components/LeftSide';
+import BackToTop from './components/BackToTop';
+import LanguageSelect from './components/LanguageSelect';
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -54,8 +56,14 @@ const Navbar = () => {
           <Toolbar disableGutters>
             <LeftSide />
             <RightSide />
+            <Hidden mdUp>
+              <LanguageSelect />
+            </Hidden>
           </Toolbar>
         </Container>
+        <Hidden smDown>
+          <LanguageSelect />
+        </Hidden>
       </AppBar>
       <Toolbar />
 

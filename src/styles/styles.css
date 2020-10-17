@@ -7,6 +7,7 @@ body {
   scroll-behavior: smooth;
 }
 
+/* Navbar mobile menu */
 .menu-btn {
   position: relative;
   display: flex;
@@ -56,3 +57,5 @@ body {
 .menu-btn.open .menu-btn__burger::after {
   transform: rotate(-45deg) translate(35px, 35px);
 }
+
+/* End Navbar menu */
