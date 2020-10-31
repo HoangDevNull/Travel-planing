@@ -1,6 +1,6 @@
 import React from 'react';
 import 'styles/styles.css';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { orange, deepOrange } from '@material-ui/core/colors';
 import {
@@ -12,13 +12,15 @@ import { useSelector } from 'react-redux';
 
 import Home from 'components/Home';
 import NotFound from 'components/404';
+import CustomRoute from 'components/common/CustomRoute';
+import Layout from 'components/Layout';
 
 function App() {
   const isDark = useSelector((state) => state.theme.isDark);
   const palletType = isDark ? 'dark' : 'light';
   const mainPrimaryColor = isDark ? orange[500] : `#3D9A88`;
   const mainSecondaryColor = isDark ? deepOrange[900] : `#F07151`;
-  const textColor = isDark ? `#FFFFFF` : `#191919`;
+  const textColor = isDark ? `#FFFFFF` : `#333333`;
 
   // A custom theme for this app
   let theme = createMuiTheme({
@@ -31,6 +33,9 @@ function App() {
       secondary: {
         main: mainSecondaryColor
       }
+    },
+    typography: {
+      fontFamily: `"Poppins", "Helvetica Neue", Arial, sans-serif`
     }
   });
 
@@ -39,12 +44,16 @@ function App() {
     <ThemeProvider theme={theme}>
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       <CssBaseline />
+
       <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/home" component={Home} />
-          <Route component={NotFound} />
-        </Switch>
+        <Layout>
+          <Switch>
+            <CustomRoute exact path="/" component={Home} />
+            <CustomRoute exact path="/home" component={Home} />
+            <CustomRoute exact path="/404" component={NotFound} />
+            <CustomRoute component={NotFound} />
+          </Switch>
+        </Layout>
       </BrowserRouter>
     </ThemeProvider>
   );

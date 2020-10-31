@@ -6,34 +6,37 @@ import {
   CssBaseline,
   Container,
   makeStyles,
-  Hidden
+  Hidden,
+  Typography,
+  Box
 } from '@material-ui/core';
 import RightSide from './RightSide';
 import LeftSide from './LeftSide';
 import BackToTop from './components/BackToTop';
-import LanguageSelect from './components/LanguageSelect';
-import ThemeSelect from './components/ThemeSelect';
 import SideBar from './Sidebar';
 
 const useStyles = makeStyles((theme) => {
   return {
-    '@global': {
-      '*::-webkit-scrollbar': {
-        width: '0.4em'
-      },
-      '*::-webkit-scrollbar-track': {
-        '-webkit-box-shadow': 'inset 0 0 6px rgba(0,0,0,0.00)'
-      },
-      '*::-webkit-scrollbar-thumb': {
-        backgroundColor: theme.palette.type.includes('dark') ? '#FFF' : '#333',
-        outline: 'none'
-      }
+    root: {
+      justifyContent: 'space-between'
     },
     bg_appBar: {
       backgroundColor: theme.palette.type.includes('dark') ? '#333' : '#FFF'
     },
     trigger_appbar: {
       backgroundColor: 'transparent'
+    },
+    logo: {
+      position: 'absolute',
+      left: '50%',
+      top: '50%',
+      transform: ' translate(-50%, -50%)',
+      cursor: 'pointer',
+      color: theme.palette.primary.main,
+      fontFamily: `'Aclonica', sans-serif`,
+      textTransform: 'upperCase',
+      letterSpacing: 5,
+      fontWeight: 'bold'
     }
   };
 });
@@ -54,21 +57,26 @@ const Navbar = () => {
           colorPrimary: trigger ? classes.bg_appBar : classes.trigger_appbar
         }}
       >
-        <Container>
-          <Toolbar disableGutters>
-            <LeftSide />
-            <RightSide />
+        <Container maxWidth="xl">
+          <Toolbar disableGutters classes={{ root: classes.root }}>
+            <Box>
+              <LeftSide />
+            </Box>
+            <Box className={classes.logo}>
+              <Typography variant="h4">Onism</Typography>
+            </Box>
+            <Box>
+              <RightSide />
+            </Box>
+
             <Hidden mdUp>
-              <LanguageSelect />
               <SideBar />
-              {/* <ThemeSelect /> */}
             </Hidden>
           </Toolbar>
         </Container>
-        <Hidden smDown>
-          <LanguageSelect />
-          <ThemeSelect />
-        </Hidden>
+        {/* <Container maxWidth="xl">
+          <LinearDeterminate />
+        </Container> */}
       </AppBar>
       <Toolbar />
 

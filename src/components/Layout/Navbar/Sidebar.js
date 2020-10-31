@@ -24,7 +24,7 @@ import { sidebarAction } from 'redux/sidebar';
 import { useHistory } from 'react-router-dom';
 import ThemeSelect from './components/ThemeSelect';
 
-const drawerWidth = 260;
+const drawerWidth = '100%';
 const useStyles = makeStyles((theme) => {
   return {
     list: {
@@ -112,10 +112,6 @@ const SideBar = () => {
         onClick={toggleDrawer(false)}
         onKeyDown={toggleDrawer(false)}
       >
-        <Typography className={classes.logo} align="center" variant="h6">
-          Dolphjn
-        </Typography>
-        <Divider />
         <List>
           {menuItem.map((item) => (
             <ListItem

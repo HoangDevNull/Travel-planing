@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme) => {
       textDecoration: 'unset',
       color: theme.palette.primary.textColor,
       fontSize: 14,
-      fontWeight: 'bold',
+      fontWeight: '500',
+      textTransform : "uppercase",
       cursor: 'pointer',
       position: 'relative',
       padding: 5,
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme) => {
       '&:hover': {
         color: theme.palette.primary.main,
         '&:before': {
-          width: '100%'
+          width: '50%'
         }
       }
     },
