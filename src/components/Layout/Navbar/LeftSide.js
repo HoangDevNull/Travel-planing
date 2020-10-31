@@ -8,8 +8,8 @@ const useStyles = makeStyles((theme) => {
   return {
     menu_btn: {
       cursor: 'pointer',
-      width: 40,
-      height: 40
+      width: 38,
+      height: 38
     },
     text_color: {
       color: theme.palette.primary.textColor,
@@ -33,9 +33,9 @@ const LeftSide = () => {
   useEffect(() => {
     if (btnMenuRef) {
       if (isOpen) {
-        btnMenuRef.current.classList.remove('open');
-      } else {
         btnMenuRef.current.classList.add('open');
+      } else {
+        btnMenuRef.current.classList.remove('open');
       }
     }
   }, [isOpen]);
@@ -45,8 +45,8 @@ const LeftSide = () => {
   };
 
   return (
-    <Box pt="5px" className={classes.menu_btn} onClick={handleOpenDrawer}>
-      <Box className="menu-btn" ml="4px" ref={btnMenuRef}>
+    <Box className={classes.menu_btn} onClick={handleOpenDrawer}>
+      <Box className="menu-btn" ref={btnMenuRef}>
         <div className={`menu-btn__burger ${classes.line_color}`}></div>
       </Box>
     </Box>

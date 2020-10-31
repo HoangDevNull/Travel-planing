@@ -1,15 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
   makeStyles,
-  SwipeableDrawer,
-  List,
-  Divider,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-  Box
+  Backdrop,
+  Box,
+  Container,
+  Typography
 } from '@material-ui/core';
 
 import {
@@ -19,40 +15,35 @@ import {
   BallotRounded
 } from '@material-ui/icons';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
-import { sidebarAction } from 'redux/sidebar';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { TimelineLite, Power3 } from 'gsap';
+
+import { NavLink } from 'react-router-dom';
 import ThemeSelect from './components/ThemeSelect';
 
-const drawerWidth = '100%';
 const useStyles = makeStyles((theme) => {
   return {
-    list: {
-      width: 250
+    root: {
+      zIndex: 99999999999,
+      top: 64,
+      backgroundColor: theme.palette.type.includes('dark')
+        ? 'rgba(51,51,51,1)'
+        : 'rgba(255,255,255,1)'
     },
-    fullList: {
-      width: 'auto'
+    text: {
+      overflow: 'hidden',
+      height: 135,
+      margin: 0,
+      cursor: 'pointer'
     },
-    logo: {
-      color: theme.palette.primary.main,
-      fontFamily: `'Aclonica', sans-serif`,
-      textTransform: 'upperCase',
-      letterSpacing: 5,
-      fontWeight: 'bold',
-      margin: '30px'
-    },
-    drawerPaper: {
-      width: drawerWidth
-    },
-    optional: {
-      position: 'absolute',
-      bottom: 50,
-      width: '100%'
+    hide_text: {
+      height: 135
     }
   };
 });
 
-const menuItem = [
+const routes = [
   {
     name: 'home',
     icon: <HomeRounded />,
@@ -79,63 +70,69 @@ const menuItem = [
 const SideBar = () => {
   const { t } = useTranslation('navbar');
   const history = useHistory();
-  const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.sidebar.isOpen);
-
-  const toggleDrawer = (open) => (event) => {
-    if (
-      event &&
-      event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
-    ) {
-      return;
-    }
-
-    dispatch(sidebarAction.loadSideBar(open));
-  };
+  const [textTl] = useState(new TimelineLite({ paused: true }));
+  useEffect(() => {
+    textTl
+      .staggerTo(
+        '.nav_item',
+        1.5,
+        {
+          y: 135,
+          ease: Power3.easeInOut,
+          delay: 0.3
+        },
+        0.1
+      )
+      .reverse();
+  }, [textTl]);
+  useEffect(() => {
+    textTl.reversed(!textTl.reversed());
+  }, [isOpen, textTl]);
 
   const handleNavigation = (to) => {
     history.push(to);
   };
-  const classes = useStyles();
 
+  const classes = useStyles();
   return (
-    <SwipeableDrawer
-      anchor="left"
+    <Backdrop
+      classes={{ root: classes.root }}
+      transitionDuration={{
+        enter: 800,
+        exit: 2000
+      }}
       open={isOpen}
-      onClose={toggleDrawer(false)}
-      onOpen={toggleDrawer(true)}
-      classes={{ paper: classes.drawerPaper }}
     >
-      <Box
-        role="presentation"
-        onClick={toggleDrawer(false)}
-        onKeyDown={toggleDrawer(false)}
-      >
-        <List>
-          {menuItem.map((item) => (
-            <ListItem
-              onClick={() => {
-                handleNavigation(item.to);
-              }}
-              button
-              key={item.name}
-            >
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={t(item.name)} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <Box
-          display="flex"
-          justifyContent="center"
-          className={classes.optional}
-        >
+      <Container maxWidth="xl">
+        <Box width="100%" height="87vh" position="relative">
+          <Box
+            width="100%"
+            height="100%"
+            display="flex"
+            flexDirection="column"
+            justifyContent="space-around"
+            alignItems="center"
+            position="absolute"
+            top="64px"
+          >
+            {routes.map((ele, i) => (
+              <Typography
+                key={i}
+                className={classes.text}
+                variant="h1"
+                onClick={() => handleNavigation(ele.to)}
+              >
+                <div className={`nav_item ${classes.hide_text}`}>
+                  {t(ele.name)}
+                </div>
+              </Typography>
+            ))}
+          </Box>
           <ThemeSelect />
         </Box>
-      </Box>
-    </SwipeableDrawer>
+      </Container>
+    </Backdrop>
   );
 };
 

@@ -6,7 +6,6 @@ import {
   CssBaseline,
   Container,
   makeStyles,
-  Hidden,
   Typography,
   Box
 } from '@material-ui/core';
@@ -14,6 +13,7 @@ import RightSide from './RightSide';
 import LeftSide from './LeftSide';
 import BackToTop from './components/BackToTop';
 import SideBar from './Sidebar';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -24,7 +24,11 @@ const useStyles = makeStyles((theme) => {
       backgroundColor: theme.palette.type.includes('dark') ? '#333' : '#FFF'
     },
     trigger_appbar: {
-      backgroundColor: 'transparent'
+      backgroundColor: 'transparent',
+      transition: 'all .5s ease-in-out',
+      '&:hover': {
+        backgroundColor: theme.palette.type.includes('dark') ? '#333' : '#FFF'
+      }
     },
     logo: {
       position: 'absolute',
@@ -43,6 +47,7 @@ const useStyles = makeStyles((theme) => {
 
 const Navbar = () => {
   const classes = useStyles();
+  const isOpen = useSelector((state) => state.sidebar.isOpen);
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 500
@@ -54,7 +59,8 @@ const Navbar = () => {
       <AppBar
         elevation={trigger ? 3 : 0}
         classes={{
-          colorPrimary: trigger ? classes.bg_appBar : classes.trigger_appbar
+          colorPrimary:
+            trigger || isOpen ? classes.bg_appBar : classes.trigger_appbar
         }}
       >
         <Container maxWidth="xl">
@@ -68,18 +74,12 @@ const Navbar = () => {
             <Box>
               <RightSide />
             </Box>
-
-            <Hidden mdUp>
-              <SideBar />
-            </Hidden>
           </Toolbar>
         </Container>
-        {/* <Container maxWidth="xl">
-          <LinearDeterminate />
-        </Container> */}
       </AppBar>
       <Toolbar />
 
+      <SideBar />
       <BackToTop trigger={trigger} />
     </React.Fragment>
   );
