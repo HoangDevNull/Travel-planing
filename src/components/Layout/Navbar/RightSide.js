@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Button, makeStyles, Box, Hidden } from '@material-ui/core';
 import clsx from 'clsx';
-import NavItem from './components/NavItem';
 import { useTranslation } from 'react-i18next';
+import LanguageSelect from './components/LanguageSelect';
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -37,12 +37,7 @@ const RightSide = () => {
 
   return (
     <Box className={classes.root}>
-      <Hidden smDown>
-        <Box>
-          <NavItem />
-        </Box>
-      </Hidden>
-      <Box>
+      <Hidden xsDown>
         <Button
           variant="outlined"
           color="primary"
@@ -57,6 +52,9 @@ const RightSide = () => {
         >
           {t('sign-up')}
         </Button>
+      </Hidden>
+      <Box>
+        <LanguageSelect />
       </Box>
     </Box>
   );

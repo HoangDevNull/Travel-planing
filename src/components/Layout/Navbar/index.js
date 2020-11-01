@@ -6,40 +6,48 @@ import {
   CssBaseline,
   Container,
   makeStyles,
-  Hidden
+  Typography,
+  Box
 } from '@material-ui/core';
 import RightSide from './RightSide';
 import LeftSide from './LeftSide';
 import BackToTop from './components/BackToTop';
-import LanguageSelect from './components/LanguageSelect';
-import ThemeSelect from './components/ThemeSelect';
 import SideBar from './Sidebar';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => {
   return {
-    '@global': {
-      '*::-webkit-scrollbar': {
-        width: '0.4em'
-      },
-      '*::-webkit-scrollbar-track': {
-        '-webkit-box-shadow': 'inset 0 0 6px rgba(0,0,0,0.00)'
-      },
-      '*::-webkit-scrollbar-thumb': {
-        backgroundColor: theme.palette.type.includes('dark') ? '#FFF' : '#333',
-        outline: 'none'
-      }
+    root: {
+      justifyContent: 'space-between'
     },
     bg_appBar: {
       backgroundColor: theme.palette.type.includes('dark') ? '#333' : '#FFF'
     },
     trigger_appbar: {
-      backgroundColor: 'transparent'
+      backgroundColor: 'transparent',
+      transition: 'all .5s ease-in-out',
+      '&:hover': {
+        backgroundColor: theme.palette.type.includes('dark') ? '#333' : '#FFF'
+      }
+    },
+    logo: {
+      position: 'absolute',
+      left: '50%',
+      top: '50%',
+      transform: ' translate(-50%, -50%)',
+      cursor: 'pointer',
+      color: theme.palette.primary.main,
+      fontFamily: `'Aclonica', sans-serif`,
+      textTransform: 'upperCase',
+      letterSpacing: 5,
+      fontWeight: 'bold'
     }
   };
 });
 
 const Navbar = () => {
   const classes = useStyles();
+  const isOpen = useSelector((state) => state.sidebar.isOpen);
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 500
@@ -51,27 +59,27 @@ const Navbar = () => {
       <AppBar
         elevation={trigger ? 3 : 0}
         classes={{
-          colorPrimary: trigger ? classes.bg_appBar : classes.trigger_appbar
+          colorPrimary:
+            trigger || isOpen ? classes.bg_appBar : classes.trigger_appbar
         }}
       >
-        <Container>
-          <Toolbar disableGutters>
-            <LeftSide />
-            <RightSide />
-            <Hidden mdUp>
-              <LanguageSelect />
-              <SideBar />
-              {/* <ThemeSelect /> */}
-            </Hidden>
+        <Container maxWidth="xl">
+          <Toolbar disableGutters classes={{ root: classes.root }}>
+            <Box>
+              <LeftSide />
+            </Box>
+            <Box className={classes.logo}>
+              <Typography variant="h4">Onism</Typography>
+            </Box>
+            <Box>
+              <RightSide />
+            </Box>
           </Toolbar>
         </Container>
-        <Hidden smDown>
-          <LanguageSelect />
-          <ThemeSelect />
-        </Hidden>
       </AppBar>
       <Toolbar />
 
+      <SideBar />
       <BackToTop trigger={trigger} />
     </React.Fragment>
   );

@@ -1,30 +1,24 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography, Hidden, IconButton } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { sidebarAction } from 'redux/sidebar';
 
 const useStyles = makeStyles((theme) => {
   return {
-    root: {
-      flexGrow: 1
+    menu_btn: {
+      cursor: 'pointer',
+      width: 38,
+      height: 38
     },
-    logo: {
-      color: theme.palette.primary.main,
-      fontFamily: `'Aclonica', sans-serif`,
-      textTransform: 'upperCase',
-      letterSpacing: 5,
-      fontWeight: 'bold'
-    },
-    buttonBase: {
-      marginLeft: -12
+    text_color: {
+      color: theme.palette.primary.textColor,
+      transition: 'all .5s linear'
     },
     line_color: {
-      backgroundColor: theme.palette.type.includes('dark') ? '#FFF' : '#4D4F5C',
+      backgroundColor: theme.palette.primary.main,
       '&::before,&::after ': {
-        backgroundColor: theme.palette.type.includes('dark')
-          ? '#FFF'
-          : '#4D4F5C'
+        backgroundColor: theme.palette.primary.main
       }
     }
   };
@@ -36,38 +30,26 @@ const LeftSide = () => {
   const btnMenuRef = useRef(null);
   const classes = useStyles();
 
-  const handleOpenDrawer = () => {
-    // if (btnMenuRef) {
-    //   console.log('click', { isOpen, btnMenuRef });
-    //   if (isOpen) {
-    //     btnMenuRef.current.classList.remove('open');
-    //   } else {
-    //     btnMenuRef.current.classList.add('open');
-    //   }
-    // }
+  useEffect(() => {
+    if (btnMenuRef) {
+      if (isOpen) {
+        btnMenuRef.current.classList.add('open');
+      } else {
+        btnMenuRef.current.classList.remove('open');
+      }
+    }
+  }, [isOpen]);
 
+  const handleOpenDrawer = () => {
     dispatch(sidebarAction.loadSideBar(!isOpen));
   };
 
   return (
-    <div className={classes.root}>
-      <Hidden smDown>
-        <Typography className={classes.logo} variant="h6">
-          Dolphjn
-        </Typography>
-      </Hidden>
-      <Hidden mdUp>
-        <IconButton
-          size="medium"
-          className={classes.buttonBase}
-          onClick={handleOpenDrawer}
-        >
-          <div className="menu-btn" ref={btnMenuRef}>
-            <div className={`menu-btn__burger ${classes.line_color}`}></div>
-          </div>
-        </IconButton>
-      </Hidden>
-    </div>
+    <Box className={classes.menu_btn} onClick={handleOpenDrawer}>
+      <Box className="menu-btn" ref={btnMenuRef}>
+        <div className={`menu-btn__burger ${classes.line_color}`}></div>
+      </Box>
+    </Box>
   );
 };
 
