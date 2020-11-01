@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
-import { makeStyles, ButtonGroup, Button } from '@material-ui/core';
+import { ButtonGroup, Button } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-
-const useStyles = makeStyles((theme) => {
-  return {
-    root: {}
-  };
-});
 
 const LanguageSelect = () => {
   const { i18n } = useTranslation('common');
@@ -17,7 +11,6 @@ const LanguageSelect = () => {
     i18n.changeLanguage(language);
   };
 
-  const classes = useStyles();
   return (
     <ButtonGroup variant="text" color="primary">
       <Button onClick={() => handleChangeLanguage('vi')}>VI</Button>

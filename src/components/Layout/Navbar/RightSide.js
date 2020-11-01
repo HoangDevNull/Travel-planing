@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, makeStyles, Box } from '@material-ui/core';
+import { Button, makeStyles, Box, Hidden } from '@material-ui/core';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
 import LanguageSelect from './components/LanguageSelect';
@@ -37,7 +37,7 @@ const RightSide = () => {
 
   return (
     <Box className={classes.root}>
-      <Box>
+      <Hidden xsDown>
         <Button
           variant="outlined"
           color="primary"
@@ -52,7 +52,7 @@ const RightSide = () => {
         >
           {t('sign-up')}
         </Button>
-      </Box>
+      </Hidden>
       <Box>
         <LanguageSelect />
       </Box>
