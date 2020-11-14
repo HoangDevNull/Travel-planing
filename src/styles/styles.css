@@ -94,4 +94,21 @@ body {
   transform: rotate(-45deg) translate(35px, 35px);
 }
 
+/* Mobile */
+@media all and (max-width: 600px) {
+  .menu-btn__burger {
+    width: 20px;
+  }
+  .menu-btn__burger::before,
+  .menu-btn__burger::after {
+    width: 28px;
+  }
+  .menu-btn__burger::before {
+    transform: translateY(-7px);
+  }
+  .menu-btn__burger::after {
+    transform: translateY(7px);
+  }
+}
+
 /* End Navbar menu */

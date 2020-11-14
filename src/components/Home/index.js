@@ -7,7 +7,7 @@ const Home = () => {
     <div style={{ minHeight: '100vh' }}>
       <div className="head">
         <img
-          src="https://www.ciavolich.com/wp-content/uploads/2020/04/ciavolich-31.jpg"
+          src="https://images.pexels.com/photos/379419/pexels-photo-379419.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
           alt="dev"
           style={{
             position: 'absolute',

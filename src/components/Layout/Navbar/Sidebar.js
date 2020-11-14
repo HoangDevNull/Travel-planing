@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => {
     },
     text: {
       overflow: 'hidden',
-      height: 135,
+      height: 60,
       margin: 0,
       cursor: 'pointer',
       [theme.breakpoints.down('xs')]: {
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => {
       fontWeight: 'bold',
       height: '100%',
       '&:before': {
-        backgroundColor: theme.palette.primary.main
+        backgroundColor: theme.palette.primary.textColor
       }
     },
     text_overlap: {
@@ -93,7 +93,7 @@ const SideBar = () => {
         '.nav_item',
         1.5,
         {
-          y: 135,
+          y: 100,
           ease: Power1.easeIn,
           delay: 0.5
         },
@@ -136,19 +136,19 @@ const SideBar = () => {
         <Box width="100%" height="87vh" position="relative">
           <Box
             width="100%"
-            height="100%"
+            height="90%"
             display="flex"
             flexDirection="column"
             justifyContent="space-around"
             alignItems="center"
-            position="absolute"
+            // position="absolute"
           >
             {routes.map((ele, i) => (
               <Box position="relative" key={i}>
                 <Typography
                   component="div"
                   className={classes.text}
-                  variant="h1"
+                  variant="h3"
                   onClick={() => handleNavigation(ele.to)}
                 >
                   <div
@@ -162,7 +162,15 @@ const SideBar = () => {
               </Box>
             ))}
           </Box>
-          <ThemeSelect />
+          <Box
+            height="10%"
+            position="relative"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <ThemeSelect />
+          </Box>
         </Box>
       </Container>
     </Backdrop>

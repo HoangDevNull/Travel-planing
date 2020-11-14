@@ -26,9 +26,9 @@ const useStyles = makeStyles((theme) => {
     trigger_appbar: {
       backgroundColor: 'transparent',
       transition: 'all .5s ease-in-out',
-      '&:hover': {
-        backgroundColor: theme.palette.type.includes('dark') ? '#333' : '#FFF'
-      }
+      // '&:hover': {
+      //   backgroundColor: theme.palette.type.includes('dark') ? '#333' : '#FFF'
+      // }
     },
     logo: {
       position: 'absolute',

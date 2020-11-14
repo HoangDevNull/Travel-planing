@@ -21,6 +21,7 @@ function App() {
   const mainPrimaryColor = isDark ? orange[500] : `#3D9A88`;
   const mainSecondaryColor = isDark ? deepOrange[900] : `#F07151`;
   const textColor = isDark ? `#FFFFFF` : `#333333`;
+  const bnw = isDark ? `#FFFFFF` : `#000000`;
 
   // A custom theme for this app
   let theme = createMuiTheme({
@@ -28,7 +29,8 @@ function App() {
       type: palletType,
       primary: {
         main: mainPrimaryColor,
-        textColor
+        textColor,
+        bnw
       },
       secondary: {
         main: mainSecondaryColor

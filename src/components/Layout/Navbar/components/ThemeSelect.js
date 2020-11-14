@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, makeStyles, IconButton, Tooltip } from '@material-ui/core';
+import { Box, makeStyles, Button, Tooltip } from '@material-ui/core';
 import { theme } from 'redux/theme/actions';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -7,15 +7,7 @@ import { Brightness4Rounded, Brightness7Rounded } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => {
   return {
-    root: {
-      position: 'absolute',
-      top: 8,
-      right: 40,
-      [theme.breakpoints.down('sm')]: {
-        position: 'static',
-        marginLeft : 2
-      }
-    }
+    root: {}
   };
 });
 
@@ -30,9 +22,12 @@ const ThemeSelect = () => {
     <div>
       <Box className={classes.root}>
         <Tooltip title="Toggle light/dark theme">
-          <IconButton onClick={toggleTheme}>
-            {isDark ? <Brightness4Rounded /> : <Brightness7Rounded />}
-          </IconButton>
+          <Button
+            onClick={toggleTheme}
+            endIcon={isDark ? <Brightness4Rounded /> : <Brightness7Rounded />}
+          >
+            Toggle theme
+          </Button>
         </Tooltip>
       </Box>
     </div>
