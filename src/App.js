@@ -2,7 +2,7 @@ import React from 'react';
 import 'styles/styles.css';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { orange, deepOrange } from '@material-ui/core/colors';
+import { orange } from '@material-ui/core/colors';
 import {
   ThemeProvider,
   createMuiTheme,
@@ -19,7 +19,7 @@ function App() {
   const isDark = useSelector((state) => state.theme.isDark);
   const palletType = isDark ? 'dark' : 'light';
   const mainPrimaryColor = isDark ? orange[500] : `#3D9A88`;
-  const mainSecondaryColor = isDark ? `#FFFFFF` : `#333333`;
+  const mainSecondaryColor = `#FFFFFF`;
   const textColor = isDark ? `#FFFFFF` : `#333333`;
   const bnw = isDark ? `#FFFFFF` : `#000000`;
 

@@ -1,6 +1,6 @@
 import { THEME } from './types';
 const initState = {
-  isDark: true,
+  isDark: false,
   error: null
 };
 

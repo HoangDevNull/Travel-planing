@@ -20,14 +20,9 @@ import ThemeSelect from './components/ThemeSelect';
 const useStyles = makeStyles((theme) => {
   return {
     root: {
-      zIndex: 99999999999,
-      top: 64,
-      backgroundColor: theme.palette.type.includes('dark')
-        ? 'rgba(51,51,51,1)'
-        : 'rgba(255,255,255,1)',
-      [theme.breakpoints.down('xs')]: {
-        top: 56
-      }
+      zIndex: 999,
+      top: 0,
+      backgroundColor: 'rgba(51,51,51,1)'
     },
     text: {
       overflow: 'hidden',
@@ -52,32 +47,28 @@ const useStyles = makeStyles((theme) => {
       fontWeight: 'bolder',
       color: '#ddd',
       transform: 'rotate(90deg)',
-      transformOrigin: '20% 55%',
-      [theme.breakpoints.down('xs')]: {
-        fontSize: 150,
-        transformOrigin: '10% 55%'
-      }
+      transformOrigin: '20% 95%',
+      opacity: 0.5
     }
   };
 });
 
 const routes = [
   {
-    name: 'home',
-    to: '/home'
+    name: 'top-des',
+    to: '/destinations'
   },
   {
-    name: 'top-des',
-    to: '/top'
+    name: 'feature-video',
+    to: '/videos'
   },
-
+  {
+    name: 'top-stories',
+    to: '/stories'
+  },
   {
     name: 'about',
     to: '/about'
-  },
-  {
-    name: 'partner',
-    to: '/partner'
   }
 ];
 
@@ -114,66 +105,67 @@ const SideBar = () => {
 
   const { location } = history;
   return (
-    <Backdrop
-      classes={{ root: classes.root }}
-      transitionDuration={{
-        enter: 300,
-        exit: 500
-      }}
-      open={isOpen}
-    >
-      <Container>
-        <Hidden mdDown>
-          <Box
-            position="absolute"
-            left="0"
-            top="0"
-            className={classes.text_overlap}
-          >
-            STORIES
-          </Box>
-        </Hidden>
-        <Box width="100%" height="87vh" position="relative">
-          <Box
-            width="100%"
-            height="90%"
-            display="flex"
-            flexDirection="column"
-            justifyContent="space-around"
-            alignItems="center"
-            // position="absolute"
-          >
-            {routes.map((ele, i) => (
-              <Box position="relative" key={i}>
-                <Typography
-                  component="div"
-                  className={classes.text}
-                  variant="h3"
-                  onClick={() => handleNavigation(ele.to)}
-                >
-                  <div
-                    className={`nav_item ${
-                      location.pathname === ele.to && 'nav_item_active'
-                    } ${classes.hide_text}`}
+    <>
+      <Backdrop
+        classes={{ root: classes.root }}
+        transitionDuration={{
+          enter: 300,
+          exit: 500
+        }}
+        open={isOpen}
+      >
+        <Container>
+          <Hidden mdDown>
+            <Box
+              position="absolute"
+              left="0"
+              top="0"
+              className={classes.text_overlap}
+            >
+              MENU
+            </Box>
+          </Hidden>
+          <Box width="100%" height="87vh" position="relative">
+            <Box
+              width="100%"
+              height="90%"
+              display="flex"
+              flexDirection="column"
+              justifyContent="space-around"
+              alignItems="center"
+            >
+              {routes.map((ele, i) => (
+                <Box position="relative" key={i}>
+                  <Typography
+                    component="div"
+                    className={classes.text}
+                    variant="h3"
+                    onClick={() => handleNavigation(ele.to)}
                   >
-                    {t(ele.name)}
-                  </div>
-                </Typography>
-              </Box>
-            ))}
+                    <Box
+                      className={`nav_item ${
+                        location.pathname === ele.to && 'nav_item_active'
+                      } ${classes.hide_text}`}
+                    >
+                      {t(ele.name)}
+                    </Box>
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+            <Box
+              height="10%"
+              position="relative"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <ThemeSelect />
+            </Box>
           </Box>
-          <Box
-            height="10%"
-            position="relative"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <ThemeSelect />
-          </Box>
-        </Box>
-      </Container>
-    </Backdrop>
+        </Container>
+      </Backdrop>
+    </>
   );
 };
 

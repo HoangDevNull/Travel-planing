@@ -21,11 +21,11 @@ const useStyles = makeStyles((theme) => {
       justifyContent: 'space-between'
     },
     bg_appBar: {
-      backgroundColor: theme.palette.type.includes('dark') ? '#333' : '#FFF'
+      backgroundColor: '#222222'
     },
     trigger_appbar: {
-      backgroundColor: 'transparent',
-      transition: 'all .5s ease-in-out'
+      backgroundColor: 'transparent'
+      // transition: 'all .5s ease-in-out'
     },
     logo: {
       position: 'absolute',
@@ -40,13 +40,19 @@ const useStyles = makeStyles((theme) => {
       letterSpacing: 5,
       fontWeight: 'bold',
       transition: 'font-size 2s',
-      color: theme.palette.primary.bnw
+      color: '#fff'
     },
     pv_20: {
-      padding: '20px 0px'
+      transition: 'all .5s ease-in-out',
+      [theme.breakpoints.up('sm')]: {
+        padding: '20px 0px'
+      }
     },
     pv_0: {
-      padding: '0px 0px'
+      transition: 'all .5s ease-in-out',
+      [theme.breakpoints.up('sm')]: {
+        padding: 0
+      }
     }
   };
 });

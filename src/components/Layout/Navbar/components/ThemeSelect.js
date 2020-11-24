@@ -23,6 +23,7 @@ const ThemeSelect = () => {
       <Box className={classes.root}>
         <Tooltip title="Toggle light/dark theme">
           <Button
+            color="secondary"
             onClick={toggleTheme}
             endIcon={isDark ? <Brightness4Rounded /> : <Brightness7Rounded />}
           >
