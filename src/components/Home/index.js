@@ -1,28 +1,15 @@
 import React from 'react';
 import { Box, Container, Typography } from '@material-ui/core';
-
+import HeadImage from 'components/common/HeadImage';
 
 const Home = () => {
   return (
-    <div style={{ minHeight: '100vh' }}>
-      <div className="head">
-        <img
-          src="https://images.pexels.com/photos/379419/pexels-photo-379419.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-          alt="dev"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            // backgroundPosition: 'center',
-            backgroundSize: 'auto 1038px',
-            backgroundRepeat: 'repeat-x',
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover'
-          }}
-        />
-      </div>
-      <div className="fake" style={{ minHeight: '100vh' }}></div>
+    <>
+      <HeadImage
+        src="https://images.pexels.com/photos/196667/pexels-photo-196667.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+        alt="dev"
+      />
+      <Box minHeight="100vh" />
       <Container maxWidth="xl">
         <Box my={2}>
           {[...new Array(10)].map((_, index) => {
@@ -37,7 +24,7 @@ const Home = () => {
           })}
         </Box>
       </Container>
-    </div>
+    </>
   );
 };
 

@@ -10,13 +10,7 @@ const useStyles = makeStyles((theme) => {
     root: {
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center',
-      [theme.breakpoints.down('md')]: {
-        marginRight: 50
-      },
-      [theme.breakpoints.down('sm')]: {
-        marginRight: 0
-      }
+      alignItems: 'center'
     },
     custom_button: {
       // color: theme.palette.primary.textColor,
@@ -40,14 +34,14 @@ const RightSide = () => {
       <Hidden xsDown>
         <Button
           variant="outlined"
-          color="primary"
+          color="secondary"
           className={clsx([classes.custom_button])}
         >
           {t('login')}
         </Button>
         <Button
           variant="contained"
-          color="primary"
+          color="secondary"
           className={classes.custom_button}
         >
           {t('sign-up')}

@@ -25,22 +25,28 @@ const useStyles = makeStyles((theme) => {
     },
     trigger_appbar: {
       backgroundColor: 'transparent',
-      transition: 'all .5s ease-in-out',
-      // '&:hover': {
-      //   backgroundColor: theme.palette.type.includes('dark') ? '#333' : '#FFF'
-      // }
+      transition: 'all .5s ease-in-out'
     },
     logo: {
       position: 'absolute',
       left: '50%',
       top: '50%',
       transform: ' translate(-50%, -50%)',
-      cursor: 'pointer',
-      color: theme.palette.primary.main,
+      cursor: 'pointer'
+    },
+    logo_text: {
       fontFamily: `'Aclonica', sans-serif`,
       textTransform: 'upperCase',
       letterSpacing: 5,
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      transition: 'font-size 2s',
+      color: theme.palette.primary.bnw
+    },
+    pv_20: {
+      padding: '20px 0px'
+    },
+    pv_0: {
+      padding: '0px 0px'
     }
   };
 });
@@ -59,6 +65,7 @@ const Navbar = () => {
       <AppBar
         elevation={trigger ? 3 : 0}
         classes={{
+          root: trigger ? classes.pv_0 : classes.pv_20,
           colorPrimary:
             trigger || isOpen ? classes.bg_appBar : classes.trigger_appbar
         }}
@@ -69,7 +76,12 @@ const Navbar = () => {
               <LeftSide />
             </Box>
             <Box className={classes.logo}>
-              <Typography variant="h4">Onism</Typography>
+              <Typography
+                variant={trigger ? 'h5' : 'h4'}
+                className={classes.logo_text}
+              >
+                Onism
+              </Typography>
             </Box>
             <Box>
               <RightSide />

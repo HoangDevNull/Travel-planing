@@ -19,7 +19,7 @@ function App() {
   const isDark = useSelector((state) => state.theme.isDark);
   const palletType = isDark ? 'dark' : 'light';
   const mainPrimaryColor = isDark ? orange[500] : `#3D9A88`;
-  const mainSecondaryColor = isDark ? deepOrange[900] : `#F07151`;
+  const mainSecondaryColor = isDark ? `#FFFFFF` : `#333333`;
   const textColor = isDark ? `#FFFFFF` : `#333333`;
   const bnw = isDark ? `#FFFFFF` : `#000000`;
 
@@ -37,7 +37,7 @@ function App() {
       }
     },
     typography: {
-      fontFamily: `"Poppins", "Helvetica Neue", Arial, sans-serif`
+      fontFamily: `"Inter", "Helvetica Neue", Arial, sans-serif`
     }
   });
 
