@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
-import { ButtonGroup, Button, makeStyles } from '@material-ui/core';
+import { ButtonGroup, Button } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-
-const useStyles = (theme) => ({
-  root: {
-
-  }
-});
 
 const LanguageSelect = () => {
   const { i18n } = useTranslation('common');
-  const [currentLanguage, setCurrentLanguage] = useState('en');
+  const [_, setCurrentLanguage] = useState('en');
 
   const handleChangeLanguage = (language) => {
     setCurrentLanguage(language);

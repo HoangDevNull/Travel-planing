@@ -13,7 +13,6 @@ import RightSide from './RightSide';
 import LeftSide from './LeftSide';
 import BackToTop from './components/BackToTop';
 import SideBar from './Sidebar';
-import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -59,7 +58,6 @@ const useStyles = makeStyles((theme) => {
 
 const Navbar = () => {
   const classes = useStyles();
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 500
@@ -72,8 +70,7 @@ const Navbar = () => {
         elevation={trigger ? 3 : 0}
         classes={{
           root: trigger ? classes.pv_0 : classes.pv_20,
-          colorPrimary:
-            trigger || isOpen ? classes.bg_appBar : classes.trigger_appbar
+          colorPrimary: trigger ? classes.bg_appBar : classes.trigger_appbar
         }}
       >
         <Container maxWidth="xl">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import {
   makeStyles,
@@ -6,54 +6,114 @@ import {
   Box,
   Container,
   Typography,
+  Grid,
+  IconButton,
   Hidden
 } from '@material-ui/core';
+
+import clsx from 'clsx';
 
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { TimelineLite, Power1 } from 'gsap';
+import { TimelineLite, Power3 } from 'gsap';
 
 import { sidebarAction } from 'redux/sidebar';
 import ThemeSelect from './components/ThemeSelect';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+
+library.add(fab, far, fas);
 
 const useStyles = makeStyles((theme) => {
   return {
     root: {
       zIndex: 999,
       top: 0,
-      backgroundColor: 'rgba(51,51,51,1)'
+      backgroundColor: '#34495e',
+      display: 'none'
     },
-    text: {
-      overflow: 'hidden',
-      height: 60,
-      margin: 0,
-      cursor: 'pointer',
+    bold_font: {
+      fontWeight: 'bold'
+    },
+    nav_text_size: {
+      [theme.breakpoints.down('md')]: {
+        fontSize: '30px !important'
+      },
       [theme.breakpoints.down('xs')]: {
-        height: 'fit-content'
+        fontSize: '22px !important'
       }
     },
-    hide_text: {
-      color: theme.palette.type.includes('dark') ? '#FFF' : '#7f8c8d',
-      textAlign: 'center',
-      fontWeight: 'bold',
-      height: '100%',
-      '&:before': {
-        backgroundColor: theme.palette.primary.textColor
+    contact_spacing: {
+      marginBottom: 15,
+      marginTop: 15,
+      [theme.breakpoints.down('md')]: {
+        marginTop: 16.5
       }
     },
-    text_overlap: {
-      fontSize: 200,
-      fontWeight: 'bolder',
-      color: '#ddd',
-      transform: 'rotate(90deg)',
-      transformOrigin: '20% 95%',
-      opacity: 0.5
+    center_mobile: {
+      [theme.breakpoints.down('sm')]: {
+        display: 'flex',
+        flexDirection: 'column-reverse',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }
+    },
+    pl_20: {
+      '&:nth-child(even)': {
+        paddingLeft: 50
+      },
+      [theme.breakpoints.down('sm')]: {
+        '&:nth-child(even)': {
+          paddingLeft: 'unset'
+        }
+      }
+    },
+    nav_item: {
+      cursor: 'pointer',
+      overflow: 'hidden',
+      width: 'fit-content',
+      height: 55,
+      marginBottom: 60,
+      transition: 'all .4s ease-in-out',
+      [theme.breakpoints.up('md')]: {
+        opacity: 0.5,
+        '&:hover': {
+          opacity: 1,
+          textShadow: '1px 0px 5px #fff'
+        }
+      },
+      [theme.breakpoints.down('sm')]: {
+        marginBottom: 10
+      }
+    },
+    // Animation
+    bg_reveal: {
+      zIndex: 9999,
+      bottom: 0,
+      top: 'unset',
+      height: 0,
+      display: 'block',
+      backgroundColor: '#fff'
+    },
+    nav_item_animation: {
+      transform: 'translate(0px, 100px)'
+    },
+    social_animation: {
+      opacity: 0
     }
   };
 });
 
 const routes = [
+  {
+    name: 'top-stories',
+    to: '/stories'
+  },
   {
     name: 'top-des',
     to: '/destinations'
@@ -63,38 +123,129 @@ const routes = [
     to: '/videos'
   },
   {
-    name: 'top-stories',
-    to: '/stories'
-  },
-  {
     name: 'about',
     to: '/about'
   }
 ];
 
 const SideBar = () => {
+  // Common variable
   const { t } = useTranslation('navbar');
   const history = useHistory();
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.sidebar.isOpen);
-  const [textTl] = useState(new TimelineLite({ paused: true }));
+  const pageLoadRef = useRef(false);
+
+  // Animated variable
+  let menuReveal = useRef(null);
+  let backgroundRevealTheme = useRef(null);
+
+  const tl = new TimelineLite();
+
   useEffect(() => {
-    textTl
-      .staggerTo(
-        '.nav_item',
-        1.5,
-        {
+    if (pageLoadRef.current) {
+      if (isOpen) {
+        // Show backdrop
+        tl.to(backgroundRevealTheme, {
+          duration: 0.5,
+          height: '100%',
+          ease: Power3.easeIn,
+          delay: 0.3
+        })
+          .to(backgroundRevealTheme, {
+            duration: 0,
+            top: 0,
+            bottom: 'unset'
+          })
+          .to(backgroundRevealTheme, {
+            duration: 0.3,
+            height: 0,
+            ease: Power3.easeOut
+          })
+          .to(menuReveal, {
+            duration: 0,
+            css: { display: 'block' },
+            delay: -0.3
+          })
+          .to('.nav_item', {
+            duration: 0.8,
+            ease: Power3.easeOut,
+            y: 0,
+            stagger: {
+              amount: 0.1
+            }
+          })
+          .to('.contact', {
+            duration: 1,
+            ease: Power3.easeOut,
+            y: 0,
+            stagger: {
+              amount: 0.1
+            },
+            delay: -0.7
+          })
+          .to('.social', {
+            duration: 1,
+            ease: Power3.easeInOut,
+            opacity: 1,
+            stagger: {
+              amount: 0.2
+            },
+            delay: -0.7
+          });
+      } else {
+        // close backdrop
+        tl.to('.nav_item', {
+          duration: 0.8,
+          ease: Power3.easeOut,
           y: 100,
-          ease: Power1.easeIn,
-          delay: 0.5
-        },
-        0.1
-      )
-      .reverse();
-  }, [textTl]);
-  useEffect(() => {
-    textTl.reversed(!textTl.reversed());
-  }, [isOpen, textTl]);
+          stagger: {
+            amount: 0.1
+          }
+        })
+          .to('.contact', {
+            duration: 1,
+            ease: Power3.easeOut,
+            y: 100,
+            stagger: {
+              amount: 0.1
+            },
+            delay: -0.7
+          })
+          .to('.social', {
+            duration: 0.5,
+            ease: Power3.easeInOut,
+            opacity: 0,
+            stagger: {
+              amount: 0.2
+            },
+            delay: -1
+          })
+          .to(backgroundRevealTheme, {
+            duration: 0.5,
+            height: '100%',
+            ease: Power3.easeIn
+          })
+          .to(backgroundRevealTheme, {
+            duration: 0,
+            bottom: 0,
+            top: 'unset'
+          })
+          .to(backgroundRevealTheme, {
+            duration: 0.3,
+            height: 0,
+            ease: Power3.easeOut
+          })
+          .to(menuReveal, {
+            duration: 0,
+            css: { display: 'none' },
+            delay: -0.3
+          });
+      }
+    }
+
+    pageLoadRef.current = true;
+  }, [isOpen]);
 
   const handleNavigation = (to) => {
     history.push(to);
@@ -102,66 +253,147 @@ const SideBar = () => {
   };
 
   const classes = useStyles();
-
-  const { location } = history;
   return (
     <>
       <Backdrop
+        ref={(node) => (backgroundRevealTheme = node)}
+        className={classes.bg_reveal}
+        open={true}
+      />
+      <Backdrop
+        ref={(node) => (menuReveal = node)}
         classes={{ root: classes.root }}
-        transitionDuration={{
-          enter: 300,
-          exit: 500
-        }}
-        open={isOpen}
+        open={true}
       >
         <Container>
-          <Hidden mdDown>
-            <Box
-              position="absolute"
-              left="0"
-              top="0"
-              className={classes.text_overlap}
-            >
-              MENU
-            </Box>
-          </Hidden>
           <Box width="100%" height="87vh" position="relative">
             <Box
               width="100%"
-              height="90%"
+              height="85%"
               display="flex"
               flexDirection="column"
-              justifyContent="space-around"
-              alignItems="center"
-            >
-              {routes.map((ele, i) => (
-                <Box position="relative" key={i}>
-                  <Typography
-                    component="div"
-                    className={classes.text}
-                    variant="h3"
-                    onClick={() => handleNavigation(ele.to)}
-                  >
-                    <Box
-                      className={`nav_item ${
-                        location.pathname === ele.to && 'nav_item_active'
-                      } ${classes.hide_text}`}
-                    >
-                      {t(ele.name)}
-                    </Box>
-                  </Typography>
-                </Box>
-              ))}
-            </Box>
-            <Box
-              height="10%"
-              position="relative"
-              display="flex"
               justifyContent="center"
-              alignItems="center"
             >
-              <ThemeSelect />
+              <Grid container justify="space-around">
+                <Grid item sm={12} md={9} container>
+                  {routes.map((ele, i) => (
+                    <Grid
+                      item
+                      xs={12}
+                      md={6}
+                      key={i}
+                      className={clsx(classes.pl_20, classes.center_mobile)}
+                    >
+                      <Box
+                        onClick={() => handleNavigation(ele.to)}
+                        className={classes.nav_item}
+                      >
+                        <Typography
+                          component="div"
+                          className={`${clsx(
+                            classes.bold_font,
+                            classes.nav_item_animation
+                          )} nav_item`}
+                          variant="h3"
+                          color="secondary"
+                        >
+                          {t(ele.name)}
+                        </Typography>
+                      </Box>
+                    </Grid>
+                  ))}
+                </Grid>
+                <Hidden smDown>
+                  <Grid item sm={12} md={3}>
+                    <Box
+                      overflow="hidden"
+                      height="33px"
+                      className={classes.contact_spacing}
+                    >
+                      <Typography
+                        className={`${clsx(
+                          classes.bold_font,
+                          classes.nav_item_animation
+                        )} contact`}
+                        color="secondary"
+                        variant="h5"
+                      >
+                        CONTACT
+                      </Typography>
+                    </Box>
+
+                    <Box overflow="hidden" height="33px">
+                      <Typography
+                        color="secondary"
+                        variant="h6"
+                        className={`${classes.nav_item_animation} contact`}
+                      >
+                        +9447443706
+                      </Typography>
+                    </Box>
+                    <Box overflow="hidden" height="33px">
+                      <Typography
+                        color="secondary"
+                        variant="h6"
+                        className={`${classes.nav_item_animation} contact`}
+                      >
+                        pqhoang.cute@onism.net
+                      </Typography>
+                    </Box>
+                    <Box overflow="hidden" height="33px">
+                      <Typography
+                        color="secondary"
+                        variant="h6"
+                        className={`${classes.nav_item_animation} contact`}
+                      >
+                        Cam Le District, Da Nang City
+                      </Typography>
+                    </Box>
+                  </Grid>
+                </Hidden>
+              </Grid>
             </Box>
+
+            {/* For social icon and Toggle theme */}
+            <Grid
+              container
+              justify="flex-start"
+              className={classes.center_mobile}
+            >
+              <Grid item sm={12} md={5}>
+                <Box display="flex">
+                  <IconButton
+                    color="secondary"
+                    className={`${classes.social_animation} social`}
+                  >
+                    <FontAwesomeIcon size="lg" icon={['fab', 'linkedin-in']} />
+                  </IconButton>
+                  <IconButton
+                    color="secondary"
+                    className={`${classes.social_animation} social`}
+                  >
+                    <FontAwesomeIcon size="lg" icon={['fab', 'instagram']} />
+                  </IconButton>
+                  <IconButton
+                    color="secondary"
+                    className={`${classes.social_animation} social`}
+                  >
+                    <FontAwesomeIcon size="lg" icon={['fab', 'reddit']} />
+                  </IconButton>
+                  <IconButton
+                    color="secondary"
+                    className={`${classes.social_animation} social`}
+                  >
+                    <FontAwesomeIcon size="lg" icon={['fab', 'facebook']} />
+                  </IconButton>
+                </Box>
+              </Grid>
+              <Grid item sm={12} md={7}>
+                <Box pt="10px" className={`${classes.social_animation} social`}>
+                  <ThemeSelect />
+                </Box>
+              </Grid>
+            </Grid>
           </Box>
         </Container>
       </Backdrop>

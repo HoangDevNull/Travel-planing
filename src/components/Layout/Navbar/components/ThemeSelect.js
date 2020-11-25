@@ -7,7 +7,10 @@ import { Brightness4Rounded, Brightness7Rounded } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => {
   return {
-    root: {}
+    root: {
+      width: 'auto',
+      height: '100%'
+    }
   };
 });
 
@@ -23,6 +26,7 @@ const ThemeSelect = () => {
       <Box className={classes.root}>
         <Tooltip title="Toggle light/dark theme">
           <Button
+            size="large"
             color="secondary"
             onClick={toggleTheme}
             endIcon={isDark ? <Brightness4Rounded /> : <Brightness7Rounded />}

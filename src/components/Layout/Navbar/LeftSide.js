@@ -4,7 +4,6 @@ import { Box } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { sidebarAction } from 'redux/sidebar';
 import clsx from 'clsx';
-import { useState } from 'react';
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -24,27 +23,34 @@ const useStyles = makeStyles((theme) => {
       width: 'fit-content',
       height: '100%',
       cursor: 'pointer',
-      transition: 'all 0.3s ease-in-out'
+      transition: 'all 0.3s ease-in-out',
+      '&:hover > .menu_line': {
+        width: 38
+      },
+      [theme.breakpoints.down('xs')]: {
+        '&:hover > .menu_line': {
+          width: 28
+        }
+      }
     },
 
     menu_btn__burger: {
-      width: 30,
+      width: 25,
       height: 2,
       borderRadius: 5,
       transition: 'width 0.1s linear, all 0.3s ease-in-out',
       backgroundColor: '#fff',
       [theme.breakpoints.down('xs')]: {
-        width: 20
+        width: 15
       },
       '&::before,&::after': {
         content: '""',
         position: 'absolute',
-
         left: 0,
         width: 38,
         height: 2,
         borderRadius: 5,
-        transition: 'all 0.3s ease-in-out',
+        transition: 'all 0.7s ease-in-out',
         backgroundColor: '#fff',
         [theme.breakpoints.down('xs')]: {
           width: 28
@@ -83,7 +89,6 @@ const useStyles = makeStyles((theme) => {
 
 const LeftSide = () => {
   const isOpen = useSelector((state) => state.sidebar.isOpen);
-  const [disabled, setDisabled] = useState(false);
   const dispatch = useDispatch();
   const btnMenuRef = useRef(null);
   const classes = useStyles();
@@ -91,37 +96,25 @@ const LeftSide = () => {
   useEffect(() => {
     if (btnMenuRef) {
       if (isOpen) {
-        btnMenuRef.current.classList.add('open');
+        document.body.style.overflow = 'hidden';
       } else {
-        btnMenuRef.current.classList.remove('open');
+        document.body.style.overflow = 'unset';
       }
     }
   }, [isOpen]);
 
-  // Prevent spam menu click on user
-  // const disableMenu = () => {
-  //   setDisabled(!disabled);
-  //   setTimeout(() => {
-  //     setDisabled(false);
-  //   }, 800);
-  // };
-
   const handleOpenDrawer = () => {
     dispatch(sidebarAction.loadSideBar(!isOpen));
-    // disableMenu();
   };
 
   return (
-    <Box
-      className={clsx([classes.root, disabled && classes.disabled])}
-      onClick={handleOpenDrawer}
-    >
+    <Box className={clsx([classes.root])} onClick={handleOpenDrawer}>
       <Box className={classes.menu_btn} ref={btnMenuRef}>
         <Box
-          className={clsx([
+          className={`${clsx([
             classes.menu_btn__burger,
             isOpen && classes.burger_open
-          ])}
+          ])} menu_line`}
         />
       </Box>
     </Box>
