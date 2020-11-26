@@ -224,7 +224,8 @@ const SideBar = () => {
           .to(backgroundRevealTheme, {
             duration: 0.5,
             height: '100%',
-            ease: Power3.easeIn
+            ease: Power3.easeIn,
+            delay: -0.5
           })
           .to(backgroundRevealTheme, {
             duration: 0,
