@@ -34,7 +34,8 @@ const useStyles = makeStyles((theme) => {
     root: {
       zIndex: 999,
       top: 0,
-      backgroundColor: '#34495e',
+      // backgroundColor: '#34495e',
+      backgroundColor: theme.palette.primary.main,
       display: 'none'
     },
     bold_font: {
@@ -246,6 +247,7 @@ const SideBar = () => {
     }
 
     pageLoadRef.current = true;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   const handleNavigation = (to) => {
@@ -270,7 +272,7 @@ const SideBar = () => {
           <Box width="100%" height="87vh" position="relative">
             <Box
               width="100%"
-              height="85%"
+              height="100%"
               display="flex"
               flexDirection="column"
               justifyContent="center"
