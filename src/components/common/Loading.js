@@ -74,7 +74,7 @@ const Loading = ({ isLoading }) => {
     return phrases[index];
   };
 
-  const phrase = getRandomPhrase();
+  const phrase = useRef(getRandomPhrase());
 
   const classes = useStyles();
   return (
@@ -82,12 +82,12 @@ const Loading = ({ isLoading }) => {
       <Box className={classes.center}>
         <Box ref={(node) => (textLoading = node)}>
           <Typography variant="button" color="secondary">
-            {phrase.phrase}
+            {phrase.current?.phrase}
           </Typography>
           <br />
           <Box width="100%" textAlign="right" mt="10px">
             <Typography variant="caption" color="secondary">
-              {phrase.coined}
+              {phrase.current?.coined}
             </Typography>
           </Box>
         </Box>

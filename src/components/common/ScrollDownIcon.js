@@ -13,7 +13,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    [theme.breakpoints.down('xs')]: {
+      bottom: 55
+    }
   },
   mouse: {
     width: 'max(16.384px,min(1.6vw,25.6px))',
