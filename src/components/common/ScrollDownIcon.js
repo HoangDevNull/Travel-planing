@@ -1,13 +1,19 @@
 import React from 'react';
 
-import { Grid, Box, Typography, makeStyles } from '@material-ui/core';
+import { Box, Typography, makeStyles } from '@material-ui/core';
 
 import gsap, { Power3 } from 'gsap';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     position: 'absolute',
-    bottom: 20
+    left: '50%',
+    bottom: 10,
+    transform: 'translate(-50%, 0)',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   mouse: {
     width: 'max(16.384px,min(1.6vw,25.6px))',
@@ -37,14 +43,14 @@ const ScrollDownIcon = () => {
   React.useEffect(() => {
     gsap.to(dotRef, {
       duration: 1.5,
-      y: 35,
+      y: 30,
       scale: 0,
       ease: Power3.easeInOut,
       repeat: -1
     });
     gsap.to(textRef, {
       duration: 1.5,
-      y: 2,
+      y: 0,
       color: '#4e5559',
       ease: Power3.easeInOut,
       repeat: -1
@@ -53,13 +59,7 @@ const ScrollDownIcon = () => {
 
   const classes = useStyles();
   return (
-    <Grid
-      container
-      justify="center"
-      direction="column"
-      alignItems="center"
-      className={classes.root}
-    >
+    <Box className={classes.root}>
       <Box className={classes.mouse}>
         <Box className={classes.dot} ref={(node) => (dotRef = node)} />
       </Box>
@@ -72,7 +72,7 @@ const ScrollDownIcon = () => {
       >
         Scroll
       </Typography>
-    </Grid>
+    </Box>
   );
 };
 

@@ -1,20 +1,15 @@
 import React from 'react';
 import { Box, makeStyles } from '@material-ui/core';
-import clsx from 'clsx';
 const useStyles = makeStyles((theme) => ({
-  full_width: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    zIndex: -1
-  },
-  image_head: {
+  root: {
     backgroundImage: (props) => `url(${props?.src})`,
-    backgroundPosition: 'center',
+    width: '100%',
+    minHeight: '100vh',
+    height: '100%',
+    backgroundPosition: 'center center',
     backgroundSize: 'cover',
-    backgroundRepeat: 'repeat-x'
+    backgroundRepeat: 'no-repeat',
+    zIndex: -1
   }
 }));
 
@@ -22,7 +17,7 @@ const HeadImage = (props) => {
   const classes = useStyles(props);
   return (
     <>
-      <Box className={clsx([classes.image_head, classes.full_width])} />
+      <Box className={classes.root} {...props} />
     </>
   );
 };
