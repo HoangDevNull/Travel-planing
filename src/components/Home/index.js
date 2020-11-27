@@ -1,4 +1,5 @@
 import React from 'react';
+import withLoading from 'components/common/HOC/withLoading';
 
 import HeadSessions from './components/HeadSessions';
 
@@ -10,4 +11,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default withLoading(Home);

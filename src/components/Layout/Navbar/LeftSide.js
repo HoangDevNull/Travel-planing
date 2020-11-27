@@ -24,12 +24,9 @@ const useStyles = makeStyles((theme) => {
       height: '100%',
       cursor: 'pointer',
       transition: 'all 0.3s ease-in-out',
-      '&:hover > .menu_line': {
-        width: 38
-      },
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.up('lg')]: {
         '&:hover > .menu_line': {
-          width: 28
+          width: 38
         }
       }
     },

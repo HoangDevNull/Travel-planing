@@ -37,7 +37,10 @@ const useStyles = makeStyles((theme) => ({
   },
   slide_wrapper: {
     overflow: 'hidden',
-    marginTop: -64
+    marginTop: -64,
+    [theme.breakpoints.down('xs')]: {
+      marginTop: -56
+    }
   },
   circle_btn: {
     border: `1px solid ${theme.palette.secondary.main}`,
@@ -58,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '10vw',
     fontWeight: 'bolder',
     [theme.breakpoints.up('xl')]: {
-      fontSize: 180
+      fontSize: 178
     }
   },
   btn_get_started_wrapper: {
@@ -105,29 +108,49 @@ const useStyles = makeStyles((theme) => ({
       }
     }
   },
-  bottom_action: {
-    position: 'relative',
-    top: 70,
-    left: 0,
-    [theme.breakpoints.down('xs')]: {
-      top: 50
-    }
-  },
   btn_arrow: {
     borderRadius: 'unset',
-    borderBottom: `1px solid ${theme.palette.secondary.main}`
+    // borderBottom: `1px solid ${theme.palette.secondary.main}`
+    '&:before': {
+      content: '""',
+      position: 'absolute',
+      bottom: '15%',
+      width: 2,
+      height: '70%',
+      borderRadius: 5,
+      background: theme.palette.secondary.main,
+      transition: 'all 1s linear'
+    }
   },
 
   //  For animation
   headline_2_left_anim: {
-    height: 30,
-    transform: 'translateY(-120px)'
+    transform: 'translateX(-400px)'
   },
   headline_2_right_anim: {
-    height: 30,
-    transform: 'translateY(120px)'
+    transform: 'translateX(400px)'
+  },
+  headline_1_wrapper: {
+    overflow: 'hidden',
+    height: 'auto'
   },
   headline_1_anim: {
+    opacity: 0,
+    transform: 'translateY(-200px)'
+  },
+  btn_prev: {
+    transform: 'translateX(-400px)',
+    '&:before': {
+      right: 0
+    }
+  },
+  btn_next: {
+    transform: 'translateX(400px)',
+    '&:before': {
+      left: 0
+    }
+  },
+  fade_anim: {
     opacity: 0
   }
 }));
@@ -137,8 +160,8 @@ const settings = {
   infinite: true,
   fade: true,
   lazyLoad: true,
-  autoplay: true,
-  speed: 3000,
+  autoplay: false,
+  speed: 2000,
   autoplaySpeed: 5000,
   slidesToShow: 1,
   slidesToScroll: 1
@@ -149,22 +172,34 @@ const HeadSessions = () => {
   let headLine2Left = useRef(null);
   let headLine2Right = useRef(null);
   let actionButtonRef = useRef(null);
+  let btnWatchVideoRef = useRef(null);
+  let prevButtonRef = useRef(null);
+  let nextButtonRef = useRef(null);
   const tl = new TimelineLite();
   // Animation first page load
   useEffect(() => {
     tl.to('.hero_text_fade', {
-      duration: 1.2,
+      duration: 1.5,
       opacity: 1,
-      ease: Power2.easeInOut,
-      stagger: {
-        amount: 0.5
-      }
-    }).to([headLine2Left, headLine2Right], {
-      duration: 1,
       y: 0,
       ease: Power2.easeInOut,
-      delay: -0.7
-    });
+      stagger: {
+        amount: 1
+      },
+      delay: 2
+    })
+      .to([headLine2Left, headLine2Right, nextButtonRef, prevButtonRef], {
+        duration: 1.5,
+        x: 0,
+        ease: Power2.easeInOut,
+        delay: -1
+      })
+      .to([actionButtonRef, btnWatchVideoRef], {
+        duration: 1,
+        opacity: 1,
+        ease: Power2.easeIn,
+        delay: -1.5
+      });
   }, [tl]);
 
   const prevSlide = () => {
@@ -183,28 +218,33 @@ const HeadSessions = () => {
         className={classes.slide_wrapper}
         {...settings}
       >
-        <HeadImage src="https://images.pexels.com/photos/132037/pexels-photo-132037.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
-        <HeadImage src="https://images.pexels.com/photos/3278215/pexels-photo-3278215.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
         <HeadImage src="https://images.pexels.com/photos/255441/pexels-photo-255441.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
+        <HeadImage src="https://images.pexels.com/photos/3278215/pexels-photo-3278215.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
         <HeadImage src="https://images.pexels.com/photos/379419/pexels-photo-379419.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
+        <HeadImage src="https://images.pexels.com/photos/132037/pexels-photo-132037.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
       </Slider>
       <Container className={classes.root}>
         <Grid container justify="flex-end">
-          <CenterDiv>
-            <Box mr="10px">
-              <Typography variant="body1" color="secondary">
-                Watch video
-              </Typography>
-            </Box>
-            <IconButton color="secondary" className={classes.circle_btn}>
-              <PlayArrow />
-            </IconButton>
-          </CenterDiv>
+          <Box
+            className={classes.fade_anim}
+            ref={(node) => (btnWatchVideoRef = node)}
+          >
+            <CenterDiv>
+              <Box mr="10px">
+                <Typography variant="body1" color="secondary">
+                  Watch video
+                </Typography>
+              </Box>
+              <IconButton color="secondary" className={classes.circle_btn}>
+                <PlayArrow />
+              </IconButton>
+            </CenterDiv>
+          </Box>
         </Grid>
         {/* Start hero text */}
         <Box width="100%" mt="40px">
           <Grid container justify="flex-start">
-            <Box height="30px" overflow="hidden">
+            <Box overflow="hidden">
               <Typography
                 variant="h6"
                 color="secondary"
@@ -223,6 +263,7 @@ const HeadSessions = () => {
             display="flex"
             justifyContent="space-between"
             alignItems="baseline"
+            className={classes.headline_1_wrapper}
           >
             {'ADVENTURES'.split('').map((str, i) => (
               <Typography
@@ -240,7 +281,7 @@ const HeadSessions = () => {
             ))}
           </Box>
           <Grid container justify="flex-end">
-            <Box height="30px" overflow="hidden">
+            <Box overflow="hidden">
               <Typography
                 variant="h6"
                 color="secondary"
@@ -261,58 +302,60 @@ const HeadSessions = () => {
             size="large"
             variant="outlined"
             color="secondary"
-            className={classes.btn_get_started}
+            className={clsx([classes.btn_get_started, classes.fade_anim])}
+            ref={(node) => (actionButtonRef = node)}
           >
             get started
           </Button>
         </Grid>
-
-        <Grid
-          container
-          justify="space-between"
-          className={classes.bottom_action}
-        >
-          <Button
-            color="secondary"
-            size="large"
-            startIcon={
-              <FontAwesomeIcon
-                size="lg"
-                icon={['fas', 'long-arrow-alt-left']}
-              />
-            }
-            className={classes.btn_arrow}
-            onClick={prevSlide}
-          >
-            <Typography
-              variant="h6"
+        <Box minHeight="15vh" />
+        <Grid container justify="space-between">
+          <Box overflow="hidden">
+            <Button
               color="secondary"
-              className={classes.headline_2}
+              size="large"
+              startIcon={
+                <FontAwesomeIcon
+                  size="lg"
+                  icon={['fas', 'long-arrow-alt-left']}
+                />
+              }
+              className={clsx([classes.btn_arrow, classes.btn_prev])}
+              ref={(node) => (prevButtonRef = node)}
+              onClick={prevSlide}
             >
-              Prev
-            </Typography>
-          </Button>
-
-          <Button
-            color="secondary"
-            size="large"
-            endIcon={
-              <FontAwesomeIcon
-                size="lg"
-                icon={['fas', 'long-arrow-alt-right']}
-              />
-            }
-            className={classes.btn_arrow}
-            onClick={nextSlide}
-          >
-            <Typography
-              variant="h6"
+              <Typography
+                variant="h6"
+                color="secondary"
+                className={classes.headline_2}
+              >
+                Prev
+              </Typography>
+            </Button>
+          </Box>
+          <Box overflow="hidden">
+            <Button
               color="secondary"
-              className={classes.headline_2}
+              size="large"
+              endIcon={
+                <FontAwesomeIcon
+                  size="lg"
+                  icon={['fas', 'long-arrow-alt-right']}
+                />
+              }
+              className={clsx([classes.btn_arrow, classes.btn_next])}
+              ref={(node) => (nextButtonRef = node)}
+              onClick={nextSlide}
             >
-              Next
-            </Typography>
-          </Button>
+              <Typography
+                variant="h6"
+                color="secondary"
+                className={classes.headline_2}
+              >
+                Next
+              </Typography>
+            </Button>
+          </Box>
         </Grid>
 
         <ScrollDownIcon />
