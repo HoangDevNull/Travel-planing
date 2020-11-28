@@ -22,3 +22,9 @@ body {
   border-top-color: var(--progressColor);
   border-left-color: var(--progressColor);
 }
+
+@media screen and (orientation: landscape) and (min-device-height: 319px) and (max-device-height: 480px) {
+  .landscape_container {
+    top: 64px;
+  }
+}

@@ -36,7 +36,8 @@ const useStyles = makeStyles((theme) => {
       top: 0,
       // backgroundColor: '#34495e',
       backgroundColor: theme.palette.primary.main,
-      display: 'none'
+      display: 'none',
+      overflow: 'auto'
     },
     bold_font: {
       fontWeight: 'bold'
@@ -269,7 +270,12 @@ const SideBar = () => {
         open={true}
       >
         <Container>
-          <Box width="100%" height="87vh" position="relative">
+          <Box
+            width="100%"
+            height="87vh"
+            position="relative"
+            className="landscape_container"
+          >
             <Box
               width="100%"
               height="90%"
@@ -306,6 +312,10 @@ const SideBar = () => {
                     </Grid>
                   ))}
                 </Grid>
+                <Hidden mdUp>
+                  {/* Fix GSAP not found element and show warning on mobile  */}
+                  <Box className="contact" />
+                </Hidden>
                 <Hidden smDown>
                   <Grid item sm={12} md={3}>
                     <Box

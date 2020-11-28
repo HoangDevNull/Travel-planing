@@ -39,7 +39,7 @@ const RightSide = () => {
 
   return (
     <Box className={classes.root}>
-      <Hidden xsDown>
+      <Hidden smDown>
         <Button
           variant="outlined"
           color="secondary"
@@ -56,7 +56,7 @@ const RightSide = () => {
         </Button>
       </Hidden>
 
-      <Hidden smUp>
+      <Hidden mdUp>
         <IconButton color="secondary">
           <FontAwesomeIcon size="xs" icon={['far', 'user']} />
         </IconButton>

@@ -64,6 +64,11 @@ const useStyles = makeStyles((theme) => ({
       fontSize: 178
     }
   },
+  btn_watch_video_wrapper: {
+    [theme.breakpoints.up('sm')]: {
+      marginTop: 64
+    }
+  },
   btn_get_started_wrapper: {
     justifyContent: 'flex-start',
     [theme.breakpoints.down('xs')]: {
@@ -224,7 +229,11 @@ const HeadSessions = () => {
         <HeadImage src="https://images.pexels.com/photos/132037/pexels-photo-132037.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
       </Slider>
       <Container className={classes.root}>
-        <Grid container justify="flex-end">
+        <Grid
+          container
+          justify="flex-end"
+          className={classes.btn_watch_video_wrapper}
+        >
           <Box
             className={classes.fade_anim}
             ref={(node) => (btnWatchVideoRef = node)}
