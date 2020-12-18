@@ -60,7 +60,7 @@ const Navbar = () => {
   const classes = useStyles();
   const trigger = useScrollTrigger({
     disableHysteresis: true,
-    threshold: 500
+    threshold: 150
   });
   return (
     <React.Fragment>

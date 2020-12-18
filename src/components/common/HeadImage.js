@@ -5,7 +5,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: (props) => `url(${props?.src})`,
     width: '100%',
     minHeight: '100vh',
-    height: '100%',
     backgroundPosition: 'center center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
