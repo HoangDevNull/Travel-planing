@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, makeStyles } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundImage: (props) => `url(${props?.src})`,
-    width: '100%',
-    minHeight: '100vh',
     backgroundPosition: 'center center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
@@ -14,8 +12,6 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     left: 0,
     top: 0,
-    width: '100%',
-    minHeight: '100vh',
     background:
       'linear-gradient(0deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%)',
     zIndex: 0
@@ -23,11 +19,38 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HeadImage = (props) => {
+  const [size, setSize] = useState({
+    width: window.screen.availWidth,
+    height: window.screen.availHeight
+  });
   const classes = useStyles(props);
+
+  useEffect(() => {
+    window.addEventListener('resize', onresize);
+    return () => {
+      window.removeEventListener('resize', onresize);
+    };
+  }, []);
+
+  var onresize = function () {
+    setSize({
+      width: window.screen.availWidth,
+      height: window.screen.availHeight
+    });
+  };
+
   return (
     <>
-      <Box className={classes.mask} />
-      <Box className={classes.root} />
+      <Box
+        className={classes.mask}
+        width={size.width + 'px'}
+        height={size.height + 'px'}
+      />
+      <Box
+        className={classes.root}
+        width={size.width + 'px'}
+        height={size.height + 'px'}
+      />
     </>
   );
 };

@@ -6,7 +6,8 @@ import {
   makeStyles,
   Box,
   Avatar,
-  Link
+  Link,
+  useMediaQuery
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -19,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: 'none'
   },
   cover: {
-    width: '30%'
+    width: '30%',
+    borderRadius: 15
   },
   detail: {
     display: 'flex',
@@ -37,11 +39,17 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.textColor
   },
   text_content: {
-    minHeight: 70
+    display: '-webkit-box',
+    '-webkit-line-clamp': 3,
+    '-webkit-box-orient': 'vertical',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    height: 60 /* fallback */
   }
 }));
 
 const StoryCard = ({ image, title, content, user }) => {
+  const match = useMediaQuery((theme) => theme.breakpoints.down('xs'));
   const { avatar, fullName } = user;
   const classes = useStyles();
   return (
@@ -53,9 +61,16 @@ const StoryCard = ({ image, title, content, user }) => {
       />
       <div className={classes.detail}>
         <Box mx="8px">
-          <Link component="button" className={classes.title} variant="body1">
+          <Link
+            component="button"
+            noWrap={match}
+            className={classes.title}
+            variant="body1"
+            align="left"
+          >
             {title}
           </Link>
+          {/* <Hidden xsDown> */}
           <Typography
             variant="body2"
             align="justify"
@@ -63,6 +78,7 @@ const StoryCard = ({ image, title, content, user }) => {
           >
             {content}
           </Typography>
+          {/* </Hidden> */}
         </Box>
 
         <Box display="flex" alignItems="center" px="8px" mt="15px">

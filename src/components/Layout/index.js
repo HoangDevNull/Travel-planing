@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core';
 import { useLocation } from 'react-router-dom';
 
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 const styles = (theme) => ({
   '@global': {
@@ -31,6 +32,7 @@ function Layout({ children }) {
     <>
       <Navbar />
       {children}
+      <Footer />
     </>
   );
 }

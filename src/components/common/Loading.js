@@ -77,7 +77,6 @@ const Loading = ({ isLoading }) => {
   const phrase = useRef(getRandomPhrase());
 
   const classes = useStyles();
-  console.log('re-render')
   return (
     <Box className={classes.root} ref={(node) => (containerRef = node)}>
       <Box className={classes.center}>

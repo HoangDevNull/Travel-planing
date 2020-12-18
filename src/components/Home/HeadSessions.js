@@ -20,8 +20,10 @@ import HeadImage from 'components/common/HeadImage';
 import CenterDiv from 'components/common/CenterDiv';
 import ScrollDownIcon from 'components/common/ScrollDownIcon';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { PlayArrow } from '@material-ui/icons';
+
+import ArrowLeft from 'assets/images/slick-arrow-left.png';
+import ArrowRight from 'assets/images/slick-arrow-right.png';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   headline_1: {
-    fontSize: '10vw',
+    fontSize: '9.5vw',
     fontWeight: 'bolder',
     [theme.breakpoints.up('xl')]: {
       fontSize: 178
@@ -115,17 +117,7 @@ const useStyles = makeStyles((theme) => ({
   },
   btn_arrow: {
     borderRadius: 'unset',
-    // borderBottom: `1px solid ${theme.palette.secondary.main}`
-    '&:before': {
-      content: '""',
-      position: 'absolute',
-      bottom: '15%',
-      width: 2,
-      height: '70%',
-      borderRadius: 5,
-      background: theme.palette.secondary.main,
-      transition: 'all 1s linear'
-    }
+    width: 'auto'
   },
 
   //  For animation
@@ -320,50 +312,24 @@ const HeadSessions = () => {
         <Box minHeight="15vh" />
         <Grid container justify="space-between">
           <Box overflow="hidden">
-            <Button
+            <IconButton
               color="secondary"
-              size="large"
-              startIcon={
-                <FontAwesomeIcon
-                  size="lg"
-                  icon={['fas', 'long-arrow-alt-left']}
-                />
-              }
               className={clsx([classes.btn_arrow, classes.btn_prev])}
               ref={(node) => (prevButtonRef = node)}
               onClick={prevSlide}
             >
-              <Typography
-                variant="h6"
-                color="secondary"
-                className={classes.headline_2}
-              >
-                Prev
-              </Typography>
-            </Button>
+              <img src={ArrowLeft} alt="arrow-left" />
+            </IconButton>
           </Box>
           <Box overflow="hidden">
-            <Button
+            <IconButton
               color="secondary"
-              size="large"
-              endIcon={
-                <FontAwesomeIcon
-                  size="lg"
-                  icon={['fas', 'long-arrow-alt-right']}
-                />
-              }
               className={clsx([classes.btn_arrow, classes.btn_next])}
               ref={(node) => (nextButtonRef = node)}
               onClick={nextSlide}
             >
-              <Typography
-                variant="h6"
-                color="secondary"
-                className={classes.headline_2}
-              >
-                Next
-              </Typography>
-            </Button>
+              <img src={ArrowRight} alt="arrow-right" />
+            </IconButton>
           </Box>
         </Grid>
 

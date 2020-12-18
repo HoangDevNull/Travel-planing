@@ -15,6 +15,7 @@ export const withLoading = (WrappedComponent) => {
     componentDidMount() {
       setTimeout(() => {
         this.setState({ isLoading: false });
+        window.scrollTo(0, 0);
       }, 1800);
     }
 

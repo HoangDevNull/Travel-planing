@@ -9,6 +9,8 @@ import {
   Typography,
   Box
 } from '@material-ui/core';
+
+import { useSelector } from 'react-redux';
 import RightSide from './RightSide';
 import LeftSide from './LeftSide';
 import BackToTop from './components/BackToTop';
@@ -23,8 +25,8 @@ const useStyles = makeStyles((theme) => {
       backgroundColor: '#222222'
     },
     trigger_appbar: {
-      backgroundColor: 'transparent'
-      // transition: 'all .5s ease-in-out'
+      backgroundColor: 'transparent',
+      boxShadow: 'none'
     },
     logo: {
       position: 'absolute',
@@ -58,6 +60,8 @@ const useStyles = makeStyles((theme) => {
 
 const Navbar = () => {
   const classes = useStyles();
+
+  const isOpen = useSelector((state) => state.sidebar.isOpen);
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 150
@@ -70,7 +74,8 @@ const Navbar = () => {
         elevation={trigger ? 3 : 0}
         classes={{
           root: trigger ? classes.pv_0 : classes.pv_20,
-          colorPrimary: trigger ? classes.bg_appBar : classes.trigger_appbar
+          colorPrimary:
+            !trigger || isOpen ? classes.trigger_appbar : classes.bg_appBar
         }}
       >
         <Container maxWidth="xl">
