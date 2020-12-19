@@ -89,7 +89,7 @@ const DashBoard = () => {
             You may like there stories
           </Typography>
         </Grid>
-        <Grid item container spacing={5}>
+        <Grid item container spacing={3}>
           {stories.splice(0, 4).map((item, index) => (
             <Grid item xs={12} key={index}>
               <SmallStoryCard {...item} />

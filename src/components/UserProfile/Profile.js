@@ -37,8 +37,6 @@ const Profile = () => {
   const [stories, setStories] = React.useState([...storiesData]);
   const [userFollows, setUserFollows] = React.useState(userFollowsData);
 
-  console.log(stories);
-
   const classes = useStyles();
   return (
     <>
@@ -89,7 +87,7 @@ const Profile = () => {
           </Grid>
           <Grid item container spacing={5}>
             {stories.map((item, index) => (
-              <Grid item xs={6} md={4} key={index}>
+              <Grid item xs={12} md={4} key={index}>
                 <StoryCard {...item} />
               </Grid>
             ))}
@@ -133,7 +131,7 @@ const Profile = () => {
           </Grid>
           <Grid item container spacing={5}>
             {userFollows.map((item, index) => (
-              <Grid item xs={6} md={4} key={index}>
+              <Grid item xs={12} md={4} key={index}>
                 <UserFollowCard {...item} />
               </Grid>
             ))}

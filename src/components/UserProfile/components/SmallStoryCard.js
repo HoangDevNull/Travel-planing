@@ -34,12 +34,7 @@ const SmallStoryCard = ({ image, title, content, category, createdAt }) => {
         className={classes.cover}
       />
       <CardContent className={classes.content}>
-        <Typography
-          gutterBottom
-          variant="body2"
-          className={classes.font_bold}
-          noWrap
-        >
+        <Typography gutterBottom variant="body2" className={classes.font_bold}>
           {title}
         </Typography>
         <Typography variant="caption" color="textSecondary" component="p">

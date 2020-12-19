@@ -109,7 +109,7 @@ const HeadSessions = () => {
           </Grid>
           <Grid item>
             <Typography
-              variant="h5"
+              variant="h4"
               color="secondary"
               className={classes.font_bold}
             >
@@ -121,6 +121,7 @@ const HeadSessions = () => {
               variant="h6"
               color="secondary"
               className={classes.font_bold}
+              align="center"
             >
               {userProfile?.country}
             </Typography>
