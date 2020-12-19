@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     maxHeight: 200,
     padding: 5,
+    paddingLeft: 10,
     background: 'transparent',
     boxShadow: 'none',
     borderRadius: 5,

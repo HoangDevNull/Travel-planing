@@ -6,11 +6,11 @@ import { setCookie } from 'utils/cookies';
 
 const userAccount = [
   {
-    email: 'hoangpham@gmail.com',
+    email: 'hoang@gmail.com',
     password: 'abcd1234',
     token: 'asdasc_asdawd.1.1605612438024.506642048',
     userProfile: {
-      lastName: 'Hoang',
+      username: 'Hoang',
       avatar: 'https://material-ui.com/static/images/avatar/1.jpg'
     }
   },
@@ -19,7 +19,7 @@ const userAccount = [
     password: 'abcd1234',
     token: 'asdasc_asdawd.1.1605612438024.506642048',
     userProfile: {
-      lastName: 'Trong',
+      username: 'Trong',
       avatar: 'https://material-ui.com/static/images/avatar/2.jpg'
     }
   }
@@ -35,12 +35,15 @@ function* handleLogin(action) {
       (item) => item.email === email && item.password === password
     );
 
+    console.log(index);
+
     // call fail -> throw new error in catch function
     if (index === -1) {
+      console.log('error');
       throw new Error('login failed');
     }
 
-    const { userProfile, token: access_token } = userAccount(index);
+    const { userProfile, token: access_token } = userAccount[index];
     const authData = {
       isLoggedIn: true,
       access_token,
@@ -50,7 +53,7 @@ function* handleLogin(action) {
     setCookie('auth', authData);
   } catch (err) {
     const content = 'wrong-user-or-password';
-
+    console.log(err);
     yield put(loginAction.setError(content));
   }
 }
