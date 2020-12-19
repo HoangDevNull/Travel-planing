@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 const FourthElement = () => {
   const classes = useStyles();
 
-  const [checked, setChecked] = useState(0);
+  const [checked, setChecked] = useState(1);
 
   const handleSelectVideo = (index) => {
     setChecked(index);

@@ -52,8 +52,10 @@ const Loading = ({ isLoading }) => {
         height: '0',
         ease: Power2.easeIn
       }).call(() => {
-        // containerRef.remove();
         document.body.style.overflow = 'unset';
+        if (containerRef.current) {
+          containerRef.remove();
+        }
       });
     } else {
       tl.to(textLoading, {
@@ -78,21 +80,24 @@ const Loading = ({ isLoading }) => {
 
   const classes = useStyles();
   return (
-    <Box className={classes.root} ref={(node) => (containerRef = node)}>
-      <Box className={classes.center}>
-        <Box ref={(node) => (textLoading = node)}>
-          <Typography variant="button" color="secondary">
-            {phrase.current?.phrase}
-          </Typography>
-          <br />
-          <Box width="100%" textAlign="right" mt="10px">
-            <Typography variant="caption" color="secondary">
-              {phrase.current?.coined}
+    <>
+      <React.Fragment />
+      <Box className={classes.root} ref={(node) => (containerRef = node)}>
+        <Box className={classes.center}>
+          <Box ref={(node) => (textLoading = node)}>
+            <Typography variant="button" color="secondary">
+              {phrase.current?.phrase}
             </Typography>
+            <br />
+            <Box width="100%" textAlign="right" mt="10px">
+              <Typography variant="caption" color="secondary">
+                {phrase.current?.coined}
+              </Typography>
+            </Box>
           </Box>
         </Box>
       </Box>
-    </Box>
+    </>
   );
 };
 

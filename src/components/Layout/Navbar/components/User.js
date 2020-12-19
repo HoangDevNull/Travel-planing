@@ -11,7 +11,9 @@ import {
   Grow,
   Paper,
   ListItemIcon,
-  ListItemText
+  ListItemText,
+  IconButton,
+  Hidden
 } from '@material-ui/core';
 
 import { logoutAction } from 'redux/auth';
@@ -46,7 +48,7 @@ const User = () => {
   const { t } = useTranslation('navbar');
   const history = useHistory();
   const dispatch = useDispatch();
-  const userProfile = useSelector((state) => state.auth?.userProfile);
+  const { isLoggedIn, userProfile } = useSelector((state) => state.auth);
 
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -89,23 +91,36 @@ const User = () => {
 
   return (
     <>
-      <Button
-        color="inherit"
-        startIcon={
-          <Avatar
-            variant="rounded"
-            alt="Remy Sharp"
-            src={userProfile?.avatar}
-            className={classes.small}
-          />
-        }
-        onClick={handleToggle}
-        ref={anchorRef}
-      >
-        <Typography className={classes.user_name} noWrap variant="body1">
-          {userProfile?.username}
-        </Typography>
-      </Button>
+      <Hidden xsDown>
+        <Button
+          color="inherit"
+          endIcon={
+            <Avatar
+              variant="rounded"
+              alt="Remy Sharp"
+              src={userProfile?.avatar}
+              className={classes.small}
+            />
+          }
+          onClick={handleToggle}
+          ref={anchorRef}
+        >
+          <Typography
+            className={classes.user_name}
+            color="secondary"
+            noWrap
+            variant="body1"
+          >
+            {t('hello') + ', ' + userProfile?.username}
+          </Typography>
+        </Button>
+      </Hidden>
+
+      <Hidden smUp>
+        <IconButton color="secondary" onClick={handleToggle} ref={anchorRef}>
+          <FontAwesomeIcon size="xs" icon={['far', 'user']} />
+        </IconButton>
+      </Hidden>
 
       <Popper
         open={open}
@@ -124,44 +139,76 @@ const User = () => {
           >
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
-                <MenuList
-                  autoFocusItem={open}
-                  id="menu-list-grow"
-                  onKeyDown={handleListKeyDown}
-                >
-                  <MenuItem
-                    onClick={() => {
-                      history.push('/profile');
-                    }}
+                {isLoggedIn ? (
+                  <MenuList
+                    autoFocusItem={open}
+                    id="menu-list-grow"
+                    onKeyDown={handleListKeyDown}
                   >
-                    <ListItemIcon>
-                      <FontAwesomeIcon
-                        size="sm"
-                        icon={['fas', 'user-circle']}
-                      />
-                    </ListItemIcon>
-                    <ListItemText primary={t('profile')} />
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() => {
-                      history.push('/setting');
-                    }}
+                    <MenuItem
+                      onClick={() => {
+                        history.push('/profile');
+                      }}
+                    >
+                      <ListItemIcon>
+                        <FontAwesomeIcon
+                          size="sm"
+                          icon={['fas', 'user-circle']}
+                        />
+                      </ListItemIcon>
+                      <ListItemText primary={t('profile')} />
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() => {
+                        history.push('/setting');
+                      }}
+                    >
+                      <ListItemIcon>
+                        <FontAwesomeIcon size="sm" icon={['fas', 'lock']} />
+                      </ListItemIcon>
+                      <ListItemText primary={t('account')} />
+                    </MenuItem>
+                    <MenuItem onClick={handleLogout}>
+                      <ListItemIcon>
+                        <FontAwesomeIcon
+                          size="sm"
+                          icon={['fas', 'sign-out-alt']}
+                        />
+                      </ListItemIcon>
+                      <ListItemText primary={t('logout')} />
+                    </MenuItem>{' '}
+                  </MenuList>
+                ) : (
+                  <MenuList
+                    autoFocusItem={open}
+                    id="menu-list-grow"
+                    onKeyDown={handleListKeyDown}
                   >
-                    <ListItemIcon>
-                      <FontAwesomeIcon size="sm" icon={['fas', 'lock']} />
-                    </ListItemIcon>
-                    <ListItemText primary={t('account')} />
-                  </MenuItem>
-                  <MenuItem onClick={handleLogout}>
-                    <ListItemIcon>
-                      <FontAwesomeIcon
-                        size="sm"
-                        icon={['fas', 'sign-out-alt']}
-                      />
-                    </ListItemIcon>
-                    <ListItemText primary={t('logout')} />
-                  </MenuItem>
-                </MenuList>
+                    <MenuItem
+                      onClick={() => {
+                        history.push('/signin');
+                      }}
+                    >
+                      <ListItemIcon>
+                        <FontAwesomeIcon
+                          size="sm"
+                          icon={['fas', 'user-circle']}
+                        />
+                      </ListItemIcon>
+                      <ListItemText primary={t('login')} />
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() => {
+                        history.push('/signup');
+                      }}
+                    >
+                      <ListItemIcon>
+                        <FontAwesomeIcon size="sm" icon={['fas', 'lock']} />
+                      </ListItemIcon>
+                      <ListItemText primary={t('sign-up')} />
+                    </MenuItem>
+                  </MenuList>
+                )}
               </ClickAwayListener>
             </Paper>
           </Grow>

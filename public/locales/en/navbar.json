@@ -7,5 +7,6 @@
   "about": "About Us",
   "account": "Account",
   "profile": "Profile",
-  "logout": "Logout"
+  "logout": "Logout",
+  "hello": "Hello"
 }

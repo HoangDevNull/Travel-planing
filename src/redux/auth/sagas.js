@@ -11,16 +11,37 @@ const userAccount = [
     token: 'asdasc_asdawd.1.1605612438024.506642048',
     userProfile: {
       username: 'Hoang',
-      avatar: 'https://material-ui.com/static/images/avatar/1.jpg'
+      avatar:
+        'https://react-material-kit.devias.io/static/images/avatars/avatar_3.png',
+      country: 'Saint Petersburg, Russian Federation',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla scelerisque justo ac ante suscipit, vel ultricies ante sodales. In id justo ut libero mattis pulvinar. Duis et malesuada felis. Nulla a tincidunt nisl,'
     }
   },
   {
-    email: 'trongnguyen@gmail.com',
+    email: 'trong@gmail.com',
     password: 'abcd1234',
     token: 'asdasc_asdawd.1.1605612438024.506642048',
     userProfile: {
       username: 'Trong',
-      avatar: 'https://material-ui.com/static/images/avatar/2.jpg'
+      avatar:
+        'https://react-material-kit.devias.io/static/images/avatars/avatar_8.png',
+      country: 'Saint Petersburg, Russian Federation',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla scelerisque justo ac ante suscipit, vel ultricies ante sodales. In id justo ut libero mattis pulvinar. Duis et malesuada felis. Nulla a tincidunt nisl,'
+    }
+  },
+  {
+    email: 'tham@gmail.com',
+    password: 'abcd1234',
+    token: 'asdasc_asdawd.1.1605612438024.506642048',
+    userProfile: {
+      username: 'tham',
+      avatar:
+        'https://react-material-kit.devias.io/static/images/avatars/avatar_6.png',
+      country: 'Saint Petersburg, Russian Federation',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla scelerisque justo ac ante suscipit, vel ultricies ante sodales. In id justo ut libero mattis pulvinar. Duis et malesuada felis. Nulla a tincidunt nisl,'
     }
   }
 ];

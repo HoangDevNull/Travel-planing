@@ -26,7 +26,10 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     left: '50%',
     top: '50%',
-    transform: 'translate(-50%,-50%)'
+    transform: 'translate(-50%,-50%)',
+    [theme.breakpoints.down('xs')]: {
+      top: '30%'
+    }
   },
   back_drop: {
     width: '100%',
@@ -49,7 +52,10 @@ const useStyles = makeStyles((theme) => ({
     left: 30,
     bottom: 0,
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    [theme.breakpoints.down('xs')]: {
+      left: 15
+    }
   },
   muted_wrapper: {
     position: 'absolute',
