@@ -39,17 +39,18 @@ const HeadImage = (props) => {
     });
   };
 
+  let height = size.width < 1280 ? size.height : size.height - 100;
   return (
     <>
       <Box
         className={classes.mask}
         width={size.width + 'px'}
-        height={size.height - 100 + 'px'}
+        height={height + 'px'}
       />
       <Box
         className={classes.root}
         width={size.width + 'px'}
-        height={size.height - 100 + 'px'}
+        height={height + 'px'}
       />
     </>
   );
