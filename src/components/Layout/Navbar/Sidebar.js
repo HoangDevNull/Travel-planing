@@ -113,12 +113,12 @@ const useStyles = makeStyles((theme) => {
 
 const routes = [
   {
-    name: 'top-stories',
-    to: '/stories'
+    name: 'top-des',
+    to: '/'
   },
   {
-    name: 'top-des',
-    to: '/destinations'
+    name: 'top-stories',
+    to: '/stories'
   },
   {
     name: 'feature-video',
@@ -143,6 +143,11 @@ const SideBar = () => {
   let backgroundRevealTheme = useRef(null);
 
   const tl = new TimelineLite();
+
+  history.listen((location, action) => {
+    // location is an object like window.location
+    dispatch(sidebarAction.loadSideBar(false));
+  });
 
   useEffect(() => {
     if (pageLoadRef.current) {

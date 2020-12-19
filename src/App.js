@@ -11,6 +11,13 @@ import {
 import { useSelector } from 'react-redux';
 
 import Home from 'components/Home';
+import FeatureVideo from 'components/FeatureVideo';
+import FeatureVideoDetail from 'components/FeatureVideoDetail';
+import TopStories from 'components/TopStories';
+import DetailStory from 'components/DetailStory';
+import SignIn from 'components/SignIn';
+import SignUp from 'components/SignUp';
+
 import NotFound from 'components/404';
 import CustomRoute from 'components/common/CustomRoute';
 import Layout from 'components/Layout';
@@ -52,6 +59,16 @@ function App() {
           <Switch>
             <CustomRoute exact path="/" component={Home} />
             <CustomRoute exact path="/home" component={Home} />
+            <CustomRoute exact path="/videos" component={FeatureVideo} />
+            <CustomRoute
+              exact
+              path="/feature-video-detail"
+              component={FeatureVideoDetail}
+            />
+            <CustomRoute exact path="/stories" component={TopStories} />
+            <CustomRoute exact path="/story-detail" component={DetailStory} />
+            <CustomRoute exact path="/signin" component={SignIn} />
+            <CustomRoute exact path="/signup" component={SignUp} />
             <CustomRoute exact path="/404" component={NotFound} />
             <CustomRoute component={NotFound} />
           </Switch>

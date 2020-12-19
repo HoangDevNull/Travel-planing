@@ -24,7 +24,13 @@ const styles = (theme) => ({
 function Layout({ children }) {
   const { pathname } = useLocation();
 
-  const isShowNavbar = pathname === '/' || pathname === '/home';
+  const isShowNavbar =
+    pathname === '/' ||
+    pathname === '/home' ||
+    pathname === '/videos' ||
+    pathname === '/stories' ||
+    pathname === '/story-detail' ||
+    pathname === '/feature-video-detail';
 
   if (!isShowNavbar) return <> {children} </>;
 

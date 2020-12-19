@@ -16,6 +16,8 @@ import LeftSide from './LeftSide';
 import BackToTop from './components/BackToTop';
 import SideBar from './Sidebar';
 
+import { Link } from 'react-router-dom';
+
 const useStyles = makeStyles((theme) => {
   return {
     root: {
@@ -41,7 +43,8 @@ const useStyles = makeStyles((theme) => {
       letterSpacing: 5,
       fontWeight: 'bold',
       transition: 'font-size 2s',
-      color: '#fff'
+      color: '#fff',
+      textDecoration: 'none'
     },
     pv_20: {
       transition: 'all .5s ease-in-out',
@@ -84,12 +87,14 @@ const Navbar = () => {
               <LeftSide />
             </Box>
             <Box className={classes.logo}>
-              <Typography
-                variant={trigger ? 'h5' : 'h4'}
-                className={classes.logo_text}
-              >
-                Onism
-              </Typography>
+              <Link to="/" className={classes.logo_text}>
+                <Typography
+                  variant={trigger ? 'h5' : 'h4'}
+                  className={classes.logo_text}
+                >
+                  Onism
+                </Typography>
+              </Link>
             </Box>
             <Box>
               <RightSide />

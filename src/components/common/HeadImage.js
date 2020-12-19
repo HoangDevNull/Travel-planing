@@ -44,12 +44,12 @@ const HeadImage = (props) => {
       <Box
         className={classes.mask}
         width={size.width + 'px'}
-        height={size.height + 'px'}
+        height={size.height - 100 + 'px'}
       />
       <Box
         className={classes.root}
         width={size.width + 'px'}
-        height={size.height + 'px'}
+        height={size.height - 100 + 'px'}
       />
     </>
   );
