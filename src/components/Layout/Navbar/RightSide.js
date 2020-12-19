@@ -10,6 +10,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { useHistory } from 'react-router-dom';
 
 library.add(fab, far, fas);
 
@@ -34,6 +35,7 @@ const useStyles = makeStyles((theme) => {
 });
 
 const RightSide = () => {
+  const history = useHistory();
   const { t } = useTranslation('navbar');
   const classes = useStyles();
 
@@ -44,6 +46,7 @@ const RightSide = () => {
           variant="outlined"
           color="secondary"
           className={clsx([classes.custom_button])}
+          onClick={() => {history.push('/signin')}}
         >
           {t('login')}
         </Button>
@@ -51,6 +54,7 @@ const RightSide = () => {
           variant="contained"
           color="secondary"
           className={classes.custom_button}
+          onClick={() => {history.push('/signun')}}
         >
           {t('sign-up')}
         </Button>

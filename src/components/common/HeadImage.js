@@ -39,7 +39,7 @@ const HeadImage = (props) => {
     });
   };
 
-  let height = size.width < 1280 ? size.height : size.height - 100;
+  let height = size.width < 1280 ? size.height : size.height - 50;
   return (
     <>
       <Box
