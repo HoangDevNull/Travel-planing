@@ -101,17 +101,20 @@ const HeadSessions = () => {
           className={classes.p_8}
         >
           <Grid item>
-            <Avatar
-              src={userProfile?.avatar}
-              alt={userProfile?.username}
-              className={classes.big_avatar}
-            />
+            <Box mb="20px">
+              <Avatar
+                src={userProfile?.avatar}
+                alt={userProfile?.username}
+                className={classes.big_avatar}
+              />
+            </Box>
           </Grid>
           <Grid item>
             <Typography
-              variant="h4"
+              variant="h3"
               color="secondary"
               className={classes.font_bold}
+              gutterBottom
             >
               {userProfile?.username}
             </Typography>
@@ -122,6 +125,7 @@ const HeadSessions = () => {
               color="secondary"
               className={classes.font_bold}
               align="center"
+              gutterBottom
             >
               {userProfile?.country}
             </Typography>

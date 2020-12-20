@@ -13,8 +13,6 @@ import {
   FormGroup
 } from '@material-ui/core';
 
-import { useSelector } from 'react-redux';
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -34,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const EmailNotification = () => {
+const EmailNotification = ({ onOpenDialog }) => {
   const classes = useStyles();
   const [state, setState] = React.useState({
     action_1: true,
@@ -114,7 +112,14 @@ const EmailNotification = () => {
         {/* Action */}
         <Grid item container justify="space-around">
           <Box width="40%" mb="20px">
-            <Button fullWidth variant="contained" color="primary">
+            <Button
+              fullWidth
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                onOpenDialog();
+              }}
+            >
               Save
             </Button>
           </Box>

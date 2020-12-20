@@ -1,5 +1,8 @@
 {
   "sign-up-success": "Congratulation, You just successfully create an new account, You can signin with this account now",
+  "confirm-action": "Are you sure you want to perform this action ?",
   "agree": "Agree",
+  "delete": "Delete",
+  "cancel": "cancel",
   "notification": "Notification!"
 }

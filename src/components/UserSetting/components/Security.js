@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Security = () => {
+const Security = ({ onOpenDialog }) => {
   const theme = useTheme();
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
@@ -328,7 +328,14 @@ const Security = () => {
 
           <Grid item container justify="space-around">
             <Box width="40%" mb="20px">
-              <Button fullWidth variant="contained" color="primary">
+              <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  onOpenDialog();
+                }}
+              >
                 Save
               </Button>
             </Box>

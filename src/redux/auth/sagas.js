@@ -10,7 +10,7 @@ const userAccount = [
     password: 'abcd1234',
     token: 'asdasc_asdawd.1.1605612438024.506642048',
     userProfile: {
-      username: 'Hoang',
+      username: 'Hoang Pham',
       avatar:
         'https://react-material-kit.devias.io/static/images/avatars/avatar_3.png',
       country: 'Saint Petersburg, Russian Federation',
@@ -23,7 +23,7 @@ const userAccount = [
     password: 'abcd1234',
     token: 'asdasc_asdawd.1.1605612438024.506642048',
     userProfile: {
-      username: 'Trong',
+      username: 'Trong Nguyen',
       avatar:
         'https://react-material-kit.devias.io/static/images/avatars/avatar_8.png',
       country: 'Saint Petersburg, Russian Federation',
@@ -36,7 +36,7 @@ const userAccount = [
     password: 'abcd1234',
     token: 'asdasc_asdawd.1.1605612438024.506642048',
     userProfile: {
-      username: 'tham',
+      username: 'Tham Hoang',
       avatar:
         'https://react-material-kit.devias.io/static/images/avatars/avatar_6.png',
       country: 'Saint Petersburg, Russian Federation',
@@ -68,7 +68,8 @@ function* handleLogin(action) {
     const authData = {
       isLoggedIn: true,
       access_token,
-      userProfile
+      userProfile,
+      email
     };
     yield put(loginAction.setLogin(authData));
     setCookie('auth', authData);

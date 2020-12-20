@@ -7,6 +7,7 @@ if (authCookie) {
   initState = JSON.parse(decodeURIComponent(authCookie));
 } else {
   initState = {
+    email: null,
     access_token: null,
     isLoggedIn: false,
     userProfile: null,

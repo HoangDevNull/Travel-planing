@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const DesktopNotification = () => {
+const DesktopNotification = ({ onOpenDialog }) => {
   const classes = useStyles();
   const [state, setState] = React.useState({
     action_1: true,
@@ -116,7 +116,14 @@ const DesktopNotification = () => {
         {/* Action */}
         <Grid item container justify="space-around">
           <Box width="40%" mb="20px">
-            <Button fullWidth variant="contained" color="primary">
+            <Button
+              fullWidth
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                onOpenDialog();
+              }}
+            >
               Save
             </Button>
           </Box>

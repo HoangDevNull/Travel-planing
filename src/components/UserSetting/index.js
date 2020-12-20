@@ -40,7 +40,7 @@ const Setting = () => {
               <LeftSide onSelect={handleSelect} index={index} />
             </Grid>
             <Grid item xs={12} sm={8} md={9}>
-              <RightSide index={index} />
+              <RightSide onSelect={handleSelect} index={index} />
             </Grid>
           </Grid>
         </Container>
