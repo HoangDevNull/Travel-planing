@@ -126,7 +126,7 @@ const Signup = () => {
 
       const isValid = re.test(String(value).toLowerCase());
       if (!isValid && value?.length > 0) {
-        setError({ ...error, [name]: 'Email nhập vào không hợp lệ' });
+        setError({ ...error, [name]: 'invalid-email' });
       } else if (value.length === 0) {
         setError({ ...error, [name]: 'Thiếu thông tin' });
       } else {
