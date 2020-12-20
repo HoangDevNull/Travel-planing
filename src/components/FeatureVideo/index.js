@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import { Box, Container, Typography } from '@material-ui/core';
+import { Box, Container, Typography } from "@material-ui/core";
 
-import HeadSessions from './HeadSessions';
+import HeadSessions from "./HeadSessions";
 
 const FeatureVideo = () => {
   return (
