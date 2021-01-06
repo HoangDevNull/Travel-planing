@@ -24,6 +24,7 @@ import {
 
 import { useResize } from 'components/common/Hook/useResize';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -77,6 +78,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HeadSessions = () => {
+  const history = useHistory();
   const match = useMediaQuery((theme) => theme.breakpoints.down('xs'));
   const size = useResize();
   const classes = useStyles();
@@ -173,12 +175,22 @@ const HeadSessions = () => {
           {/* <ButtonGroup disableElevation variant="contained" color="secondary"> */}
           <Box>
             <Tooltip title="Edit Profile">
-              <IconButton color="secondary">
+              <IconButton
+                color="secondary"
+                onClick={() => {
+                  history.push('/setting');
+                }}
+              >
                 <EditOutlined />
               </IconButton>
             </Tooltip>
             <Tooltip title="New Post">
-              <IconButton color="secondary">
+              <IconButton
+                color="secondary"
+                onClick={() => {
+                  history.push('/add-story');
+                }}
+              >
                 <AddOutlined />
               </IconButton>
             </Tooltip>

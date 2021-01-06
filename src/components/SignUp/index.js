@@ -39,12 +39,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    minHeight: '100vh'
+    minHeight: 'calc(100vh - 100px)'
   },
   login_form: {
     padding: 20,
     width: 850,
-    height: 600,
     borderRadius: 15,
     [theme.breakpoints.down('sm')]: {
       padding: 10,
@@ -191,7 +190,7 @@ const Signup = () => {
 
   return (
     <>
-      <CenterDiv position="absolute" width="100%" mt="10px">
+      <CenterDiv position="relative" width="100%" mt="10px">
         <Link
           onClick={() => {
             history.push('/');

@@ -75,12 +75,8 @@ const useStyles = makeStyles((theme) => {
         }
       }
     },
-    nav_item: {
+    nav_hover: {
       cursor: 'pointer',
-      overflow: 'hidden',
-      width: 'fit-content',
-      height: 55,
-      marginBottom: 60,
       transition: 'all .4s ease-in-out',
       [theme.breakpoints.up('md')]: {
         opacity: 0.5,
@@ -88,7 +84,22 @@ const useStyles = makeStyles((theme) => {
           opacity: 1,
           textShadow: '1px 0px 5px #fff'
         }
-      },
+      }
+    },
+    nav_item: {
+      cursor: 'pointer',
+      overflow: 'hidden',
+      width: 'fit-content',
+      height: 55,
+      marginBottom: 60,
+      // transition: 'all .4s ease-in-out',
+      // [theme.breakpoints.up('md')]: {
+      //   opacity: 0.5,
+      //   '&:hover': {
+      //     opacity: 1,
+      //     textShadow: '1px 0px 5px #fff'
+      //   }
+      // },
       [theme.breakpoints.down('sm')]: {
         marginBottom: 10
       }
@@ -296,12 +307,14 @@ const SideBar = () => {
                       xs={12}
                       md={6}
                       key={i}
-                      className={clsx(classes.pl_20, classes.center_mobile)}
+                      className={clsx(
+                        classes.pl_20,
+                        classes.center_mobile,
+                        classes.nav_hover
+                      )}
+                      onClick={() => handleNavigation(ele.to)}
                     >
-                      <Box
-                        onClick={() => handleNavigation(ele.to)}
-                        className={classes.nav_item}
-                      >
+                      <Box className={classes.nav_item}>
                         <Typography
                           component="div"
                           className={`${clsx(
