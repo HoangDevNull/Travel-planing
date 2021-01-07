@@ -2,40 +2,30 @@ import React from 'react';
 
 import { Grid, Container, Button } from '@material-ui/core';
 
-import Content from './Content';
+import HtmlPreviewer from 'components/common/HtmlPreviewer';
 import HeadSessions from './HeadSessions';
-import { useHistory, useParams } from 'react-router-dom';
-import { postAction } from 'redux/post';
-
-import { postData } from 'components/TopStories/data';
+import { useHistory } from 'react-router-dom';
 import NotifyDialog from 'components/common/NotifyDialog';
+import { useSelector } from 'react-redux';
 
-const StoryDetail = () => {
+const Preview = () => {
   const history = useHistory();
-  const { id } = useParams();
-
-  React.useEffect(() => {
-    const { location } = history;
-    if (location.pathname.includes('/preview')) return;
-    if (id) {
-    }
-  }, [id, history]);
-
   const [open, setOpen] = React.useState(false);
-  const post = postData[1];
+  const post = useSelector((state) => state.post.previewPost);
 
   const handleClick = () => {
     setOpen(true);
   };
+  const handleCreateNewPost = () => {};
 
-  const handleRoute = () => {
-    history.push('/all-posts');
-  };
+  if (!post) history.goBack();
+
   return (
     <>
       <HeadSessions {...post} />
       <Container>
         <Grid container spacing={3}>
+          <Grid item xs={2} />
           <Grid
             item
             xs={12}
@@ -44,10 +34,10 @@ const StoryDetail = () => {
             justify="center"
             alignItems="center"
           >
-            <Content />
+            <HtmlPreviewer data={post?.content} />
           </Grid>
           <Grid item xs={2} />
-          <Grid item container justify="space-around" xs={8}>
+          <Grid item container justify="space-evenly" xs={12}>
             <Button
               variant="contained"
               color="primary"
@@ -71,11 +61,11 @@ const StoryDetail = () => {
       <NotifyDialog
         content={'Are you sure to perform this action?'}
         open={open}
-        onAgree={() => handleRoute()}
+        onAgree={handleCreateNewPost}
         onClose={() => setOpen(false)}
       />
     </>
   );
 };
 
-export default StoryDetail;
+export default Preview;

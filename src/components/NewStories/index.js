@@ -18,6 +18,12 @@ import { useHistory } from 'react-router-dom';
 import { categories } from './data';
 import Dropzone from 'react-dropzone';
 import BackupOutlinedIcon from '@material-ui/icons/BackupOutlined';
+
+import { uploadRequest } from 'utils/apiRequest';
+import moment from 'moment';
+import { useSelector, useDispatch } from 'react-redux';
+import { createPostAction } from 'redux/post';
+
 const useStyles = makeStyles((theme) => ({
   root: {},
   head_image_wrapper: {
@@ -42,18 +48,62 @@ const useStyles = makeStyles((theme) => ({
 
 const NewStories = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const history = useHistory();
-  const [fileAvatar, setFileAvatar] = React.useState(null);
+  const userProfile = useSelector((state) => state.auth.userProfile);
 
-  const handleDropEstimateFile = (file) => {
-    let image = file[0];
+  const [inputData, setInputData] = React.useState({
+    title: '',
+    image: '',
+    category: 1,
+    location: ''
+  });
 
-    const reader = new FileReader();
-    reader.readAsDataURL(image);
-    reader.onloadend = () => {
-      setFileAvatar(reader.result.toString());
-    };
+  const [content, setContent] = React.useState('');
+
+  const handleDropEstimateFile = async (file) => {
+    try {
+      let image = file[0];
+      // const { data } = await uploadRequest(image);
+      setInputData({ ...inputData, image });
+    } catch (err) {
+      console.log(err.response);
+    }
   };
+  const handleInputChange = (e) => {
+    const { value, name } = e.target;
+    console.log({ value, name });
+
+    setInputData({ ...inputData, [name]: value });
+  };
+
+  const handlePreview = async () => {
+    let isValid = true;
+    Object.keys(inputData).forEach((input) => {
+      if (input === 'image' && inputData[input] === '') {
+        isValid = false;
+      } else if (inputData[input].length === 0) {
+        isValid = false;
+      }
+    });
+    if (!isValid) return;
+    try {
+      const { data } = await uploadRequest(image);
+      let payload = { ...inputData };
+      payload.createdAt = moment().format('LL');
+      payload.image = data.url;
+      payload.content = content;
+      payload.status = 'Activated';
+      payload.user = userProfile;
+
+      dispatch(createPostAction.set(payload));
+      history.push('/add-story/preview');
+    } catch (err) {
+      console.log(err?.response);
+    }
+  };
+
+  const { title, category, location, image } = inputData;
   return (
     <>
       <HeadSessions />
@@ -68,16 +118,20 @@ const NewStories = () => {
             <Grid item xs={12} sm={10} container spacing={3}>
               <Grid item xs={12} sm={4}>
                 <Typography variant="body2" className={classes.font_bold}>
-                  Your stories name
+                  Your stories title
                   <span className={classes.required_start}>*</span>
                 </Typography>
                 <TextField
                   placeholder="eg. Travel around the word"
                   fullWidth
                   margin="normal"
+                  name="title"
+                  value={title}
+                  onChange={handleInputChange}
                   InputLabelProps={{
                     shrink: true
                   }}
+                  error={title === ''}
                   variant="outlined"
                 />
               </Grid>
@@ -87,10 +141,12 @@ const NewStories = () => {
                   <span className={classes.required_start}>*</span>
                 </Typography>
                 <TextField
-                  value={0}
                   fullWidth
                   margin="normal"
+                  name="category"
+                  value={category}
                   select
+                  onChange={handleInputChange}
                   InputLabelProps={{
                     shrink: true
                   }}
@@ -123,7 +179,7 @@ const NewStories = () => {
                       >
                         <input {...getInputProps()} />
                         <Typography variant="body1" color="textSecondary">
-                          Drag & drop your file
+                          {image ? image?.name : 'Drag & drop your file'}
                         </Typography>
                         <Box
                           position="absolute"
@@ -152,6 +208,10 @@ const NewStories = () => {
                   placeholder="eg. South California"
                   fullWidth
                   margin="normal"
+                  name="location"
+                  value={location}
+                  onChange={handleInputChange}
+                  error={location === ''}
                   InputLabelProps={{
                     shrink: true
                   }}
@@ -161,16 +221,18 @@ const NewStories = () => {
             </Grid>
             <Grid item xs={12} sm={10} container justify="center">
               <Paper>
-                <Editor />
+                <Editor
+                  onChange={(html) => {
+                    setContent(html);
+                  }}
+                />
               </Paper>
             </Grid>
             <Grid item xs={12} sm={10} container justify="center">
               <Button
                 variant="contained"
                 color="primary"
-                onClick={() => {
-                  history.push('/add-story/preview');
-                }}
+                onClick={handlePreview}
               >
                 Preview
               </Button>

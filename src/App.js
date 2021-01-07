@@ -14,8 +14,8 @@ import Home from 'components/Home';
 import FeatureVideo from 'components/FeatureVideo';
 import FeatureVideoDetail from 'components/FeatureVideoDetail';
 import TopStories from 'components/TopStories';
-import DetailStory from 'components/DetailStory';
 import NewStories from 'components/NewStories';
+import Preview from 'components/Preview';
 import StoryDetail from 'components/StoryDetail';
 import UserProfile from 'components/UserProfile';
 import UserSetting from 'components/UserSetting';
@@ -71,12 +71,8 @@ function App() {
             />
             <CustomRoute exact path="/stories" component={TopStories} />
             <CustomRoute exact path="/add-story" component={NewStories} />
-            <CustomRoute
-              exact
-              path="/add-story/preview"
-              component={StoryDetail}
-            />
-            <CustomRoute exact path="/story-detail" component={DetailStory} />
+            <CustomRoute exact path="/add-story/preview" component={Preview} />
+            <CustomRoute exact path="/story/:id" component={StoryDetail} />
             <CustomRoute exact path="/profile" component={UserProfile} />
             <CustomRoute exact path="/setting" component={UserSetting} />
             <CustomRoute exact path="/signin" component={SignIn} />

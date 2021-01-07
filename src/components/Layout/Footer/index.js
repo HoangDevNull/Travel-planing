@@ -36,8 +36,6 @@ const useStyles = makeStyles((theme) => ({
         : theme.palette.grey[800]
   },
   footer_head: {
-    marginTop: theme.spacing(8),
-    paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(3),
     [theme.breakpoints.up('sm')]: {
       paddingTop: theme.spacing(6),
@@ -96,6 +94,8 @@ const Footer = () => {
   const classes = useStyles();
   return (
     <>
+      <Box mt="30px" />
+      <Divider />
       <Container component="footer" className={classes.footer_head}>
         <Grid container spacing={4} justify="space-evenly">
           {footers.map((footer) => (

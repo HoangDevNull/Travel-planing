@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 
 const HeadSession = (props) => {
   const classes = useStyles();
-  const { user, title, image, createdAt } = props;
+  const { user, title, image, location, createdAt } = props;
   return (
     <>
       <Box className={classes.head_image_wrapper}>
@@ -90,7 +90,7 @@ const HeadSession = (props) => {
               {user?.username}
             </Typography>
             <Typography variant="body1" color="secondary" gutterBottom>
-              {user?.country}
+              {location}
             </Typography>
           </Grid>
         </Grid>
