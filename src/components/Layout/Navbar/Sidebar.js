@@ -158,6 +158,11 @@ const SideBar = () => {
   history.listen((location, action) => {
     // location is an object like window.location
     dispatch(sidebarAction.loadSideBar(false));
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   });
 
   useEffect(() => {

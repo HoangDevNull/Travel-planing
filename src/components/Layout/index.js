@@ -31,9 +31,10 @@ function Layout({ children }) {
     pathname === '/stories' ||
     pathname === '/story-detail' ||
     pathname === '/profile' ||
-    pathname === '/feature-video-detail'||
-    pathname === '/setting'||
-    pathname === '/add-story'
+    pathname === '/feature-video-detail' ||
+    pathname === '/setting' ||
+    pathname === '/add-story' ||
+    pathname === '/add-story/preview';
 
   if (!isShowNavbar) return <> {children} </>;
 

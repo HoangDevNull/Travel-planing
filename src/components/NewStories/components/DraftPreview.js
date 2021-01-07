@@ -6,7 +6,7 @@ import htmlToDraft from 'html-to-draftjs';
 import { Editor } from 'react-draft-wysiwyg';
 
 import draftToHtml from 'draftjs-to-html';
-import { html } from './data';
+import { html } from '../data';
 
 class ConvertToRawDraftContent extends Component {
   constructor(props) {
@@ -35,9 +35,12 @@ class ConvertToRawDraftContent extends Component {
     const { editorState } = this.state;
     return (
       <>
-        <div className="rdw-storybook-root" style={{
-          width : '70%'
-        }}>
+        <div
+          className="rdw-storybook-root"
+          style={{
+            width: '70%'
+          }}
+        >
           <Editor
             editorState={editorState}
             toolbarHidden

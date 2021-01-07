@@ -180,7 +180,7 @@ const Info = ({ onOpenDialog }) => {
                   >
                     <input {...getInputProps()} />
                     <Typography variant="body1">
-                      Drag and drop your file
+                      Drag & drop your file
                     </Typography>
                   </Box>
                 </Box>

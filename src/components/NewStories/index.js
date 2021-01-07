@@ -8,12 +8,13 @@ import {
   Grid,
   Paper,
   TextField,
-  MenuItem
+  MenuItem,
+  Button
 } from '@material-ui/core';
 
 import HeadSessions from './HeadSessions';
 import Editor from './components/Editor';
-
+import { useHistory } from 'react-router-dom';
 import { categories } from './data';
 import Dropzone from 'react-dropzone';
 import BackupOutlinedIcon from '@material-ui/icons/BackupOutlined';
@@ -41,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
 const NewStories = () => {
   const classes = useStyles();
-
+  const history = useHistory();
   const [fileAvatar, setFileAvatar] = React.useState(null);
 
   const handleDropEstimateFile = (file) => {
@@ -71,7 +72,7 @@ const NewStories = () => {
                   <span className={classes.required_start}>*</span>
                 </Typography>
                 <TextField
-                  placeholder="name"
+                  placeholder="eg. Travel around the word"
                   fullWidth
                   margin="normal"
                   InputLabelProps={{
@@ -87,7 +88,6 @@ const NewStories = () => {
                 </Typography>
                 <TextField
                   value={0}
-                  placeholder="Email"
                   fullWidth
                   margin="normal"
                   select
@@ -103,7 +103,7 @@ const NewStories = () => {
                   ))}
                 </TextField>
               </Grid>
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} sm={6} md={4}>
                 <Typography variant="body2" className={classes.font_bold}>
                   Upload an main image
                   <span className={classes.required_start}>*</span>
@@ -122,15 +122,19 @@ const NewStories = () => {
                         position="relative"
                       >
                         <input {...getInputProps()} />
-                        <Typography variant="body1">
-                          Drag and drop your file
+                        <Typography variant="body1" color="textSecondary">
+                          Drag & drop your file
                         </Typography>
                         <Box
                           position="absolute"
-                          width="50px"
-                          height="50px"
+                          width="52px"
+                          height="52px"
                           right="0"
                           bgcolor="primary.main"
+                          display="flex"
+                          justifyContent="center"
+                          alignItems="center"
+                          boxShadow={5}
                         >
                           <BackupOutlinedIcon color="secondary" />
                         </Box>
@@ -145,7 +149,7 @@ const NewStories = () => {
                   <span className={classes.required_start}>*</span>
                 </Typography>
                 <TextField
-                  placeholder="name"
+                  placeholder="eg. South California"
                   fullWidth
                   margin="normal"
                   InputLabelProps={{
@@ -159,6 +163,17 @@ const NewStories = () => {
               <Paper>
                 <Editor />
               </Paper>
+            </Grid>
+            <Grid item xs={12} sm={10} container justify="center">
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  history.push('/add-story/preview');
+                }}
+              >
+                Preview
+              </Button>
             </Grid>
           </Grid>
         </Container>

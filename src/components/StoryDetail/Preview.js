@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import 'draft-js/dist/Draft.css';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import { EditorState, ContentState } from 'draft-js';
+import { EditorState, ContentState, convertToRaw } from 'draft-js';
 import htmlToDraft from 'html-to-draftjs';
 import { Editor } from 'react-draft-wysiwyg';
+
+import { html } from './data';
 import { Box } from '@material-ui/core';
 
 class ConvertToRawDraftContent extends Component {
   constructor(props) {
     super(props);
-    const html = `<p></p`;
+    // const html = `<p></p`;
     const contentBlock = htmlToDraft(html);
     if (contentBlock) {
       const contentState = ContentState.createFromBlockArray(
@@ -23,7 +25,6 @@ class ConvertToRawDraftContent extends Component {
   }
 
   onEditorStateChange = (editorState) => {
-    console.log(editorState);
     this.setState({
       editorState
     });
@@ -33,10 +34,10 @@ class ConvertToRawDraftContent extends Component {
     const { editorState } = this.state;
     return (
       <>
-        <Box minHeight="100vh" padding="15px" className="rdw-storybook-root">
+        <Box overflow="hidden" width="100%" className="rdw-storybook-root">
           <Editor
             editorState={editorState}
-            // toolbarHidden
+            toolbarHidden
             onEditorStateChange={this.onEditorStateChange}
           />
         </Box>
