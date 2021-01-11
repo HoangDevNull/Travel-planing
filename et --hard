@@ -1,0 +1,290 @@
+[33mcommit 3798df819fb6d57142435efb1c203cd052d8eaac[m[33m ([m[1;36mHEAD -> [m[1;32mdev[m[33m)[m
+Author: xuantai2506 <xuantai59@gmail.com>
+Date:   Mon Jan 11 16:31:20 2021 +0700
+
+    Tham#fix_code
+
+[33mcommit bc8c1b9eb8d4a87924f4b5d0ebc63e013c157cae[m
+Author: xuantai2506 <xuantai59@gmail.com>
+Date:   Mon Jan 11 15:57:48 2021 +0700
+
+    tham#code_topStories
+
+[33mcommit 151ec7bf617f91797ca86ccca89e80fb49783b5b[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Thu Jan 7 18:08:19 2021 +0700
+
+    add db.json
+    add editor and preview
+
+[33mcommit cc7ff1ed3244271ddb1cefef0f7703f4f328648c[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Thu Jan 7 10:50:24 2021 +0700
+
+    add preview
+
+[33mcommit 9b29603559f245d380097be78c55b040939c1cd0[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Wed Jan 6 19:42:08 2021 +0700
+
+    add new stories
+
+[33mcommit af36c3a31c9ebfaa8e0056d270fbc99c06ee7699[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sun Dec 20 13:05:01 2020 +0700
+
+    done user setting
+
+[33mcommit 39a2c55a3804f2b7adae005a6efafa7cca85f364[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sun Dec 20 11:05:44 2020 +0700
+
+    create edit user profile
+
+[33mcommit a7de6511caf641108817b068d0e3f93cafd44136[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sat Dec 19 22:08:10 2020 +0700
+
+    fix mobile user profile
+
+[33mcommit 37b77af115c0c6550edf352b1253e6fe45055984[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sat Dec 19 21:59:20 2020 +0700
+
+    add user profile
+
+[33mcommit 9b1cd8f571caa02421180b0ad986e322312a3ed5[m
+Merge: 25d6e7f 678f323
+Author: HoangDevNull <53819174+HoangDevNull@users.noreply.github.com>
+Date:   Sat Dec 19 17:51:34 2020 +0700
+
+    Merge pull request #4 from HoangDevNull/Hoang-add-login
+    
+    Hoang add login
+
+[33mcommit 678f32379dfe0981b94c8ee65825181ecd2a2fb6[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sat Dec 19 17:51:01 2020 +0700
+
+    Done signin sign up + user
+
+[33mcommit 583146e46cc2375699c534d42661012e941111dd[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sat Dec 19 13:13:32 2020 +0700
+
+    hoang add authenticate
+
+[33mcommit 25d6e7f71ddd87fc0586c38ee0a369471d92e091[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sat Dec 19 10:21:52 2020 +0700
+
+    Fix Head image height mobile
+
+[33mcommit 44eeec8b06db1a3e11590e3f6d16637299d3162b[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sat Dec 19 10:12:54 2020 +0700
+
+    Setup routes for all page
+
+[33mcommit 04c5462d5451c33b7ec6d1c1a71f9da1cb464e8b[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sat Dec 19 00:49:50 2020 +0700
+
+    Done hero page
+
+[33mcommit 4d6afc578cf84e08f6ca4dfa49fbbbc7a1697dbb[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Fri Dec 18 18:53:40 2020 +0700
+
+    hoang update hero page
+
+[33mcommit a8e721a7dc9a4a2713f79bb0f6624b90eebd075c[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sat Nov 28 21:53:23 2020 +0700
+
+    fix mobile landscape + routing failed
+
+[33mcommit b58019b1a58244e9c620d91a98c8340d84afcf17[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Fri Nov 27 23:54:09 2020 +0700
+
+    Fix scroll icon position in mobile
+
+[33mcommit fa6f05274b6f1cf68f4a815647008dd7a6735d58[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Fri Nov 27 23:45:21 2020 +0700
+
+    add animation hero page
+
+[33mcommit f1610f0020b905e5376084efcb1e7fbc55735e2f[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Fri Nov 27 18:52:25 2020 +0700
+
+    add slide + create animation
+
+[33mcommit 553c7c38c2e7b6afa1c0098adf80885c2ad25a58[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Fri Nov 27 10:53:22 2020 +0700
+
+    split component
+
+[33mcommit 999294aacc047dff0c6cbe54ef833538b1850030[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Thu Nov 26 22:51:59 2020 +0700
+
+    Add home page first sections
+
+[33mcommit 39c384915751cffa75adc7fe646a2155a61d8bb2[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Thu Nov 26 18:51:27 2020 +0700
+
+    create home page
+
+[33mcommit d5024730bd77ecae96fe225c138dbeb310f2f6dd[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Thu Nov 26 16:21:43 2020 +0700
+
+    mobile styles for login and side bar
+
+[33mcommit 99d135d47daec906506c72402fdc4e13481f9d99[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Thu Nov 26 00:13:54 2020 +0700
+
+    Add fontawesome icon
+    Restyle sidebar + aniamtion
+
+[33mcommit 5e8cfdf44ed8659e5eb5ac63b91570bb23782113[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Tue Nov 24 23:43:04 2020 +0700
+
+    fixed color for navbar
+
+[33mcommit 86950d11603a4f2ea08b103aa31910ae224a09fb[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Tue Nov 24 19:02:06 2020 +0700
+
+    Restyles layout
+
+[33mcommit fdbcc769d95ae1551d3906ab81c6c920f8f1b26c[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sat Nov 14 20:07:01 2020 +0700
+
+    change size of navitem"
+
+[33mcommit e38d2598a54bccb396eac2ccf8c028ae5ad0d6e0[m
+Merge: 7994303 a7afa10
+Author: HoangDevNull <53819174+HoangDevNull@users.noreply.github.com>
+Date:   Sun Nov 1 21:26:19 2020 +0700
+
+    Merge pull request #3 from HoangDevNull/hoang-update-layout
+    
+    Hoang update layout
+
+[33mcommit a7afa1021a9db0d81fd5001f82ba4d5ba18c5eb5[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sun Nov 1 21:26:19 2020 +0700
+
+    add navbar
+
+[33mcommit 7bf5932d20bab445bac879e7c0628e4724722922[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sun Nov 1 00:15:44 2020 +0700
+
+    update styles
+
+[33mcommit 101c48123858a3a440dadfffa07b65222d54fe37[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sat Oct 31 18:45:10 2020 +0700
+
+    first commit
+
+[33mcommit 7994303c4771ad76df856025834b93daa56ba9bd[m
+Merge: bf41ad0 0ff0310
+Author: HoangDevNull <53819174+HoangDevNull@users.noreply.github.com>
+Date:   Sat Oct 17 23:20:00 2020 +0700
+
+    Merge pull request #2 from HoangDevNull/hoang-add-navbar
+    
+    Hoang add navbar
+
+[33mcommit 0ff03106071ccc97c75cd8ba7d2a327de31368b2[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sat Oct 17 23:19:33 2020 +0700
+
+    Setup complete -> start fucntion coding
+
+[33mcommit 23753bc6214e025a31d83e5c033855ebc4b20b24[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sat Oct 17 10:42:02 2020 +0700
+
+    add btn change language
+
+[33mcommit 998fa6f9b802e5fe08f1042ca62e4641914e1c62[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Fri Oct 16 22:00:29 2020 +0700
+
+    add burget menu
+
+[33mcommit b035bf39eba6c0a16ed841e34b5ded4c4a48f4fd[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Fri Oct 16 18:37:46 2020 +0700
+
+    Setup navigation bar and backToTop button
+
+[33mcommit bf41ad0e6a25091c6b25ac25e776af073ff99b1d[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Mon Oct 12 18:45:00 2020 +0700
+
+    Add dark mode
+
+[33mcommit cd96ccdc52fc3805e1a346ecf3c6a58f1cd90a67[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sun Oct 11 00:34:06 2020 +0700
+
+    fix white space on top of image
+
+[33mcommit af6715bffb4a483096120be26c4b2dc28df3b782[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sun Oct 11 00:32:05 2020 +0700
+
+    add Page not found multi language
+
+[33mcommit 77804436f5b37523a17a7aad2bc9d28dc5f3c097[m
+Merge: 3fde7a8 914c98c
+Author: HoangDevNull <53819174+HoangDevNull@users.noreply.github.com>
+Date:   Sun Oct 11 00:12:43 2020 +0700
+
+    Merge pull request #1 from HoangDevNull/hoang-add-404-page
+    
+    Hoang add 404 page
+
+[33mcommit 914c98c071f59f59807f571a3add5e025896937c[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sun Oct 11 00:11:30 2020 +0700
+
+    add 404 page
+
+[33mcommit a26e202ebcd9eeea628aafb8ace00535120de676[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sat Oct 10 18:41:39 2020 +0700
+
+    Add page not found component
+    Setup react router
+
+[33mcommit 3fde7a81a9fc05a8f40f3332b9fcd5115c3f164d[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sat Oct 3 18:29:19 2020 +0700
+
+    init multi language with i18n
+
+[33mcommit 6d42b6995aa27181e5373a7c460e375ef7c48783[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sat Oct 3 10:59:28 2020 +0700
+
+    init project
+
+[33mcommit 8145e8e3023438670660f870660e60d2b872938b[m
+Author: HoangDevNull <pqhoang.17it2@sict.udn.vn>
+Date:   Sat Oct 3 09:58:11 2020 +0700
+
+    Initialize project using Create React App
