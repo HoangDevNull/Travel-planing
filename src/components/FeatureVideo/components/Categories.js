@@ -14,9 +14,14 @@ const Category = ({ title }) => {
   const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Box p="1rem" mt={matches ? "4rem" : "10rem"}>
+    <Box p="1rem" mt={matches ? "2rem" : "4rem"}>
       <Box borderBottom={1}>
-        <Typography align="left" variant="h3" className={classes.title}>
+        <Typography
+          align="left"
+          variant="h3"
+          className={classes.title}
+          noWrap={false}
+        >
           {title}
         </Typography>
       </Box>

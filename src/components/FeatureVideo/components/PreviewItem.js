@@ -20,8 +20,8 @@ const useStyles = makeStyles((theme) => ({
       width: 220,
     },
     [theme.breakpoints.up("lg")]: {
-      height: 300,
-      width: 300,
+      height: 250,
+      width: 250,
     },
   },
   title: {
