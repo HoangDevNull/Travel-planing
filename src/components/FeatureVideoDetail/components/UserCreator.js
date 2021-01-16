@@ -14,7 +14,7 @@ const UserCreator = () => {
   const classes = useStyles();
   const userProfile = useSelector((state) => state.auth?.userProfile);
   return (
-    <Grid container direction="row" justify="start" alignItems="center">
+    <Grid container direction="row" justify="flex-start" alignItems="center">
       <Avatar
         src={userProfile?.avatar}
         alt={userProfile?.username}
