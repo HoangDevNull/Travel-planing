@@ -1,21 +1,34 @@
 import React, { Component } from 'react';
 import 'draft-js/dist/Draft.css';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import { EditorState, convertToRaw } from 'draft-js';
-
+import { EditorState, convertToRaw, ContentState } from 'draft-js';
+import htmlToDraft from 'html-to-draftjs';
 import { Editor } from 'react-draft-wysiwyg';
 import { Box } from '@material-ui/core';
 
 import draftToHtml from 'draftjs-to-html';
 import { uploadRequest } from 'utils/apiRequest';
+import { connect } from 'react-redux';
 class ConvertToRawDraftContent extends Component {
   constructor(props) {
     super(props);
-
-    const editorState = EditorState.createEmpty();
-    this.state = {
-      editorState
-    };
+    const html = this.props.post;
+    console.log({ html });
+    if (html) {
+      const contentBlock = htmlToDraft(html);
+      const contentState = ContentState.createFromBlockArray(
+        contentBlock.contentBlocks
+      );
+      const editorState = EditorState.createWithContent(contentState);
+      this.state = {
+        editorState
+      };
+    } else {
+      const editorState = EditorState.createEmpty();
+      this.state = {
+        editorState
+      };
+    }
   }
 
   onEditorStateChange = (editorState) => {
@@ -41,7 +54,7 @@ class ConvertToRawDraftContent extends Component {
     const { editorState } = this.state;
     return (
       <>
-        <Box minHeight="100vh" padding="15px" className="rdw-storybook-root">
+        <Box minHeight='100vh' padding='15px' className='rdw-storybook-root'>
           <Editor
             editorState={editorState}
             toolbar={{
@@ -58,4 +71,10 @@ class ConvertToRawDraftContent extends Component {
   }
 }
 
-export default ConvertToRawDraftContent;
+const mapStateToProps = (state) => {
+  return {
+    post: state.post.previewPost?.content
+  };
+};
+
+export default connect(mapStateToProps)(ConvertToRawDraftContent);

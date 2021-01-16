@@ -34,46 +34,7 @@ const StoryDetail = () => {
   return (
     <>
       <HeadSessions {...post} />
-      <Container>
-        <Grid container spacing={3}>
-          <Grid
-            item
-            xs={12}
-            md={8}
-            container
-            justify="center"
-            alignItems="center"
-          >
-            <Content />
-          </Grid>
-          <Grid item xs={2} />
-          <Grid item container justify="space-around" xs={8}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => handleClick(1)}
-            >
-              Post
-            </Button>
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={() => {
-                history.goBack();
-              }}
-            >
-              Cancel
-            </Button>
-          </Grid>
-          <Grid item xs={2} />
-        </Grid>
-      </Container>
-      <NotifyDialog
-        content={'Are you sure to perform this action?'}
-        open={open}
-        onAgree={() => handleRoute()}
-        onClose={() => setOpen(false)}
-      />
+      <Content />
     </>
   );
 };

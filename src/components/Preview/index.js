@@ -1,22 +1,27 @@
 import React from 'react';
 
-import { Grid, Container, Button } from '@material-ui/core';
+import { Grid, Container, Button, Box } from '@material-ui/core';
 
 import HtmlPreviewer from 'components/common/HtmlPreviewer';
 import HeadSessions from './HeadSessions';
 import { useHistory } from 'react-router-dom';
 import NotifyDialog from 'components/common/NotifyDialog';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { createPostAction } from 'redux/post';
 
 const Preview = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
   const post = useSelector((state) => state.post.previewPost);
 
   const handleClick = () => {
     setOpen(true);
   };
-  const handleCreateNewPost = () => {};
+  const handleCreateNewPost = () => {
+    dispatch(createPostAction.set(null));
+    history.goBack();
+  };
 
   if (!post) history.goBack();
 
@@ -31,23 +36,26 @@ const Preview = () => {
             xs={12}
             md={8}
             container
-            justify="center"
-            alignItems="center"
+            justify='center'
+            alignItems='center'
           >
             <HtmlPreviewer data={post?.content} />
           </Grid>
           <Grid item xs={2} />
-          <Grid item container justify="space-evenly" xs={12}>
+          <Grid item container justify='center' xs={12}>
             <Button
-              variant="contained"
-              color="primary"
+              size='large'
+              variant='contained'
+              color='primary'
               onClick={() => handleClick(1)}
             >
               Post
             </Button>
+            <Box mx={2} />
             <Button
-              variant="outlined"
-              color="primary"
+              size='large'
+              variant='outlined'
+              color='primary'
               onClick={() => {
                 history.goBack();
               }}
