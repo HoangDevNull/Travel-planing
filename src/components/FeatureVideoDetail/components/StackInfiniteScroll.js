@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroller";
-import { CardMedia, Grid, Card } from "@material-ui/core";
+import { CardMedia, Grid } from "@material-ui/core";
 import StackGrid from "react-stack-grid";
 import { withSize } from "react-sizeme";
 import { makeStyles } from "@material-ui/core/styles";
@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   media: {
+    cursor: "pointer",
     padding: "1rem",
     transition: "transform .2s",
     zIndex: "1",

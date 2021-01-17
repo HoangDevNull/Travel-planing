@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, CardMedia, makeStyles, Typography } from "@material-ui/core";
-import { shadows } from "@material-ui/system";
 
 const useStyles = makeStyles((theme) => ({
   root: {

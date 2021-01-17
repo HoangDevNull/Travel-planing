@@ -1,12 +1,6 @@
 import React from "react";
 
-import {
-  Box,
-  Container,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@material-ui/core";
+import { Box, Container, useTheme } from "@material-ui/core";
 import HeadSessions from "./HeadSessions";
 import Category from "./components/Categories";
 import PreviewItem from "./components/PreviewItem";
@@ -14,7 +8,6 @@ import { useHistory } from "react-router-dom";
 
 const FeatureVideo = () => {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("sm"));
   const history = useHistory();
 
   const handleClickCard = React.useCallback(() => {
