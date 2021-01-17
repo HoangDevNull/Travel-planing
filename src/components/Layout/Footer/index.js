@@ -79,9 +79,9 @@ const footers = [
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="left">
+    <Typography variant='body2' color='textSecondary' align='left'>
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color='inherit' href='https://material-ui.com/'>
         ONISM
       </Link>{' '}
       {new Date().getFullYear()}
@@ -94,19 +94,21 @@ const Footer = () => {
   const classes = useStyles();
   return (
     <>
-      <Box mt="30px" />
-      <Divider />
-      <Container component="footer" className={classes.footer_head}>
-        <Grid container spacing={4} justify="space-evenly">
+      <Box width='100%' my='30px'>
+        <Divider variant='fullWidth' />
+      </Box>
+
+      <Container component='footer' className={classes.footer_head}>
+        <Grid container spacing={4} justify='space-evenly'>
           {footers.map((footer) => (
             <Grid item xs={6} sm={3} key={footer.title}>
-              <Typography variant="h6" color="textPrimary" gutterBottom>
+              <Typography variant='h6' color='textPrimary' gutterBottom>
                 {footer.title}
               </Typography>
               <ul>
                 {footer.description.map((item) => (
                   <li key={item}>
-                    <Link href="#" variant="subtitle1" color="textSecondary">
+                    <Link href='#' variant='subtitle1' color='textSecondary'>
                       {item}
                     </Link>
                   </li>
@@ -119,16 +121,16 @@ const Footer = () => {
       <Divider />
       <footer className={classes.footer}>
         <Container>
-          <Grid container justify="space-between">
+          <Grid container justify='space-between'>
             <Grid item xs={6}>
               <Copyright />
             </Grid>
-            <Grid container justify="flex-end" alignItems="center" item xs={6}>
-              <Link color="inherit" href="/">
+            <Grid container justify='flex-end' alignItems='center' item xs={6}>
+              <Link color='inherit' href='/'>
                 Term and conditions
               </Link>
-              <Box ml="20px">
-                <Link color="inherit" href="/">
+              <Box ml='20px'>
+                <Link color='inherit' href='/'>
                   Privacy policy
                 </Link>
               </Box>

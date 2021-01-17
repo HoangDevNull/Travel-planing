@@ -6,8 +6,14 @@ import {
     Typography,
     makeStyles,
     TextField,
-    Select
+    Select,
+    MenuItem,
+    InputAdornment
   } from '@material-ui/core';
+import { Search } from '@material-ui/icons';
+
+import { categories } from '../data';
+import CountrySelect from 'components/common/CountrySelect';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -34,8 +40,12 @@ const FirstElement = () => {
                                 Search Stories
                             </Typography>
                             <TextField
+                                variant="outlined"
                                 fullWidth
-                                placeholder="Enter your email"
+                                placeholder="Search"
+                                InputProps={{
+                                    startAdornment: <InputAdornment position="start"><Search /></InputAdornment>,
+                                }}
                             />
                         </Box>
                     </Grid>
@@ -44,19 +54,12 @@ const FirstElement = () => {
                             <Typography className={classes.title}>
                                 Pick a categories
                             </Typography>
-                            <Select 
-                                fullWidth
-                                native
-                                inputProps={{
-                                  name: 'All',
-                                  id: 'All-native-simple',
-                                }}
-                            >
-                                <option aria-label="None" value="" />
-                                <option value={10}>Ten</option>
-                                <option value={20}>Twenty</option>
-                                <option value={30}>Thirty</option>
-                            </Select>
+                            <TextField value={0} select fullWidth variant="outlined">
+                                {categories.map((item) => (
+                                      <MenuItem key={item.id}  value={item.id}>{item.title}</MenuItem>
+                                ))}
+                                 <MenuItem  value={0}>All</MenuItem>
+                            </TextField>
                         </Box>
                     </Grid>
                     <Grid item xs={12} sm={6} md={3}>
@@ -64,19 +67,7 @@ const FirstElement = () => {
                             <Typography className={classes.title}>
                                 Pick a country
                             </Typography>
-                            <Select 
-                                fullWidth
-                                native
-                                inputProps={{
-                                  name: 'All',
-                                  id: 'All-native-simple',
-                                }}
-                            >
-                                <option aria-label="None" value="" />
-                                <option value={10}>Ten</option>
-                                <option value={20}>Twenty</option>
-                                <option value={30}>Thirty</option>
-                            </Select>
+                            <CountrySelect  value="VI" margin="none" label=" "/>
                         </Box>
                     </Grid>
                     <Grid item xs={12} sm={6} md={3}>
@@ -90,6 +81,7 @@ const FirstElement = () => {
                                 type="date"
                                 defaultValue="2017-05-24"
                                 className={classes.textField}
+                                variant="outlined"
                                 InputLabelProps={{
                                 shrink: true,
                                 }}

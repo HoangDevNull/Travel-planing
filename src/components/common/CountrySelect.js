@@ -976,24 +976,28 @@ const countries = [
   }
 ];
 
-const CountrySelect = ({ value, onChange, required }) => {
+const CountrySelect = ({ value, onChange, required, margin, label }) => {
   return (
     <TextField
       label={
-        <span>
-          Country {required && <span style={{ color: 'red' }}>*</span>}
-        </span>
+        !label ? (
+          <span>
+            Country {required && <span style={{ color: 'red' }}>*</span>}
+          </span>
+        ) : (
+          false
+        )
       }
       value={value}
       onChange={onChange}
-      placeholder="Email"
+      placeholder='Email'
       fullWidth
-      margin="normal"
+      margin={margin || 'normal'}
       select
       InputLabelProps={{
         shrink: true
       }}
-      variant="outlined"
+      variant='outlined'
     >
       {countries.map((option) => (
         <MenuItem key={option.code} value={option.code}>

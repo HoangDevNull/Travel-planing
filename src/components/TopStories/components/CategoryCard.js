@@ -2,8 +2,6 @@ import React,{useEffect, useState} from 'react';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-import StarIcon from '@material-ui/icons/Star';
-import { orange} from '@material-ui/core/colors';
 import {
     Card,
     Typography,
@@ -13,11 +11,12 @@ import {
     CardActions,
     Box,Grid,Link,
   } from '@material-ui/core';
+import { Rating } from '@material-ui/lab';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: '85%',
-        marginLeft: "30px",
+        // width: '85%',
+        // marginLeft: "30px",
         filter: "drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.25))",
         borderRadius : "10px"
     },
@@ -54,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
         alignItems : 'center',
         color : '#000000',
         fontSize: "20px",
-        fontWeight: 400,
         marginBottom : 10,
         fontWeight: "bold",
         
@@ -65,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight : "bold",
         border : "1px solid #3D9A88",
         cursor : "pointer",
+        borderRadius : 5
     },
     cardItemRead : {
         marginLeft : 0,
@@ -75,6 +74,7 @@ const useStyles = makeStyles((theme) => ({
         marginRight : 5,
         fontSize : "20px",
         marginBottom : "0.3rem",
+        color: theme.palette.action.active
     },
     itemcard: {
         marginLeft :10,
@@ -89,12 +89,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const CategoryCard = (obj) => {
     const classes = useStyles();
-    // start
-    const [starts,setStart] = useState([]);
-    // for(let i = 0 ; i < obj.start ; i ++){
-    for(let i = 0 ; i < obj.start ; i ++){
-        starts.push(<StarIcon variant="outlined" key={i} style={{ color: orange[500]  }} className={classes.icon} />);
-    }
+    const rate = Math.floor(Math.random() * (4) + 1);
     return (
         <Card className={classes.root}>
             <CardActionArea>
@@ -106,19 +101,17 @@ const CategoryCard = (obj) => {
             </CardActionArea>
             <CardActions className={classes.itemcard} >
                 <Grid container>
-                    <Typography item xs={12}>
-                        <Box className={classes.cardTitle}>
-                            <LocationOnIcon className={classes.icon} />
-                            <Typography variant="caption" gutterBottom>
-                                {obj.location}
-                            </Typography>
-                        </Box>
-                    </Typography>
-                    <Typography item xs={12}>
-                        <Box className={classes.cardTitle}>
+                    <Box className={classes.cardTitle}>
+                        <LocationOnIcon className={classes.icon} />
+                        <Typography  variant="caption" gutterBottom>
+                            {obj.location}
+                        </Typography>
+                    </Box>
+                  
+                    <Box className={classes.cardTitle}>
                             {obj.title}
-                        </Box>
-                    </Typography>
+                    </Box>
+                  
                     <Grid container item xs={12} justify="space-between">
                         <Box className={classes.cardTitle}>
                             <AccessTimeIcon className={classes.icon}/>
@@ -134,15 +127,9 @@ const CategoryCard = (obj) => {
                         </Box>
                     </Grid>
                     
-                    
-                    {/* <Grid container justify="space-between" item xs={12} className={classes.location}>
-                        <Grid>{obj.createdAt}</Grid>
-                        <Grid>1080 viewer</Grid>
-                    </Grid> */}
                     <Grid container justify="space-between" className={classes.cardItemRead} item xs={12}>
                         <Grid>
-                            {/* start */}
-                            {starts}
+                         <Rating value={rate} readOnly />
                         </Grid>
                         <Grid>
                             <Link className={classes.btnRead}>

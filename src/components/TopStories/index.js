@@ -22,9 +22,9 @@ const TopStories = () => {
       <HeadSessions />
       <Box mb="50px">
         <Container>
-          <FormControl fullWidth>
+          <Box >
             <FirstElement />
-          </FormControl>
+          </Box>
           <SecondElement/>
         </Container>
       </Box>
