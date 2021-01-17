@@ -17,8 +17,11 @@ import {
   LocationOn,
   ArrowBackRounded,
   ArrowForwardRounded,
+  Favorite,
+  Image as ImageIcon,
 } from "@material-ui/icons";
 import CustomHooks from "utils/customHook";
+import MapBox from "./MapBox";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -58,11 +61,42 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     border: "2px solid white",
   },
+  favoriteIcon: {
+    color: "red",
+  },
+  mapBox: {
+    width: ({ width }) => width / 3,
+    height: ({ height }) => height / 3,
+  },
 }));
 
 function ItemModal({ open, handleClose, img }) {
   const { width, height } = CustomHooks.useWindowDimensions();
   const classes = useStyles({ width, height });
+  const [showMap, setShowMap] = React.useState(false);
+  const [mainContent, setMainContent] = React.useState();
+
+  const handleSwitchMainContent = () => {
+    setShowMap((val) => !val);
+  };
+
+  const mainCardMedia = (
+    <CardMedia
+      component="img"
+      alt={img.split("/")[4] || "NULL"}
+      image={img}
+      title={img.split("/")[4] || "NULL TITLE"}
+      className={classes.media}
+    />
+  );
+  const mainMapBox = (
+    <Grid container>
+      <Grid item xs={12}>
+        <MapBox width={width * 0.75} height={height * 0.75} />
+      </Grid>
+    </Grid>
+  );
+
   return (
     <div>
       <Modal
@@ -83,35 +117,38 @@ function ItemModal({ open, handleClose, img }) {
             <IconButton className={classes.arrowRightIcon} size="medium">
               <ArrowForwardRounded />
             </IconButton>
-            <Grid
-              direction="row"
-              justify="space-around"
-              container
-              wrap="nowrap"
-              my={2}
-            >
-              <Typography variant="h5">California</Typography>
-              <Button
-                variant="outlined"
-                className={classes.button}
-                startIcon={<StarRateOutlined />}
-              >
-                Save
-              </Button>
+            <Grid container>
+              <Grid item xs={0} md={2}></Grid>
+              <Grid item xs={12} md={8}>
+                <Box display="flex" wrap="nowrap" py={1} alignItems="center">
+                  <Box flexGrow={1} flexWrap="wrap">
+                    <Typography variant="h5">
+                      Travelling adventure in California
+                    </Typography>
+                  </Box>
+                  <Favorite className={classes.favoriteIcon} />
+                  <Typography variant="subtitle1">41 likes</Typography>
+                  <Button
+                    variant="outlined"
+                    className={classes.button}
+                    startIcon={<StarRateOutlined />}
+                  >
+                    Save
+                  </Button>
+                </Box>
+              </Grid>
+              <Grid item xs={0} md={2}></Grid>
             </Grid>
-            <CardMedia
-              component="img"
-              alt={img.split("/")[4] || "NULL"}
-              image={img}
-              title={img.split("/")[4] || "NULL TITLE"}
-              className={classes.media}
-            />
+
+            {showMap ? mainMapBox : mainCardMedia}
+
             <Grid
               direction="row"
               justify="space-evenly"
               container
               wrap="nowrap"
-              my={2}
+              my={1}
+              alignItems="center"
             >
               <Box display="flex" flexDirection="row">
                 <RemoveRedEye />
@@ -122,9 +159,10 @@ function ItemModal({ open, handleClose, img }) {
               <Button
                 variant="outlined"
                 className={classes.button}
-                startIcon={<LocationOn />}
+                startIcon={showMap ? <ImageIcon /> : <LocationOn />}
+                onClick={handleSwitchMainContent}
               >
-                View Location
+                {showMap ? "View Image" : "View Location"}
               </Button>
             </Grid>
           </div>
