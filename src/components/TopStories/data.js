@@ -17,7 +17,8 @@ const postData = [
     viewer: '1080 viewer',
     category: 'Travel on budget trips',
     status: 'Activated',
-    location: ' Queens, New York City , USA '
+    location: ' Queens, New York City , USA ',
+    start : 4
   },
   {
     id: 2,
@@ -37,7 +38,8 @@ const postData = [
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
     category: 'Travel on budget trips',
-    status: 'Activated'
+    status: 'Activated',
+    start : 2 
   },
   {
     id: 3,
@@ -58,7 +60,8 @@ const postData = [
     viewer: '1080 viewer',
     category: 'Travel on budget trips',
     status: 'Pending',
-    location: ' Queens, New York City , USA '
+    location: ' Queens, New York City , USA ',
+    start : 4
   },
   {
     id: 4,
@@ -78,7 +81,8 @@ const postData = [
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
     category: 'Travel on budget trips',
-    status: 'Activated'
+    status: 'Activated',
+    start : 2
   },
   {
     id: 5,
@@ -98,7 +102,8 @@ const postData = [
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
     category: 'Travel on budget trips',
-    status: 'Activated'
+    status: 'Activated',
+    start : 4
   },
   {
     id: 6,
@@ -118,7 +123,8 @@ const postData = [
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
     category: 'Travel on budget trips',
-    status: 'Activated'
+    status: 'Activated',
+    start : 3
   },
   {
     id: 7,
@@ -138,7 +144,8 @@ const postData = [
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
     category: 'Travel on budget trips',
-    status: 'Blocked'
+    status: 'Blocked',
+    start : 5
   },
   {
     id: 8,
@@ -158,7 +165,8 @@ const postData = [
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
     category: 'Travel on budget trips',
-    status: 'Pending'
+    status: 'Pending',
+    start : 1 
   },
   {
     id: 9,
@@ -178,7 +186,8 @@ const postData = [
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
     category: 'Travel on budget trips',
-    status: 'Pending'
+    status: 'Pending',
+    start : 3
   },
   {
     id: 10,
@@ -198,7 +207,8 @@ const postData = [
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
     category: 'Travel on budget trips',
-    status: 'Pending'
+    status: 'Pending',
+    start : 5
   },
   {
     id: 11,
@@ -218,7 +228,8 @@ const postData = [
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
     category: 'Travel on budget trips',
-    status: 'Blocked'
+    status: 'Blocked',
+    start : 4
   },
   {
     id: 12,
@@ -238,7 +249,8 @@ const postData = [
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
     category: 'Travel on budget trips',
-    status: 'Blocked'
+    status: 'Blocked',
+    start : 5 
   },
   {
     id: 13,
@@ -258,7 +270,8 @@ const postData = [
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
     category: 'Travel on budget trips',
-    status: 'Pending'
+    status: 'Pending',
+    start : 4
   },
   {
     id: 14,
@@ -278,7 +291,8 @@ const postData = [
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
     category: 'Travel on budget trips',
-    status: 'Pending'
+    status: 'Pending',
+    start : 1 
   },
   {
     id: 15,
@@ -298,7 +312,8 @@ const postData = [
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
     category: 'Travel on budget trips',
-    status: 'Pending'
+    status: 'Pending',
+    start : 2
   }
 ];
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
@@ -11,7 +11,7 @@ import {
     makeStyles,
     CardActionArea,
     CardActions,
-    Box,Grid,Link,Icon
+    Box,Grid,Link,
   } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -79,7 +79,6 @@ const useStyles = makeStyles((theme) => ({
     itemcard: {
         marginLeft :10,
         marginRight : 10,
-
     },
     ul: {
         listStyle: 'none',
@@ -90,6 +89,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 const CategoryCard = (obj) => {
     const classes = useStyles();
+    // start
+    const [starts,setStart] = useState([]);
+    // for(let i = 0 ; i < obj.start ; i ++){
+    for(let i = 0 ; i < obj.start ; i ++){
+        starts.push(<StarIcon variant="outlined" key={i} style={{ color: orange[500]  }} className={classes.icon} />);
+    }
     return (
         <Card className={classes.root}>
             <CardActionArea>
@@ -136,11 +141,8 @@ const CategoryCard = (obj) => {
                     </Grid> */}
                     <Grid container justify="space-between" className={classes.cardItemRead} item xs={12}>
                         <Grid>
-                            <StarIcon variant="outlined" style={{ color: orange[500]  }} className={classes.icon} ></StarIcon>
-                            <StarIcon variant="outlined" style={{ color: orange[500]  }} className={classes.icon} ></StarIcon>
-                            <StarIcon variant="outlined" style={{ color: orange[500]  }} className={classes.icon} ></StarIcon>
-                            <StarIcon variant="outlined" style={{ color: orange[500]  }} className={classes.icon} ></StarIcon>
-                            <StarIcon variant="outlined" style={{ color: orange[500]  }} className={classes.icon} ></StarIcon>
+                            {/* start */}
+                            {starts}
                         </Grid>
                         <Grid>
                             <Link className={classes.btnRead}>
