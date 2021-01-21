@@ -988,16 +988,17 @@ const CountrySelect = ({ value, onChange, required, margin, label }) => {
           false
         )
       }
+      name="country"
       value={value}
       onChange={onChange}
-      placeholder='Email'
+      placeholder="Email"
       fullWidth
       margin={margin || 'normal'}
       select
       InputLabelProps={{
         shrink: true
       }}
-      variant='outlined'
+      variant="outlined"
     >
       {countries.map((option) => (
         <MenuItem key={option.code} value={option.code}>

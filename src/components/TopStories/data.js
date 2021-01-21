@@ -1,8 +1,8 @@
 const postData = [
   {
     id: 1,
-    title: 'Travel around the word with only 1$',
-    createdAt: 'December 23, 2018',
+    title: 'Kinh nghiệm đi Sintra trong ngày từ Lisbon – Bồ Đào Nha',
+    createdAt: '20/03/2020',
     image:
       'https://images.pexels.com/photos/5554235/pexels-photo-5554235.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     content:
@@ -15,15 +15,15 @@ const postData = [
     },
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
-    category: 'Travel on budget trips',
+    category: 'Adventure travel',
     status: 'Activated',
     location: ' Queens, New York City , USA ',
     start : 4
   },
   {
     id: 2,
-    title: 'Travel around the word with only 1$',
-    createdAt: 'December 23, 2018',
+    title: 'New York on Fire',
+    createdAt: '19/02/2019',
     image:
       'https://images.pexels.com/photos/5225474/pexels-photo-5225474.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     content:
@@ -37,14 +37,14 @@ const postData = [
     },
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
-    category: 'Travel on budget trips',
+    category: 'Backbacking',
     status: 'Activated',
-    start : 2 
+    start : 2
   },
   {
     id: 3,
-    title: 'Travel around the word with only 1$',
-    createdAt: 'December 23, 2018',
+    title: 'Ride with my team',
+    createdAt: '20/6/2020',
     image:
       'https://images.pexels.com/photos/450441/pexels-photo-450441.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     content:
@@ -58,15 +58,15 @@ const postData = [
     },
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
-    category: 'Travel on budget trips',
+    category: 'Adventure travel',
     status: 'Pending',
     location: ' Queens, New York City , USA ',
     start : 4
   },
   {
     id: 4,
-    title: 'Travel around the word with only 1$',
-    createdAt: 'December 23, 2018',
+    title: 'Travel to London',
+    createdAt: '20/6/2020',
     image:
       'https://images.pexels.com/photos/2082949/pexels-photo-2082949.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     content:
@@ -80,14 +80,14 @@ const postData = [
     },
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
-    category: 'Travel on budget trips',
+    category: 'Adventure travel',
     status: 'Activated',
     start : 2
   },
   {
     id: 5,
-    title: 'Travel around the word with only 1$',
-    createdAt: 'December 23, 2018',
+    title: 'Hanoi food is amazing',
+    createdAt: '20/6/2020',
     image:
       'https://images.pexels.com/photos/386009/pexels-photo-386009.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     content:
@@ -101,14 +101,14 @@ const postData = [
     },
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
-    category: 'Travel on budget trips',
+    category: 'Adventure travel',
     status: 'Activated',
     start : 4
   },
   {
     id: 6,
-    title: 'Travel around the word with only 1$',
-    createdAt: 'December 23, 2018',
+    title: 'Long trip in Viet Nam',
+    createdAt: '20/6/2020',
     image:
       'https://images.pexels.com/photos/386009/pexels-photo-386009.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     content:
@@ -122,14 +122,14 @@ const postData = [
     },
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
-    category: 'Travel on budget trips',
+    category: 'Adventure travel',
     status: 'Activated',
     start : 3
   },
   {
     id: 7,
     title: 'Travel around the word with only 1$',
-    createdAt: 'December 23, 2018',
+    createdAt: '20/6/2020',
     image:
       'https://images.pexels.com/photos/386009/pexels-photo-386009.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     content:
@@ -143,14 +143,14 @@ const postData = [
     },
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
-    category: 'Travel on budget trips',
+    category: 'Backbacking',
     status: 'Blocked',
     start : 5
   },
   {
     id: 8,
     title: 'Travel around the word with only 1$',
-    createdAt: 'December 23, 2018',
+    createdAt: '20/6/2020',
     image:
       'https://images.pexels.com/photos/5225474/pexels-photo-5225474.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     content:
@@ -164,14 +164,14 @@ const postData = [
     },
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
-    category: 'Travel on budget trips',
+    category: 'Adventure travel',
     status: 'Pending',
-    start : 1 
+    start : 1
   },
   {
     id: 9,
     title: 'Travel around the word with only 1$',
-    createdAt: 'December 23, 2018',
+    createdAt: '20/6/2020',
     image:
       'https://images.pexels.com/photos/5225474/pexels-photo-5225474.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     content:
@@ -185,14 +185,14 @@ const postData = [
     },
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
-    category: 'Travel on budget trips',
+    category: 'Adventure travel',
     status: 'Pending',
     start : 3
   },
   {
     id: 10,
     title: 'Travel around the word with only 1$',
-    createdAt: 'December 23, 2018',
+    createdAt: '20/6/2020',
     image:
       'https://images.pexels.com/photos/5225474/pexels-photo-5225474.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     content:
@@ -206,14 +206,14 @@ const postData = [
     },
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
-    category: 'Travel on budget trips',
+    category: 'Adventure travel',
     status: 'Pending',
     start : 5
   },
   {
     id: 11,
     title: 'Travel around the word with only 1$',
-    createdAt: 'December 23, 2018',
+    createdAt: '20/6/2020',
     image:
       'https://images.pexels.com/photos/5225474/pexels-photo-5225474.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     content:
@@ -227,14 +227,14 @@ const postData = [
     },
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
-    category: 'Travel on budget trips',
+    category: 'Adventure travel',
     status: 'Blocked',
     start : 4
   },
   {
     id: 12,
     title: 'Travel around the word with only 1$',
-    createdAt: 'December 23, 2018',
+    createdAt: '20/6/2020',
     image:
       'https://images.pexels.com/photos/5225474/pexels-photo-5225474.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     content:
@@ -248,14 +248,14 @@ const postData = [
     },
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
-    category: 'Travel on budget trips',
+    category: 'Adventure travel',
     status: 'Blocked',
-    start : 5 
+    start : 5
   },
   {
     id: 13,
     title: 'Travel around the word with only 1$',
-    createdAt: 'December 23, 2018',
+    createdAt: '20/6/2020',
     image:
       'https://images.pexels.com/photos/5225474/pexels-photo-5225474.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     content:
@@ -269,14 +269,14 @@ const postData = [
     },
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
-    category: 'Travel on budget trips',
+    category: 'Adventure travel',
     status: 'Pending',
     start : 4
   },
   {
     id: 14,
     title: 'Travel around the word with only 1$',
-    createdAt: 'December 23, 2018',
+    createdAt: '20/6/2020',
     image:
       'https://images.pexels.com/photos/5225474/pexels-photo-5225474.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     content:
@@ -290,14 +290,14 @@ const postData = [
     },
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
-    category: 'Travel on budget trips',
+    category: 'Adventure travel',
     status: 'Pending',
-    start : 1 
+    start : 1
   },
   {
     id: 15,
     title: 'Travel around the word with only 1$',
-    createdAt: 'December 23, 2018',
+    createdAt: '20/6/2020',
     image:
       'https://images.pexels.com/photos/5225474/pexels-photo-5225474.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     content:
@@ -311,7 +311,7 @@ const postData = [
     },
     time: 'June, 29th, 2020',
     viewer: '1080 viewer',
-    category: 'Travel on budget trips',
+    category: 'Adventure travel',
     status: 'Pending',
     start : 2
   }
