@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import VisibilityIcon from '@material-ui/icons/Visibility';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import React, { useEffect, useState } from "react";
+import AccessTimeIcon from "@material-ui/icons/AccessTime";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
 import {
   Card,
   Typography,
@@ -11,84 +11,94 @@ import {
   CardActions,
   Box,
   Grid,
-  Link
-} from '@material-ui/core';
-import { Rating } from '@material-ui/lab';
-import { useHistory } from 'react-router-dom';
-import moment from 'moment';
+  Link,
+} from "@material-ui/core";
+import { Rating } from "@material-ui/lab";
+import { useHistory } from "react-router-dom";
+import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     // width: '85%',
     // marginLeft: "30px",
-    filter: 'drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.25))',
-    borderRadius: '10px'
+    filter: "drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.25))",
+    borderRadius: "10px",
+  },
+  fontBold: {
+    fontWeight: "bold",
   },
   media: {
-    height: 250
+    height: 250,
   },
   outStanding: {
-    position: 'absolute',
-    top: '23px',
+    position: "absolute",
+    top: "23px",
     left: 0,
     size: 20,
-    fontWeight: 'bold',
-    padding: '10px 13px',
-    background: '#EC4C47',
-    color: '#ffffff'
+    borderTopRightRadius: 7,
+    borderBottomRightRadius: 7,
+    padding: "10px 13px",
+    color: "#ffffff",
   },
   avatar: {
-    position: 'absolute',
+    position: "absolute",
     right: 28,
     zIndex: 2,
-    bottom: '-24px',
+    bottom: "-24px",
     width: 48,
     height: 48,
-    borderRadius: '50%',
-    border: '4px solid #ffffff'
+    borderRadius: "50%",
+    border: "4px solid #ffffff",
   },
   location: {
     fontSize: 30,
-    color: '#757575'
+    color: "#757575",
   },
   cardTitle: {
-    display: 'flex',
-    alignItems: 'center',
-    color: '#000000',
-    fontSize: '20px',
+    display: "flex",
+    alignItems: "center",
+    color: "#000000",
+    fontSize: "20px",
     marginBottom: 10,
-    fontWeight: 'bold'
+    fontWeight: "bold",
   },
   btnRead: {
-    color: '#3D9A88',
-    padding: '10px 15px',
-    fontWeight: 'bold',
-    border: '1px solid #3D9A88',
-    cursor: 'pointer',
-    borderRadius: 5
+    color: "#3D9A88",
+    padding: "10px 15px",
+    fontWeight: "bold",
+    border: "1px solid #3D9A88",
+    cursor: "pointer",
+    borderRadius: 5,
   },
   cardItemRead: {
     marginLeft: 0,
     marginTop: 10,
-    marginBottom: 20
+    marginBottom: 20,
   },
   icon: {
     marginRight: 5,
-    fontSize: '20px',
-    marginBottom: '0.3rem',
-    color: theme.palette.action.active
+    fontSize: "20px",
+    marginBottom: "0.3rem",
+    color: theme.palette.action.active,
   },
   itemcard: {
     marginLeft: 10,
-    marginRight: 10
+    marginRight: 10,
   },
   ul: {
-    listStyle: 'none',
+    listStyle: "none",
     padding: 0,
     margin: 0,
-    display: 'flex'
-  }
+    display: "flex",
+  },
 }));
+
+const categories = {
+  "Travel on budget": "primary.main",
+  Backbacking: "info.main",
+  "Adventure travel": "success.main",
+  "Road trip": "error.main",
+};
 const CategoryCard = (obj) => {
   const classes = useStyles();
   const history = useHistory();
@@ -104,7 +114,9 @@ const CategoryCard = (obj) => {
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia className={classes.media} image={obj.image} />
-        <Typography className={classes.outStanding}>Road Trip</Typography>
+        <Box bgcolor={categories[obj.category]} className={classes.outStanding}>
+          <Typography className={classes.fontBold}>{obj.category}</Typography>
+        </Box>
         <CardMedia className={classes.avatar} image={obj.user.avatar} />
       </CardActionArea>
       <CardActions className={classes.itemcard}>
@@ -122,13 +134,13 @@ const CategoryCard = (obj) => {
             <Box className={classes.cardTitle}>
               <AccessTimeIcon className={classes.icon} />
               <Typography variant="caption" gutterBottom>
-                {moment(obj.createdAt).format('')}
+                {moment(obj.createdAt).format("LL")}
               </Typography>
             </Box>
             <Box className={classes.cardTitle}>
               <VisibilityIcon className={classes.icon} />
               <Typography variant="caption" gutterBottom>
-                1080 viewer
+                {obj.viewer}
               </Typography>
             </Box>
           </Grid>

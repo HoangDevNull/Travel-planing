@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Box,
   Container,
@@ -8,32 +8,32 @@ import {
   TextField,
   Select,
   MenuItem,
-  InputAdornment
-} from '@material-ui/core';
-import { Search } from '@material-ui/icons';
+  InputAdornment,
+} from "@material-ui/core";
+import { Search } from "@material-ui/icons";
 
-import { categories } from '../data';
-import CountrySelect from 'components/common/CountrySelect';
+import { categories } from "../data";
+import CountrySelect from "components/common/CountrySelect";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%'
+    width: "100%",
   },
   title: {
     // fontFamily: "Poppins",
-    fontStyle: 'normal',
-    fontWeight: '500',
-    fontSize: '18px',
-    lineHeight: '27px',
-    marginBottom: '15px'
-  }
+    fontStyle: "normal",
+    fontWeight: "500",
+    fontSize: "18px",
+    lineHeight: "27px",
+    marginBottom: "15px",
+  },
 }));
 
 const sortBy = [
-  { value: 'date-desc', title: '(Date) Desc' },
-  { value: 'date-asc', title: '(Date) Asc' },
-  { value: 'name-desc', title: '(Name) A -> Z' },
-  { value: 'name-asc', title: '(Name) Z -> A' }
+  { value: "date-desc", title: "(Date) Desc" },
+  { value: "date-asc", title: "(Date) Asc" },
+  { value: "name-desc", title: "(Name) A -> Z" },
+  { value: "name-asc", title: "(Name) Z -> A" },
 ];
 const FirstElement = ({ onSearch, onFilter }) => {
   const classes = useStyles();
@@ -55,7 +55,7 @@ const FirstElement = ({ onSearch, onFilter }) => {
                     <InputAdornment position="start">
                       <Search />
                     </InputAdornment>
-                  )
+                  ),
                 }}
                 onChange={onSearch}
               />
@@ -67,7 +67,7 @@ const FirstElement = ({ onSearch, onFilter }) => {
                 Pick a categories
               </Typography>
               <TextField
-                value={0}
+                defaultValue={0}
                 select
                 name="category"
                 fullWidth
@@ -75,7 +75,7 @@ const FirstElement = ({ onSearch, onFilter }) => {
                 onChange={onFilter}
               >
                 {categories.map((item) => (
-                  <MenuItem key={item.id} value={item.id}>
+                  <MenuItem key={item.id} value={item.title}>
                     {item.title}
                   </MenuItem>
                 ))}
@@ -98,7 +98,7 @@ const FirstElement = ({ onSearch, onFilter }) => {
             <Box>
               <Typography className={classes.title}>Sort by</Typography>
               <TextField
-                value={0}
+                defaultValue={0}
                 select
                 name="sort"
                 fullWidth

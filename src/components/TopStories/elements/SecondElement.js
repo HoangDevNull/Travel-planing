@@ -1,23 +1,36 @@
-import React from 'react';
-import CategoryCard from '../components/CategoryCard';
-import Pagination from '@material-ui/lab/Pagination';
+import React from "react";
+import CategoryCard from "../components/CategoryCard";
+import Pagination from "@material-ui/lab/Pagination";
 
-import { Box, Container, Grid,Typography, makeStyles } from '@material-ui/core';
+import {
+  Box,
+  Container,
+  Grid,
+  Typography,
+  makeStyles,
+} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%'
+    width: "100%",
   },
   itemcard: {
     marginRight: 10,
     marginTop: 20,
-    marginBottom: 30
-  }
+    marginBottom: 30,
+  },
 }));
 const SecondElement = ({ data }) => {
   const classes = useStyles();
   if (data.length === 0) {
-    return <Typography variant="h4"> Sorry, no result found </Typography>;
+    return (
+      <Box width="100%" mt={5}>
+        <Typography variant="h4" align="center">
+          {" "}
+          Sorry, no result found{" "}
+        </Typography>
+      </Box>
+    );
   }
   return (
     <Box className={classes.root} mt="70px">
