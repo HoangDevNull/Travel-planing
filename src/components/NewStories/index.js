@@ -42,7 +42,8 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     background: '#FFFFFF 0% 0% no-repeat padding-box',
     cursor: 'pointer',
-    border: '1px dashed #707070'
+    border: '1px dashed #707070',
+    borderRadius: 5
   }
 }));
 
@@ -51,6 +52,7 @@ const NewStories = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const userProfile = useSelector((state) => state.auth.userProfile);
+  const previewPost = useSelector((state) => state.post.previewPost);
 
   const [inputData, setInputData] = React.useState({
     title: '',
@@ -61,10 +63,15 @@ const NewStories = () => {
 
   const [content, setContent] = React.useState('');
 
+  React.useEffect(() => {
+    if (previewPost) {
+      setInputData(previewPost);
+    }
+  }, [previewPost]);
+
   const handleDropEstimateFile = async (file) => {
     try {
       let image = file[0];
-      // const { data } = await uploadRequest(image);
       setInputData({ ...inputData, image });
     } catch (err) {
       console.log(err.response);
@@ -96,7 +103,8 @@ const NewStories = () => {
       payload.status = 'Activated';
       payload.user = userProfile;
 
-      dispatch(createPostAction.set(payload));
+      inputData.content = content;
+      dispatch(createPostAction.set(inputData));
       history.push('/add-story/preview');
     } catch (err) {
       console.log(err?.response);
@@ -104,53 +112,54 @@ const NewStories = () => {
   };
 
   const { title, category, location, image } = inputData;
+  console.log({ content });
   return (
     <>
       <HeadSessions />
-      <Box my="80px">
+      <Box my='80px'>
         <Container>
-          <Grid container spacing={4} justify="center" alignItems="center">
+          <Grid container spacing={4} justify='center' alignItems='center'>
             <Grid item xs={12} sm={10}>
-              <Typography variant="h5" className={classes.font_bold}>
+              <Typography variant='h5' className={classes.font_bold}>
                 Create new stories
               </Typography>
             </Grid>
             <Grid item xs={12} sm={10} container spacing={3}>
               <Grid item xs={12} sm={4}>
-                <Typography variant="body2" className={classes.font_bold}>
+                <Typography variant='body2' className={classes.font_bold}>
                   Your stories title
                   <span className={classes.required_start}>*</span>
                 </Typography>
                 <TextField
-                  placeholder="eg. Travel around the word"
+                  placeholder='eg. Travel around the word'
                   fullWidth
-                  margin="normal"
-                  name="title"
+                  margin='normal'
+                  name='title'
                   value={title}
                   onChange={handleInputChange}
                   InputLabelProps={{
                     shrink: true
                   }}
                   error={title === ''}
-                  variant="outlined"
+                  variant='outlined'
                 />
               </Grid>
               <Grid item xs={12} sm={4}>
-                <Typography variant="body2" className={classes.font_bold}>
+                <Typography variant='body2' className={classes.font_bold}>
                   Pick a category
                   <span className={classes.required_start}>*</span>
                 </Typography>
                 <TextField
                   fullWidth
-                  margin="normal"
-                  name="category"
+                  margin='normal'
+                  name='category'
                   value={category}
                   select
                   onChange={handleInputChange}
                   InputLabelProps={{
                     shrink: true
                   }}
-                  variant="outlined"
+                  variant='outlined'
                 >
                   {categories.map((option) => (
                     <MenuItem key={option.id} value={option.id}>
@@ -160,66 +169,72 @@ const NewStories = () => {
                 </TextField>
               </Grid>
               <Grid item xs={12} sm={6} md={4}>
-                <Typography variant="body2" className={classes.font_bold}>
+                <Typography variant='body2' className={classes.font_bold}>
                   Upload an main image
                   <span className={classes.required_start}>*</span>
                 </Typography>
                 <Dropzone onDrop={(file) => handleDropEstimateFile(file)}>
                   {({ getRootProps, getInputProps }) => (
-                    <Box mt="16px" mb="8px">
+                    <Box mt='16px' mb='8px'>
                       <Box
-                        display="flex"
-                        flexDirection="row"
-                        justifyContent="flex-start"
-                        alignItems="center"
+                        display='flex'
+                        flexDirection='row'
+                        justifyContent='flex-start'
+                        alignItems='center'
                         {...getRootProps()}
                         className={classes.uploadBox}
-                        p="14px"
-                        position="relative"
+                        p='14px'
+                        position='relative'
                       >
                         <input {...getInputProps()} />
-                        <Typography variant="body1" color="textSecondary">
+                        <Typography variant='body1' color='textSecondary'>
                           {image ? image?.name : 'Drag & drop your file'}
                         </Typography>
                         <Box
-                          position="absolute"
-                          width="52px"
-                          height="52px"
-                          right="0"
-                          bgcolor="primary.main"
-                          display="flex"
-                          justifyContent="center"
-                          alignItems="center"
+                          position='absolute'
+                          width='52px'
+                          height='52px'
+                          right='0'
+                          bgcolor='primary.main'
+                          display='flex'
+                          justifyContent='center'
+                          alignItems='center'
                           boxShadow={5}
                         >
-                          <BackupOutlinedIcon color="secondary" />
+                          <BackupOutlinedIcon color='secondary' />
                         </Box>
                       </Box>
                     </Box>
                   )}
                 </Dropzone>
+
+                {!image && (
+                  <Typography variant='caption' color='error'>
+                    Missing file
+                  </Typography>
+                )}
               </Grid>
               <Grid item xs={12} sm={4}>
-                <Typography variant="body2" className={classes.font_bold}>
+                <Typography variant='body2' className={classes.font_bold}>
                   Location
                   <span className={classes.required_start}>*</span>
                 </Typography>
                 <TextField
-                  placeholder="eg. South California"
+                  placeholder='eg. South California'
                   fullWidth
-                  margin="normal"
-                  name="location"
+                  margin='normal'
+                  name='location'
                   value={location}
                   onChange={handleInputChange}
                   error={location === ''}
                   InputLabelProps={{
                     shrink: true
                   }}
-                  variant="outlined"
+                  variant='outlined'
                 />
               </Grid>
             </Grid>
-            <Grid item xs={12} sm={10} container justify="center">
+            <Grid item xs={12} sm={10} container justify='center'>
               <Paper>
                 <Editor
                   onChange={(html) => {
@@ -228,10 +243,10 @@ const NewStories = () => {
                 />
               </Paper>
             </Grid>
-            <Grid item xs={12} sm={10} container justify="center">
+            <Grid item xs={12} sm={10} container justify='center'>
               <Button
-                variant="contained"
-                color="primary"
+                variant='contained'
+                color='primary'
                 onClick={handlePreview}
               >
                 Preview

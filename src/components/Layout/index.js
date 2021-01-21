@@ -34,7 +34,8 @@ function Layout({ children }) {
     pathname === '/feature-video-detail' ||
     pathname === '/setting' ||
     pathname === '/add-story' ||
-    pathname === '/add-story/preview';
+    pathname === '/add-story/preview' ||
+    pathname.includes('story/');
 
   if (!isShowNavbar) return <> {children} </>;
 

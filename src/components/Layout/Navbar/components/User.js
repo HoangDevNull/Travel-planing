@@ -82,7 +82,7 @@ const User = () => {
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
-    if (prevOpen.current === true && open === false) {
+    if (prevOpen.current === true && open === false && anchorRef.current) {
       anchorRef.current.focus();
     }
 
@@ -91,7 +91,7 @@ const User = () => {
 
   return (
     <>
-      <Hidden xsDown>
+      <Hidden smDown>
         <Button
           color="inherit"
           endIcon={
@@ -116,7 +116,7 @@ const User = () => {
         </Button>
       </Hidden>
 
-      <Hidden smUp>
+      <Hidden mdUp>
         <IconButton color="secondary" onClick={handleToggle} ref={anchorRef}>
           <FontAwesomeIcon size="xs" icon={['far', 'user']} />
         </IconButton>

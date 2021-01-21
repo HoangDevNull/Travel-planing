@@ -1,8 +1,10 @@
 import React from 'react';
 
-import { Box, Typography, makeStyles, Container } from '@material-ui/core';
+import { Box, Typography, makeStyles, Container ,FormControl} from '@material-ui/core';
 
 import HeadSessions from './HeadSessions';
+import FirstElement from './elements/FirstElement';
+import SecondElement from './elements/SecondElement';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -20,7 +22,10 @@ const TopStories = () => {
       <HeadSessions />
       <Box mb="50px">
         <Container>
-          <Typography variant="h4">Content here</Typography>
+          <Box >
+            <FirstElement />
+          </Box>
+          <SecondElement/>
         </Container>
       </Box>
     </>

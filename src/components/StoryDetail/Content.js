@@ -6,7 +6,8 @@ import htmlToDraft from 'html-to-draftjs';
 import { Editor } from 'react-draft-wysiwyg';
 
 import { html } from './data';
-import { Box } from '@material-ui/core';
+import { Container, Grid, Box } from '@material-ui/core';
+import { Edit } from '@material-ui/icons';
 
 class ConvertToRawDraftContent extends Component {
   constructor(props) {
@@ -34,13 +35,15 @@ class ConvertToRawDraftContent extends Component {
     const { editorState } = this.state;
     return (
       <>
-        <Box overflow="hidden" width="100%" className="rdw-storybook-root">
-          <Editor
-            editorState={editorState}
-            toolbarHidden
-            onEditorStateChange={this.onEditorStateChange}
-          />
-        </Box>
+        <Container>
+          <Box overflow='hidden' width='100%' className='rdw-storybook-root'>
+            <Editor
+              editorState={editorState}
+              toolbarHidden
+              onEditorStateChange={this.onEditorStateChange}
+            />
+          </Box>
+        </Container>
       </>
     );
   }

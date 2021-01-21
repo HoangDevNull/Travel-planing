@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Box,
   TextField,
@@ -14,52 +14,52 @@ import {
   useTheme,
   Paper,
   Hidden
-} from '@material-ui/core';
+} from "@material-ui/core";
 
-import LoadingButton from 'components/common/LoadingButton';
-import CenterDiv from 'components/common/CenterDiv';
+import LoadingButton from "components/common/LoadingButton";
+import CenterDiv from "components/common/CenterDiv";
 
-import { loginAction } from 'redux/auth';
-import { useDispatch, useSelector } from 'react-redux';
+import { loginAction } from "redux/auth";
+import { useDispatch, useSelector } from "react-redux";
 
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
-import clsx from 'clsx';
+import clsx from "clsx";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import { far } from '@fortawesome/free-regular-svg-icons';
-import { fas } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import { far } from "@fortawesome/free-regular-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 
 library.add(fab, far, fas);
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    minHeight: 'calc(100vh - 100px)'
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    minHeight: "calc(100vh - 100px)"
   },
   signup_form: {
     padding: 20,
     width: 850,
-    height: 480,
+    height: 500,
     borderRadius: 15,
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       padding: 10,
-      width: '100%'
+      width: "100%"
     }
   },
   icon_btn: {
-    cursor: 'default !important',
-    borderRadius: 'unset',
+    cursor: "default !important",
+    borderRadius: "unset",
     borderRight: `2px solid ${theme.palette.primary.main}`,
-    padding: '5px 12px 5px 12px',
-    '&:hover': {
-      background: 'unset'
+    padding: "5px 12px 5px 12px",
+    "&:hover": {
+      background: "unset"
     }
   },
   icon_btn_error: {
@@ -67,34 +67,34 @@ const useStyles = makeStyles((theme) => ({
   },
   image_wrapper: {
     backgroundImage:
-      'url(https://images.pexels.com/photos/395196/pexels-photo-395196.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)',
-    backgroundPosition: 'center center',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
+      "url(https://images.pexels.com/photos/395196/pexels-photo-395196.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)",
+    backgroundPosition: "center center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
     height: 600,
-    width: '100%',
+    width: "100%",
     marginLeft: -50,
     zIndex: -1,
     paddingLeft: 80,
-    position: 'relative',
+    position: "relative",
     borderRadius: 15
   },
   backdrop: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     left: 0,
     height: 600,
-    width: '100%',
-    background: 'rgba(0,0,0,.4)',
+    width: "100%",
+    background: "rgba(0,0,0,.4)",
     zIndex: -1,
     borderRadius: 15
   },
   font_bold: {
-    fontWeight: 'bold'
+    fontWeight: "bold"
   }
 }));
 const Signin = () => {
-  const { t } = useTranslation('auth');
+  const { t } = useTranslation("auth");
   const classes = useStyles();
   const theme = useTheme();
   const dispatch = useDispatch();
@@ -104,20 +104,20 @@ const Signin = () => {
   const loading = useSelector((state) => state.auth.loading);
   const [showPassword, setShowPassword] = useState(false);
   const [inputData, setInputData] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: ""
   });
 
   const [error, setError] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: ""
   });
 
   const [isRememberMe, setIsRememberMe] = useState(false);
 
   useEffect(() => {
     if (isLoggedIn) {
-      history.push('/');
+      history.push("/");
     }
   }, [isLoggedIn, history]);
 
@@ -128,29 +128,29 @@ const Signin = () => {
     const name = e.target.name;
     const value = e.target.value.trim();
     // Validate
-    if (name === 'email') {
+    if (name === "email") {
       // eslint-disable-next-line no-useless-escape
       const re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
       const isValid = re.test(String(value).toLowerCase());
       if (!isValid && value?.length > 0) {
-        setError({ ...error, [name]: 'invalid-email' });
+        setError({ ...error, [name]: "invalid-email" });
       } else {
-        error?.email !== '' && setError({ ...error, [name]: '' });
+        error?.email !== "" && setError({ ...error, [name]: "" });
       }
       if (value.length > 254) return;
     } else {
       // Minimum password length have to be 6 character
       if ((value.length < 6 || value.length > 32) && value?.length !== 0) {
-        setError({ ...error, [name]: 'password-length' });
+        setError({ ...error, [name]: "password-length" });
       } else {
-        error?.password !== '' && setError({ ...error, [name]: '' });
+        error?.password !== "" && setError({ ...error, [name]: "" });
       }
       if (value.length > 32) return;
     }
 
     if (value.length === 0) {
-      setError({ ...error, [name]: 'missing-value' });
+      setError({ ...error, [name]: "missing-value" });
     }
 
     setInputData({ ...inputData, [name]: value });
@@ -175,7 +175,7 @@ const Signin = () => {
       <CenterDiv position="relative" width="100%" mt="10px">
         <Link
           onClick={() => {
-            history.push('/');
+            history.push("/");
           }}
           underline="none"
           className={classes.font_bold}
@@ -191,13 +191,13 @@ const Signin = () => {
           <Grid container justify="space-around" direction="column" spacing={3}>
             <Grid item xs={12}>
               <Typography variant="h5" align="center">
-                {t('member-login')}
+                {t("member-login")}
               </Typography>
             </Grid>
 
             <Grid item xs={12}>
               <TextField
-                placeholder={t('type-your-email')}
+                placeholder={t("type-your-email")}
                 label="Email"
                 fullWidth
                 margin="normal"
@@ -225,7 +225,7 @@ const Signin = () => {
                               : theme.palette.primary.main
                           }
                           size="sm"
-                          icon={['far', 'envelope']}
+                          icon={["far", "envelope"]}
                         />
                       </IconButton>
                     </InputAdornment>
@@ -236,12 +236,12 @@ const Signin = () => {
 
             <Grid item xs={12}>
               <TextField
-                label={t('password')}
-                placeholder={t('type-your-password')}
+                label={t("password")}
+                placeholder={t("type-your-password")}
                 fullWidth
                 margin="normal"
                 variant="outlined"
-                type={showPassword ? 'text' : 'password'}
+                type={showPassword ? "text" : "password"}
                 value={password}
                 name="password"
                 onChange={handleInputChange}
@@ -264,7 +264,7 @@ const Signin = () => {
                               : theme.palette.primary.main
                           }
                           size="sm"
-                          icon={['fas', 'lock']}
+                          icon={["fas", "lock"]}
                         />
                       </IconButton>
                     </InputAdornment>
@@ -278,7 +278,7 @@ const Signin = () => {
                       >
                         <FontAwesomeIcon
                           size="sm"
-                          icon={['far', showPassword ? 'eye-slash' : 'eye']}
+                          icon={["far", showPassword ? "eye-slash" : "eye"]}
                         />
                       </IconButton>
                     </InputAdornment>
@@ -297,22 +297,20 @@ const Signin = () => {
                       color="primary"
                     />
                   }
-                  label={t('remember-me')}
+                  label={t("remember-me")}
                 />
 
                 <Box mt="10px">
-                  <Link href="#">{t('forgot-password')}</Link>
+                  <Link href="#">{t("forgot-password")}</Link>
                 </Box>
               </Grid>
             </Grid>
             {loginError && (
-              <Grid item xs={12}>
-                <Box>
-                  <Typography variant="caption" color="error">
-                    {t(loginError)}
-                  </Typography>
-                </Box>
-              </Grid>
+              <Box ml={2}>
+                <Typography variant="caption" color="error">
+                  {t(loginError)}
+                </Typography>
+              </Box>
             )}
             <Grid item xs={12}>
               <Box mt="10px" />
@@ -328,7 +326,7 @@ const Signin = () => {
                   password?.lenght === 0
                 }
                 loading={loading}
-                label={t('login')}
+                label={t("login")}
               />
             </Grid>
 
@@ -340,16 +338,16 @@ const Signin = () => {
                 alignItems="center"
               >
                 <Typography variant="body2">
-                  {t('dont-have-account')}
+                  {t("dont-have-account")}
                 </Typography>
                 <Link
                   component="button"
                   variant="body1"
                   onClick={() => {
-                    history.push('/signup');
+                    history.push("/signup");
                   }}
                 >
-                  {t('signup')}
+                  {t("signup")}
                 </Link>
               </Box>
             </Grid>
