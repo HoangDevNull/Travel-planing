@@ -14,32 +14,112 @@ const FeatureVideoDetail = () => {
   const handleLoadMore = async () => {
     // async method for test, should remove when deploy
     const imgs = [
-      "https://images.pexels.com/photos/6027991/pexels-photo-6027991.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "https://images.pexels.com/photos/4627309/pexels-photo-4627309.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "https://images.pexels.com/photos/6190993/pexels-photo-6190993.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "https://images.pexels.com/photos/3178852/pexels-photo-3178852.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "https://images.pexels.com/photos/4709480/pexels-photo-4709480.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "https://images.pexels.com/photos/6027991/pexels-photo-6027991.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "https://images.pexels.com/photos/4627309/pexels-photo-4627309.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "https://images.pexels.com/photos/6190993/pexels-photo-6190993.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "https://images.pexels.com/photos/3178852/pexels-photo-3178852.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "https://images.pexels.com/photos/4709480/pexels-photo-4709480.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      {
+        url:
+          "https://images.pexels.com/photos/6027991/pexels-photo-6027991.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        description: "Love in peace",
+      },
+      {
+        url:
+          "https://images.pexels.com/photos/4627309/pexels-photo-4627309.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        description: "Beach not bezz",
+      },
+      {
+        url:
+          "https://images.pexels.com/photos/6190993/pexels-photo-6190993.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        description: "Saharah so hot",
+      },
+      {
+        url:
+          "https://images.pexels.com/photos/3178852/pexels-photo-3178852.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        description: "Ireland cooling",
+      },
+      {
+        url:
+          "https://images.pexels.com/photos/4709480/pexels-photo-4709480.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        description: "Back bag nack",
+      },
+      {
+        url:
+          "https://images.pexels.com/photos/6027991/pexels-photo-6027991.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        description: "Kooling yashi",
+      },
+      {
+        url:
+          "https://images.pexels.com/photos/4627309/pexels-photo-4627309.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        description: "Japan in pease",
+      },
+      {
+        url:
+          "https://images.pexels.com/photos/6190993/pexels-photo-6190993.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        description: "Vietnam skiopping",
+      },
+      {
+        url:
+          "https://images.pexels.com/photos/3178852/pexels-photo-3178852.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        description: "Not a number or letter",
+      },
+      {
+        url:
+          "https://images.pexels.com/photos/4709480/pexels-photo-4709480.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        description: "Steam not bad",
+      },
     ];
     await delay(2000); // delay for test, should remove when deploy
     setImageUrls(imageUrls.concat(imgs));
   };
 
   const defaultUrls = [
-    "https://images.pexels.com/photos/6027991/pexels-photo-6027991.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-    "https://images.pexels.com/photos/4627309/pexels-photo-4627309.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-    "https://images.pexels.com/photos/6190993/pexels-photo-6190993.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-    "https://images.pexels.com/photos/3178852/pexels-photo-3178852.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-    "https://images.pexels.com/photos/4709480/pexels-photo-4709480.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-    "https://images.pexels.com/photos/6027991/pexels-photo-6027991.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-    "https://images.pexels.com/photos/4627309/pexels-photo-4627309.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-    "https://images.pexels.com/photos/6190993/pexels-photo-6190993.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-    "https://images.pexels.com/photos/3178852/pexels-photo-3178852.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-    "https://images.pexels.com/photos/4709480/pexels-photo-4709480.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    {
+      url:
+        "https://images.pexels.com/photos/6027991/pexels-photo-6027991.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      description: "Love in peace",
+    },
+    {
+      url:
+        "https://images.pexels.com/photos/4627309/pexels-photo-4627309.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      description: "Beach not bezz",
+    },
+    {
+      url:
+        "https://images.pexels.com/photos/6190993/pexels-photo-6190993.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      description: "Saharah so hot",
+    },
+    {
+      url:
+        "https://images.pexels.com/photos/3178852/pexels-photo-3178852.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      description: "Ireland cooling",
+    },
+    {
+      url:
+        "https://images.pexels.com/photos/4709480/pexels-photo-4709480.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      description: "Back bag nack",
+    },
+    {
+      url:
+        "https://images.pexels.com/photos/6027991/pexels-photo-6027991.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      description: "Kooling yashi",
+    },
+    {
+      url:
+        "https://images.pexels.com/photos/4627309/pexels-photo-4627309.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      description: "Japan in pease",
+    },
+    {
+      url:
+        "https://images.pexels.com/photos/6190993/pexels-photo-6190993.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      description: "Vietnam skiopping",
+    },
+    {
+      url:
+        "https://images.pexels.com/photos/3178852/pexels-photo-3178852.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      description: "Not a number or letter",
+    },
+    {
+      url:
+        "https://images.pexels.com/photos/4709480/pexels-photo-4709480.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      description: "Steam not bad",
+    },
   ];
   const [imageUrls, setImageUrls] = React.useState(defaultUrls);
   return (

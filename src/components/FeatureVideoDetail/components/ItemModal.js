@@ -10,6 +10,7 @@ import {
   Button,
   Grid,
   IconButton,
+  Hidden,
 } from "@material-ui/core";
 import {
   StarRateOutlined,
@@ -70,11 +71,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ItemModal({ open, handleClose, img }) {
+function ItemModal({
+  open,
+  handleClose,
+  img,
+  onChangeNextImage,
+  onChangePrevImage,
+}) {
   const { width, height } = CustomHooks.useWindowDimensions();
   const classes = useStyles({ width, height });
   const [showMap, setShowMap] = React.useState(false);
-  const [mainContent, setMainContent] = React.useState();
 
   const handleSwitchMainContent = () => {
     setShowMap((val) => !val);
@@ -83,9 +89,9 @@ function ItemModal({ open, handleClose, img }) {
   const mainCardMedia = (
     <CardMedia
       component="img"
-      alt={img.split("/")[4] || "NULL"}
-      image={img}
-      title={img.split("/")[4] || "NULL TITLE"}
+      alt={img.url || "NULL"}
+      image={img.url}
+      title={img.url || "NULL TITLE"}
       className={classes.media}
     />
   );
@@ -111,20 +117,28 @@ function ItemModal({ open, handleClose, img }) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <IconButton className={classes.arrowLeftIcon} size="medium">
+            <IconButton
+              className={classes.arrowLeftIcon}
+              size="medium"
+              onClick={() => onChangePrevImage()}
+            >
               <ArrowBackRounded />
             </IconButton>
-            <IconButton className={classes.arrowRightIcon} size="medium">
+            <IconButton
+              className={classes.arrowRightIcon}
+              size="medium"
+              onClick={() => onChangeNextImage()}
+            >
               <ArrowForwardRounded />
             </IconButton>
             <Grid container>
-              <Grid item xs={0} md={2}></Grid>
+              <Hidden xsDown>
+                <Grid item md={2}></Grid>
+              </Hidden>
               <Grid item xs={12} md={8}>
                 <Box display="flex" wrap="nowrap" py={1} alignItems="center">
                   <Box flexGrow={1} flexWrap="wrap">
-                    <Typography variant="h5">
-                      Travelling adventure in California
-                    </Typography>
+                    <Typography variant="h5">{img.description}</Typography>
                   </Box>
                   <Favorite className={classes.favoriteIcon} />
                   <Typography variant="subtitle1">41 likes</Typography>
@@ -137,7 +151,9 @@ function ItemModal({ open, handleClose, img }) {
                   </Button>
                 </Box>
               </Grid>
-              <Grid item xs={0} md={2}></Grid>
+              <Hidden xsDown>
+                <Grid item md={2}></Grid>
+              </Hidden>
             </Grid>
 
             {showMap ? mainMapBox : mainCardMedia}
@@ -153,7 +169,7 @@ function ItemModal({ open, handleClose, img }) {
               <Box display="flex" flexDirection="row">
                 <RemoveRedEye />
                 <Typography variant="subtitle1" style={{ marginLeft: "1rem" }}>
-                  69 views
+                  {Math.floor(Math.random() * 1000)} views
                 </Typography>
               </Box>
               <Button
