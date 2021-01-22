@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import InfiniteScroll from "react-infinite-scroller";
-import { CardMedia, Grid, Typography } from "@material-ui/core";
-import StackGrid from "react-stack-grid";
-import { withSize } from "react-sizeme";
+import { CardMedia, Grid, Typography, IconButton } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import ItemModal from "./ItemModal";
+import { Delete } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,11 +17,21 @@ const useStyles = makeStyles((theme) => ({
     zIndex: "1",
     "&:hover": {
       transform: "scale(1.05)",
-      zIndex: "200",
     },
   },
   description: {
     color: "white",
+  },
+  deleteButton: {
+    zIndex: 10,
+    position: "absolute",
+    top: theme.spacing(3),
+    right: theme.spacing(3),
+    "&:hover": {
+      transform: "scale(1.05)",
+      backgroundColor: "white",
+    },
+    color: "red",
   },
 }));
 
@@ -42,15 +50,7 @@ const styles = {
   },
 };
 
-const StackInfiniteScroll = ({
-  pageStart,
-  loadMoreHandler,
-  currentSize,
-  maxSize,
-  loaderComponent,
-  items,
-  size,
-}) => {
+const ListImage = ({ items, onDeleteImage }) => {
   const classes = useStyles();
   const [openModal, setOpenModal] = useState(false);
   const [imageToModel, setImageToModel] = useState("");
@@ -84,23 +84,22 @@ const StackInfiniteScroll = ({
         onChangeNextImage={handleChangeNextImage}
         onChangePrevImage={handleChangePrevImage}
       />
-      <InfiniteScroll
-        pageStart={pageStart}
-        loadMore={loadMoreHandler}
-        hasMore={currentSize < maxSize}
-        loader={loaderComponent}
-      >
-        <StackGrid columnWidth={size.width <= 768 ? "100%" : "33.33%"}>
-          {items.map((img, index) => {
-            return (
-              <React.Fragment key={index}>
+      <Grid container>
+        {items.map((img, index) => {
+          return (
+            <Grid item key={index} xs={12} sm={6} md={4}>
+              <div style={{ position: "relative" }}>
+                <IconButton
+                  className={classes.deleteButton}
+                  onClick={() => onDeleteImage(index)}
+                >
+                  <Delete />
+                </IconButton>
                 <div
+                  className={classes.media}
                   onClick={() => {
                     handleOnClickCardMedia(img);
-                    setSelectedIndex(index);
                   }}
-                  style={{ position: "relative" }}
-                  className={classes.media}
                 >
                   <CardMedia
                     component="img"
@@ -114,12 +113,12 @@ const StackInfiniteScroll = ({
                     </Typography>
                   </div>
                 </div>
-              </React.Fragment>
-            );
-          })}
-        </StackGrid>
-      </InfiniteScroll>
+              </div>
+            </Grid>
+          );
+        })}
+      </Grid>
     </Grid>
   );
 };
-export default withSize()(StackInfiniteScroll);
+export default ListImage;

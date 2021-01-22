@@ -18,7 +18,6 @@ import {
   LocationOn,
   ArrowBackRounded,
   ArrowForwardRounded,
-  Favorite,
   Image as ImageIcon,
 } from "@material-ui/icons";
 import CustomHooks from "utils/customHook";
@@ -140,12 +139,11 @@ function ItemModal({
                   <Box flexGrow={1} flexWrap="wrap">
                     <Typography variant="h5">{img.description}</Typography>
                   </Box>
-                  <Favorite className={classes.favoriteIcon} />
-                  <Typography variant="subtitle1">41 likes</Typography>
                   <Button
                     variant="outlined"
                     className={classes.button}
                     startIcon={<StarRateOutlined />}
+                    disabled
                   >
                     Save
                   </Button>
@@ -169,7 +167,7 @@ function ItemModal({
               <Box display="flex" flexDirection="row">
                 <RemoveRedEye />
                 <Typography variant="subtitle1" style={{ marginLeft: "1rem" }}>
-                  {Math.floor(Math.random() * 1000)} views
+                  0 views
                 </Typography>
               </Box>
               <Button
