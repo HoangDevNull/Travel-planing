@@ -32,8 +32,12 @@ const useStyles = makeStyles((theme) => ({
       marginTop: -56
     }
   },
-  font_bold: {
-    fontWeight: 'bold'
+  title: {
+    fontSize: '15em',
+    fontWeight: 'bold',
+    [theme.breakpoints.down('md')]: {
+      fontSize: '10vw'
+    }
   },
   text_overlay_wrapper: {
     position: 'absolute',
@@ -47,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '15vw',
     fontWeight: 'bolder',
     [theme.breakpoints.up('xl')]: {
-      fontSize: '20em'
+      fontSize: '25em'
     }
   }
 }));
@@ -57,18 +61,18 @@ const HeadSessions = () => {
   return (
     <>
       <Box
-        width="100%"
-        display="flex"
-        justifyContent="space-between"
-        alignItems="baseline"
+        width='100%'
+        display='flex'
+        justifyContent='space-between'
+        alignItems='baseline'
         className={classes.text_overlay_wrapper}
       >
         {'Edit profile'.split('').map((str, i) => (
           <Typography
             className={classes.text_overlay}
-            variant="h1"
-            align="justify"
-            color="secondary"
+            variant='h1'
+            align='justify'
+            color='secondary'
             key={i}
           >
             {str}
@@ -76,15 +80,15 @@ const HeadSessions = () => {
         ))}
       </Box>
       <Box className={classes.head_image_wrapper}>
-        <HeadImage src="https://images.pexels.com/photos/5088021/pexels-photo-5088021.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
+        <HeadImage src='https://images.pexels.com/photos/5088021/pexels-photo-5088021.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' />
       </Box>
       <Container className={classes.root}>
-        <Grid container justify="center" alignItems="center">
+        <Grid container justify='center' alignItems='center'>
           <Grid item>
             <Typography
-              variant="h1"
-              color="secondary"
-              className={classes.font_bold}
+              variant='h1'
+              color='secondary'
+              className={classes.title}
             >
               Edit profile
             </Typography>

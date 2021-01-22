@@ -31,6 +31,28 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       marginTop: -56
     }
+  },
+  title: {
+    fontSize: '15em',
+    fontWeight: 'bold',
+    [theme.breakpoints.down('md')]: {
+      fontSize: '10vw'
+    }
+  },
+  text_overlay_wrapper: {
+    position: 'absolute',
+    top: '40%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    zIndex: 2,
+    opacity: 0.3
+  },
+  text_overlay: {
+    fontSize: '15vw',
+    fontWeight: 'bolder',
+    [theme.breakpoints.up('xl')]: {
+      fontSize: '20em'
+    }
   }
 }));
 
@@ -38,14 +60,37 @@ const HeadSessions = () => {
   const classes = useStyles();
   return (
     <>
+      <Box
+        width='100%'
+        display='flex'
+        justifyContent='space-between'
+        alignItems='baseline'
+        className={classes.text_overlay_wrapper}
+      >
+        {'Destination'.split('').map((str, i) => (
+          <Typography
+            className={classes.text_overlay}
+            variant='h1'
+            align='justify'
+            color='secondary'
+            key={i}
+          >
+            {str}
+          </Typography>
+        ))}
+      </Box>
       <Box className={classes.head_image_wrapper}>
-        <HeadImage src="https://images.pexels.com/photos/255441/pexels-photo-255441.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
+        <HeadImage src='https://images.pexels.com/photos/1271619/pexels-photo-1271619.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' />
       </Box>
       <Container className={classes.root}>
-        <Grid container justify="center" alignItems="center">
+        <Grid container justify='center' alignItems='center'>
           <Grid item>
-            <Typography variant="h1" color="secondary">
-              Top Story
+            <Typography
+              variant='h1'
+              color='secondary'
+              className={classes.title}
+            >
+              Destination
             </Typography>
           </Grid>
         </Grid>

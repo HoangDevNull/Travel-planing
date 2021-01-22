@@ -8,6 +8,7 @@ import {
   CardActions,
   Box
 } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,9 +20,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CategoryCard = ({ image, title }) => {
+  const history = useHistory();
   const classes = useStyles();
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} onClick={() => {history.push('/stories')}}>
       <CardActionArea>
         <CardMedia className={classes.media} image={image} title={title} />
       </CardActionArea>

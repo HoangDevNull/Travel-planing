@@ -12,7 +12,7 @@ const userAccount = [
     userProfile: {
       username: 'Hoang Pham',
       avatar:
-        'https://react-material-kit.devias.io/static/images/avatars/avatar_3.png',
+        'https://react-material-kit.devias.io/static/images/avatars/avatar_5.png',
       country: 'Saint Petersburg, Russian Federation',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla scelerisque justo ac ante suscipit, vel ultricies ante sodales. In id justo ut libero mattis pulvinar. Duis et malesuada felis. Nulla a tincidunt nisl,'

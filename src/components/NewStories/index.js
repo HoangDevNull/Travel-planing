@@ -104,6 +104,7 @@ const NewStories = () => {
       payload.user = userProfile;
 
       inputData.content = content;
+      inputData.imageUrl = data.url;
       dispatch(createPostAction.set(inputData));
       history.push('/add-story/preview');
     } catch (err) {

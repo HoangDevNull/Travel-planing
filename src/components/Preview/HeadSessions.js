@@ -43,19 +43,20 @@ const useStyles = makeStyles((theme) => ({
 
 const HeadSession = (props) => {
   const classes = useStyles();
-  const { user, title, image, location, createdAt } = props;
+  const { user, title, imageUrl, location, createdAt } = props;
+  console.log({ props });
   return (
     <>
       <Box className={classes.head_image_wrapper}>
-        <HeadImage src={image} />
+        <HeadImage src={imageUrl} />
       </Box>
       <Container className={classes.root}>
-        <Grid container justify="center" alignItems="center" spacing={5}>
+        <Grid container justify='center' alignItems='center' spacing={5}>
           <Grid item xs={12}>
             <Typography
-              variant="h5"
-              align="center"
-              color="secondary"
+              variant='h5'
+              align='center'
+              color='secondary'
               className={classes.font_bold}
               gutterBottom
             >
@@ -64,9 +65,9 @@ const HeadSession = (props) => {
           </Grid>
           <Grid item xs={12}>
             <Typography
-              variant="h2"
-              color="secondary"
-              align="center"
+              variant='h2'
+              color='secondary'
+              align='center'
               className={classes.font_bold}
               gutterBottom
             >
@@ -76,20 +77,20 @@ const HeadSession = (props) => {
           <Grid
             item
             container
-            justify="center"
-            alignItems="center"
-            direction="column"
+            justify='center'
+            alignItems='center'
+            direction='column'
           >
             <Avatar src={user?.avatar} className={classes.avatar} spacing={3} />
             <Typography
-              variant="h5"
-              color="secondary"
+              variant='h5'
+              color='secondary'
               className={classes.font_bold}
               gutterBottom
             >
               {user?.username}
             </Typography>
-            <Typography variant="body1" color="secondary" gutterBottom>
+            <Typography variant='body1' color='secondary' gutterBottom>
               {location}
             </Typography>
           </Grid>
