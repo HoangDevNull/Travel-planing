@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Box,
   Container,
@@ -10,91 +10,91 @@ import {
   IconButton,
   Tooltip,
   useMediaQuery,
-  Hidden
-} from '@material-ui/core';
+  Hidden,
+} from "@material-ui/core";
 
-import HeadImage from 'components/common/HeadImage';
-import ScrollDownIcon from 'components/common/ScrollDownIcon';
+import HeadImage from "components/common/HeadImage";
+import ScrollDownIcon from "components/common/ScrollDownIcon";
 
 import {
   CloudUploadOutlined,
   EditOutlined,
-  AddOutlined,
   ContactMail,
-  GroupAdd
-} from '@material-ui/icons';
+  GroupAdd,
+} from "@material-ui/icons";
 
-import { useResize } from 'components/common/Hook/useResize';
-import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useResize } from "components/common/Hook/useResize";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import CreateMedia from "./components/CreateMedia";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
-    left: '50%',
-    transform: 'translate(-50%, 0)',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center'
+    left: "50%",
+    transform: "translate(-50%, 0)",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
   head_image_wrapper: {
-    position: 'relative',
-    display: 'block',
-    boxSizing: 'borderBox',
-    overflow: 'hidden',
+    position: "relative",
+    display: "block",
+    boxSizing: "borderBox",
+    overflow: "hidden",
     marginTop: -64,
-    [theme.breakpoints.down('xs')]: {
-      marginTop: -56
-    }
+    [theme.breakpoints.down("xs")]: {
+      marginTop: -56,
+    },
   },
   big_avatar: {
     width: 200,
     height: 200,
-    border: '4px solid #fff',
-    [theme.breakpoints.down('sm')]: {
+    border: "4px solid #fff",
+    [theme.breakpoints.down("sm")]: {
       width: 100,
-      height: 100
-    }
+      height: 100,
+    },
   },
   font_bold: {
-    fontWeight: 'bold'
+    fontWeight: "bold",
   },
   action_wrapper: {
-    width: '100%',
-    position: 'absolute',
+    width: "100%",
+    position: "absolute",
     bottom: 0,
     left: 0,
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
     padding: 15,
-    [theme.breakpoints.down('sm')]: {
-      padding: 0
-    }
+    [theme.breakpoints.down("sm")]: {
+      padding: 0,
+    },
   },
   p_8: {
-    padding: '8%'
+    padding: "8%",
   },
   button_social: {
     padding: 20,
-    [theme.breakpoints.down('xs')]: {
-      padding: 8
-    }
+    [theme.breakpoints.down("xs")]: {
+      padding: 8,
+    },
   },
   description: {
-    display: '-webkit-box',
-    '-webkit-line-clamp': 4,
-    '-webkit-box-orient': 'vertical',
-    overflow: 'hidden'
-  }
+    display: "-webkit-box",
+    "-webkit-line-clamp": 4,
+    "-webkit-box-orient": "vertical",
+    overflow: "hidden",
+  },
 }));
 
 function buildFileSelector() {
-  const fileSelector = document.createElement('input');
-  fileSelector.setAttribute('type', 'file');
-  fileSelector.setAttribute('accept', 'image/x-png,image/gif,image/jpeg');
+  const fileSelector = document.createElement("input");
+  fileSelector.setAttribute("type", "file");
+  fileSelector.setAttribute("accept", "image/x-png,image/gif,image/jpeg");
   return fileSelector;
 }
 
@@ -102,12 +102,12 @@ let fileSelector = null;
 
 const HeadSessions = () => {
   const history = useHistory();
-  const match = useMediaQuery((theme) => theme.breakpoints.down('xs'));
+  const match = useMediaQuery((theme) => theme.breakpoints.down("xs"));
   const size = useResize();
   const classes = useStyles();
 
   const [mainImage, setMainImage] = React.useState(
-    'https://images.pexels.com/photos/2347495/pexels-photo-2347495.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    "https://images.pexels.com/photos/2347495/pexels-photo-2347495.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
   );
 
   React.useEffect(() => {
@@ -138,17 +138,17 @@ const HeadSessions = () => {
       <Container
         // maxWidth="md"
         className={classes.root}
-        style={{ height: size.height + 'px' }}
+        style={{ height: size.height + "px" }}
       >
         <Grid
           container
-          direction='column'
-          justify='center'
-          alignItems='center'
+          direction="column"
+          justify="center"
+          alignItems="center"
           className={classes.p_8}
         >
           <Grid item>
-            <Box mb='20px'>
+            <Box mb="20px">
               <Avatar
                 src={userProfile?.avatar}
                 alt={userProfile?.username}
@@ -158,8 +158,8 @@ const HeadSessions = () => {
           </Grid>
           <Grid item>
             <Typography
-              variant='h3'
-              color='secondary'
+              variant="h3"
+              color="secondary"
               className={classes.font_bold}
               gutterBottom
             >
@@ -168,10 +168,10 @@ const HeadSessions = () => {
           </Grid>
           <Grid item>
             <Typography
-              variant='h6'
-              color='secondary'
+              variant="h6"
+              color="secondary"
               className={classes.font_bold}
-              align='center'
+              align="center"
               gutterBottom
             >
               {userProfile?.country}
@@ -179,71 +179,64 @@ const HeadSessions = () => {
           </Grid>
           <Grid item>
             <Typography
-              variant='body1'
-              color='secondary'
+              variant="body1"
+              color="secondary"
               className={classes.description}
-              align='center'
+              align="center"
             >
               {userProfile?.description}
             </Typography>
           </Grid>
-          <Grid container justify='space-around' alignItems='center' item>
-            <Box width={match ? '47%' : '45%'} mt='30px'>
+          <Grid container justify="space-around" alignItems="center" item>
+            <Box width={match ? "47%" : "45%"} mt="30px">
               <Button
                 className={classes.button_social}
-                variant='contained'
-                color='primary'
+                variant="contained"
+                color="primary"
                 fullWidth={true}
               >
-                {match ? <ContactMail /> : 'Contact info'}
+                {match ? <ContactMail /> : "Contact info"}
               </Button>
             </Box>
-            <Box width={match ? '47%' : '45%'} mt='30px'>
+            <Box width={match ? "47%" : "45%"} mt="30px">
               <Button
                 className={classes.button_social}
-                variant='outlined'
-                color='secondary'
+                variant="outlined"
+                color="secondary"
                 fullWidth={true}
               >
-                1,043&ensp; {match ? <GroupAdd /> : 'follower'}
+                1,043&ensp; {match ? <GroupAdd /> : "follower"}
               </Button>
             </Box>
           </Grid>
         </Grid>
 
         <Box className={classes.action_wrapper}>
-          <Box ml='10px'>
+          <Box ml="10px">
             <Button
               startIcon={<CloudUploadOutlined />}
-              size='medium'
-              variant='outlined'
-              color='secondary'
+              size="medium"
+              variant="outlined"
+              color="secondary"
               onClick={handleUploadMainImage}
             >
               Upload media
             </Button>
           </Box>
           {/* <ButtonGroup disableElevation variant="contained" color="secondary"> */}
-          <Box>
-            <Tooltip title='Edit Profile'>
+          <Box display="flex" flexDirection="row">
+            <Tooltip title="Edit Profile">
               <IconButton
-                color='secondary'
+                color="secondary"
                 onClick={() => {
-                  history.push('/setting');
+                  history.push("/setting");
                 }}
               >
                 <EditOutlined />
               </IconButton>
             </Tooltip>
-            <Tooltip title='New Post'>
-              <IconButton
-                color='secondary'
-                onClick={() => {
-                  history.push('/add-story');
-                }}
-              >
-                <AddOutlined />
-              </IconButton>
+            <Tooltip title="New Post">
+              <CreateMedia />
             </Tooltip>
           </Box>
           {/* </ButtonGroup> */}

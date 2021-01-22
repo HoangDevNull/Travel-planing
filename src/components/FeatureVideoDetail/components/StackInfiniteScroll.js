@@ -31,7 +31,6 @@ const styles = {
   itemDescription: {
     position: "absolute",
     bottom: "1rem",
-    background: "rgb(255,255,255)",
     background:
       "linear-gradient(180deg, rgba(255,255,255,0) 10%, rgba(87,87,87,1) 100%, rgba(0,212,255,1) 100%)",
     height: 50,
