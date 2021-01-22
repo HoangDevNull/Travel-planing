@@ -7,7 +7,7 @@ import {
   makeStyles,
   Typography
 } from '@material-ui/core';
-
+import moment from 'moment';
 import HeadImage from 'components/common/HeadImage';
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -59,7 +59,7 @@ const HeadSession = (props) => {
               className={classes.font_bold}
               gutterBottom
             >
-              {createdAt}
+              {moment(createdAt).format('LL')}
             </Typography>
           </Grid>
           <Grid item xs={12}>

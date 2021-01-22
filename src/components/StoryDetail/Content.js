@@ -35,8 +35,8 @@ class ConvertToRawDraftContent extends Component {
     const { editorState } = this.state;
     return (
       <>
-        <Container>
-          <Box overflow='hidden' width='100%' className='rdw-storybook-root'>
+        <Container maxWidth="md">
+          <Box overflow="hidden" width="100%" className="rdw-storybook-root">
             <Editor
               editorState={editorState}
               toolbarHidden
